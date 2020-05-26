@@ -1,0 +1,1 @@
+export const TOGGLE_USER_INFO = 'TOGGLE_USER_INFO';
