@@ -1,21 +1,21 @@
 # Mirage
 
-React app with react-router, styled-components, Redux and other JavaScrip and React libraries...
+### React app with react-router, styled-components, Redux and other JavaScrip and React libraries...
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## App dependencies:
 
-### [react-app-polyfill:](https://www.npmjs.com/package/react-app-polyfill)
-### [prop-types:](https://www.npmjs.com/package/prop-types)
-### [react-router-dom:](https://reacttraining.com/react-router/)
-### [redux:](https://redux.js.org/)
-### [react-redux:](https://react-redux.js.org/)
-### [redux-thunk:](https://github.com/reduxjs/redux-thunk)
-### [styled-components:](https://styled-components.com/)
-### [react-bootstrap:](https://react-bootstrap.github.io/)
-### [react-fontawesome:](https://github.com/FortAwesome/react-fontawesome/)
-### [axios:](https://github.com/axios/axios)
+#### [react-app-polyfill](https://www.npmjs.com/package/react-app-polyfill)
+#### [prop-types](https://www.npmjs.com/package/prop-types)
+#### [react-router-dom](https://reacttraining.com/react-router/)
+#### [redux](https://redux.js.org/)
+#### [react-redux](https://react-redux.js.org/)
+#### [redux-thunk](https://github.com/reduxjs/redux-thunk)
+#### [styled-components](https://styled-components.com/)
+#### [react-bootstrap](https://react-bootstrap.github.io/)
+#### [react-fontawesome](https://github.com/FortAwesome/react-fontawesome/)
+#### [axios](https://github.com/axios/axios)
 
 ## Available Scripts
 
