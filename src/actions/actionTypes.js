@@ -1,1 +1,2 @@
 export const TOGGLE_USER_INFO = 'TOGGLE_USER_INFO';
+export const TOGGLE_SIDE_NAV = 'TOGGLE_SIDE_NAV';
