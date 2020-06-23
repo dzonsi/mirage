@@ -7,6 +7,7 @@ import { UserDataStyled as UserData } from './UserData';
 import { connect } from 'react-redux';
 import { toggleUserInfo } from '../../../action-creators/actionCreators';
 
+import PropTypes from 'prop-types';
 
 function UserInfo(props) {
 	return (
@@ -20,6 +21,11 @@ function UserInfo(props) {
 			/>
 		</div>
 	)
+}
+
+UserInfo.propTypes = {
+	userInfoShow: PropTypes.bool.isRequired,
+	toggleUserInfo: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => {
