@@ -5,15 +5,32 @@ import { minWidth } from '../../theme/mixins/minWidth';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { DefaultButton as Button } from '../shared/DefaultButton';
 
+// redux
+import { connect } from 'react-redux';
+import { toggleSideNav } from '../../action-creators/actionCreators';
+
+import PropTypes from 'prop-types';
+
 function SideNavToggle(props) {
+
+	const toggle = props.toggleSideNav;
+
 	return (
-		<Button className={props.className}>
+		<Button className={props.className} onClick={toggle}>
 			<Icon icon={['fas', 'bars']} />
 		</Button>
 	)
 }
 
-export const SideNavToggleStyled = styled(SideNavToggle)`
+SideNavToggle.propTypes = {
+	toggleSideNav: PropTypes.func.isRequired,
+}
+
+const mapDispatchToProps = {
+	toggleSideNav
+}
+
+const SideNavToggleStyled = styled(SideNavToggle)`
 	font-size: 1rem;
 	color: ${({ theme }) => theme.name === 'light' ?
 		theme.alpha :
@@ -43,3 +60,5 @@ export const SideNavToggleStyled = styled(SideNavToggle)`
 		font-size: 1.5rem;
 	`}
 `
+
+export const SideNavToggleConnected = connect(null, mapDispatchToProps) (SideNavToggleStyled);
