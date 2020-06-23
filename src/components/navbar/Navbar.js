@@ -4,6 +4,7 @@ import { NavContent } from './NavContent';
 import { SideNavToggleStyled as SideNavToggle } from './SideNavToggle';
 import { SearchStyled as Search } from './search/Search';
 import { UserInfoConnected as UserInfo } from './user/UserInfo';
+import { SideNavStyled as SideNav } from './side-nav/SideNav';
 import { OverlayStyled as Overlay } from './Overlay';
 
 // action from redux
@@ -18,6 +19,7 @@ function Navbar(props) {
 				<SideNavToggle />
 				<Search />
 				<UserInfo />
+				<SideNav />
 				<Overlay
 					show={props.userInfoShow}
 					toggle={props.toggleUserInfo}
