@@ -14,14 +14,17 @@ function UserData(props) {
 		<div className={props.className}>
 			<p><span>N</span></p>
 			<p>nikola86_v@yahoo.com</p>
-			<p><Button>Manage your account</Button></p>
-			<p>
+			{/* change to link, or nav link in necessary */}
+			<Button>Manage your account</Button>
+			<div>
+				{/* change to link, or nav link in necessary */}
 				<Button>Privacy Policy</Button>
 				<span>
 					<Icon icon={['fas', 'circle']} />
 				</span>
+				{/* change to link, or nav link in necessary */}
 				<Button>Terms of Service</Button>
-			</p>
+			</div>
 			<Button onClick={props.toggle}>
 				<Icon icon={['fas', 'times']} />
 			</Button>
@@ -87,22 +90,21 @@ export const UserDataStyled = styled(UserData)`
 		color: ${({ theme }) => theme.beta};
 	}
 
-	& p:nth-child(3) {
-		& button {
-			color: ${({ theme }) => theme.alpha};
-			padding: 0.25rem 0.75rem;
-			border: 1px solid ${({ theme }) => theme.name === 'light' ?
-				theme.gamma :
-				theme.beta};
-			border-radius: 1.5rem;
-			transition: border-color .2s linear;
-			&:hover {
-				border-color: ${({ theme }) => theme.alpha};
-			}
+	& > button:first-of-type {
+		color: ${({ theme }) => theme.alpha};
+		padding: 0.25rem 0.75rem;
+		margin-bottom: 0.5rem;
+		border: 1px solid ${({ theme }) => theme.name === 'light' ?
+			theme.gamma :
+			theme.beta};
+		border-radius: 1.5rem;
+		transition: border-color .2s linear;
+		&:hover {
+			border-color: ${({ theme }) => theme.alpha};
 		}
 	}
 
-	& p:nth-child(4) {
+	& div:nth-child(4) {
 		font-size 0.8rem;
 		color: ${({ theme }) => theme.beta};
 
