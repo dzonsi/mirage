@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 
 function SideNavToggle(props) {
 
-	const toggle = props.toggleSideNav;
+	const { toggleSideNav: toggle } = props;
 
 	return (
 		<Button className={props.className} onClick={toggle}>
