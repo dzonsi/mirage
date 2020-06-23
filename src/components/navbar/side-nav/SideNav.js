@@ -6,6 +6,11 @@ import styled from 'styled-components';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { DefaultButton as Button } from '../../shared/DefaultButton';
 
+// redux
+import { connect } from 'react-redux';
+import { toggleSideNav } from '../../../action-creators/actionCreators';
+
+import PropTypes from 'prop-types';
 
 function SideNav(props) {
 	return (
@@ -22,24 +27,47 @@ function SideNav(props) {
 					<NavLink to="/home">Settings</NavLink>
 				</Router>
 			</nav>
-			<Button onClick={props.toggle}>
+			<Button onClick={props.toggleSideNav}>
 				<Icon icon={['fas', 'times']} />
 			</Button>
 		</div>
 	)
 }
 
-export const SideNavStyled = styled(SideNav)`
+SideNav.propTypes = {
+	sideNavShow: PropTypes.bool.isRequired,
+	toggleSideNav: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = state => {
+  return {
+    ...state.navbarReducer
+  }
+}
+
+const mapDispatchToProps = {
+	toggleSideNav
+}
+
+const SideNavStyled = styled(SideNav)`
 	width: 100%;
 	height: 100%;
 	position: fixed;
 	top: 0;
-	left: 0;
+	left: -100%;
 	z-index: 15;
-	background-color: ${({ theme }) => theme.name === 'light' ?
-		theme.alpha :
-		theme.delta
+	background-color: ${({ theme }) => theme.delta
 	};
+	transform: translateX(0);
+	transition: transform .3s linear;
+	${({ sideNavShow }) => {
+		if(sideNavShow) {
+			return `
+				transform: translateX(100%);
+			`
+		}
+	}}
+
 
 	& nav {
 		width: 100%;
@@ -52,7 +80,7 @@ export const SideNavStyled = styled(SideNav)`
 		& a {
 			font-size: 18px;
 			font-weight: 700;
-			color: ${({ theme }) => theme.gamma};
+			color: ${({ theme }) => theme.beta};
 			padding: 0.25rem 0.5rem;
 			margin-bottom: 0.5rem;
 
@@ -63,14 +91,27 @@ export const SideNavStyled = styled(SideNav)`
 			&:hover {
 				color: ${({ theme }) => theme.zeta};
 			}
+
 		}
 
 	}
 
 	& button {
-		color: ${({ theme }) => theme.gamma};
+		font-size: 22px;
+		color: ${({ theme }) => theme.beta};
+		padding: 0 0.5rem;
 		position: absolute;
-		top: 0;
-		right: 0;
+		top: 0.5rem;
+		right: 0.5rem;
+
+		&:hover {
+			color: ${({ theme }) => theme.zeta};
+		}
+
+		&:active {
+			padding: 0 0.5rem;
+		}
 	}
 `
+
+export const SideNavConnected = connect(mapStateToProps, mapDispatchToProps) (SideNavStyled);
