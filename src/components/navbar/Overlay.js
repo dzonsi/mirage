@@ -31,13 +31,14 @@ export const OverlayStyled = styled(Overlay)`
 	background-color: rgba(0, 0, 0, 0.5);
 	position: fixed;
 	top: 0;
-	left: 100%;
+	left: -100%;
 	z-index: 11;
+	transform: translateX(0);
 	transition: background-color .3s linear;
 	${props => {
 		if(props.show) {
 			return `
-				left: 0;
+				transform: translateX(100%);
 				background-color: rgba(0, 0, 0, 0.7);
 			`
 		}
