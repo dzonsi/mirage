@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-//import { minWidth } from '../../../theme/mixins/minWidth';
+import { minWidth } from '../../../theme/mixins/minWidth';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { DefaultButton as Button } from '../../shared/DefaultButton';
 
@@ -27,7 +27,7 @@ function SideNav(props) {
 					<NavLink to="/home">Settings</NavLink>
 				</Router>
 			</nav>
-			<Button onClick={props.toggleSideNav}>
+			<Button onClick={props.toggleSideNav} title="Close side navigation">
 				<Icon icon={['fas', 'times']} />
 			</Button>
 		</div>
@@ -92,6 +92,18 @@ const SideNavStyled = styled(SideNav)`
 				color: ${({ theme }) => theme.zeta};
 			}
 
+			${
+				minWidth.sm`
+					font-size: 22px;
+				`
+			}
+
+			${
+				minWidth.lg`
+					font-size: 25px;
+				`
+			}
+
 		}
 
 	}
@@ -101,8 +113,8 @@ const SideNavStyled = styled(SideNav)`
 		color: ${({ theme }) => theme.beta};
 		padding: 0 0.5rem;
 		position: absolute;
-		top: 0.5rem;
-		right: 0.5rem;
+		top: 1rem;
+		right: 1rem;
 
 		&:hover {
 			color: ${({ theme }) => theme.zeta};
@@ -111,6 +123,33 @@ const SideNavStyled = styled(SideNav)`
 		&:active {
 			padding: 0 0.5rem;
 		}
+
+		${
+			minWidth.sm`
+				font-size: 28px;
+				padding: 0 0.7rem;
+				top: 1rem;
+				right: 1rem;
+
+				&:active {
+					padding: 0 0.7rem;
+				}
+			`
+		}
+
+		${
+			minWidth.lg`
+				font-size: 38px;
+				padding: 0 1rem;
+				top: 2rem;
+				right: 2rem;
+
+				&:active {
+					padding: 0 1rem;
+				}
+			`
+		}
+
 	}
 `
 
