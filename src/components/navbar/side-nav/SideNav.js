@@ -41,7 +41,7 @@ SideNav.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    ...state.navbarReducer
+   sideNavShow: state.navbarReducer.sideNavShow
   }
 }
 
