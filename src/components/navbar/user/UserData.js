@@ -25,7 +25,7 @@ function UserData(props) {
 				{/* change to link, or nav link in necessary */}
 				<Button>Terms of Service</Button>
 			</div>
-			<Button onClick={props.toggle}>
+			<Button onClick={props.toggle} title="Close user info">
 				<Icon icon={['fas', 'times']} />
 			</Button>
 		</div>

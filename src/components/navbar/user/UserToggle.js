@@ -7,7 +7,11 @@ import PropTypes from 'prop-types';
 
 function UserToggle(props) {
 	return (
-		<Button className={props.className} onClick={props.toggle}>
+		<Button
+			className={props.className}
+			onClick={props.toggle}
+			title="Show user info"
+		>
 			<span>N</span>
 		</Button>
 	)

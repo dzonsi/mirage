@@ -16,7 +16,11 @@ function SideNavToggle(props) {
 	const { toggleSideNav: toggle } = props;
 
 	return (
-		<Button className={props.className} onClick={toggle}>
+		<Button
+			className={props.className}
+			onClick={toggle}
+			title="Open side navigation"
+		>
 			<Icon icon={['fas', 'bars']} />
 		</Button>
 	)
