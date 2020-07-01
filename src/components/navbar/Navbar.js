@@ -9,7 +9,7 @@ import { OverlayStyled as Overlay } from './Overlay';
 
 // action from redux
 import { connect } from 'react-redux';
-import { toggleUserInfo } from '../../action-creators/actionCreators';
+import { toggleUserInfo } from '../../action-creators/navbarCreators';
 
 
 function Navbar(props) {

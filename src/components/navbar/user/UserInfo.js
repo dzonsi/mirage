@@ -5,7 +5,7 @@ import { UserToggleStyled as UserToggle } from './UserToggle';
 import { UserDataStyled as UserData } from './UserData';
 // action from redux
 import { connect } from 'react-redux';
-import { toggleUserInfo } from '../../../action-creators/actionCreators';
+import { toggleUserInfo } from '../../../action-creators/navbarCreators';
 
 import PropTypes from 'prop-types';
 

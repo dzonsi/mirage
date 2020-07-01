@@ -7,7 +7,7 @@ import { DefaultButton as Button } from '../shared/DefaultButton';
 
 // redux
 import { connect } from 'react-redux';
-import { toggleSideNav } from '../../action-creators/actionCreators';
+import { toggleSideNav } from '../../action-creators/navbarCreators';
 
 import PropTypes from 'prop-types';
 
