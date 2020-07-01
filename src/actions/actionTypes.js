@@ -1,2 +1,8 @@
+// navbar
 export const TOGGLE_USER_INFO = 'TOGGLE_USER_INFO';
 export const TOGGLE_SIDE_NAV = 'TOGGLE_SIDE_NAV';
+
+// users
+export const FETCH_USERS_BEGIN = 'FETCH_USERS_BEGIN';
+export const FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS';
+export const FETCH_USERS_ERROR = 'FETCH_USERS_ERROR';
