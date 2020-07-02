@@ -21,7 +21,6 @@ import { AppContainer } from './components/AppContainer';
 import { ErrorContainer } from './components/ErrorContainer';
 import Navbar from './components/navbar/Navbar';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
-import Users from './components/Users';
 
 // add icons to library for use anywhere in app
 library.add(fab, fas, far);
@@ -46,7 +45,6 @@ function App() {
       <GlobalStyles />
       <AppContainer>
         <Navbar />
-        <Users />
         <h2>{ theme === 'light' ? 'Light theme' : 'Dark Theme'}</h2>
         <button onClick={toggleTheme}>Toggle theme</button>
         <Router>
