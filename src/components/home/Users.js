@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchUsers } from '../action-creators/usersCreators';
+import { fetchUsers } from '../../action-creators/usersCreators';
 
 class Users extends React.Component {
 
