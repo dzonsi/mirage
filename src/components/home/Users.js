@@ -1,23 +1,45 @@
 import React from "react";
+import { NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
 import { fetchUsers } from '../../action-creators/usersCreators';
+
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 class Users extends React.Component {
 
 	componentDidMount() {
-		this.props.dispatch(fetchUsers());
+		if(!this.props.users.length) {
+			this.props.dispatch(fetchUsers());
+		}
 	}
 
 	render() {
+
 		const { loading, users, error } = this.props;
+		const style = {
+			textAlign: 'center'
+		}
+		const navStyle = {
+			display: 'block',
+			textAlign: 'center'
+		}
+
 		if(loading) {
-			return <h2>Loading...</h2>
+			return (
+				<div style={style}>
+					<Icon icon={['fas', 'spinner']} size="3x" spin />
+				</div>
+			)
 		}
 		if(users.length) {
 			return (
-				<ul>
-					{users.map(user => <li key={user.id}>{user.name}</li>)}
-				</ul>
+				<div>
+					<NavLink to="/users" style={navStyle}>
+						<Icon icon={['fas', 'users']} size="3x" />
+						<h2>Users ({users.length})</h2>
+						<p>Show all</p>
+					</NavLink>
+				</div>
 			)
 		}
 		if(error) {
