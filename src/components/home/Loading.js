@@ -5,8 +5,6 @@ import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 
 function Loading(props) {
-
-
 	return (
 		<div className={props.className}>
 			<Icon icon={['fas', 'spinner']} size="3x" spin />
