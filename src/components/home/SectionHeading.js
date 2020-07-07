@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 
 function SectionHeading(props) {
 
@@ -19,6 +19,10 @@ function SectionHeading(props) {
 		</NavLink>
 	)
 
+}
+
+SectionHeading.propTypes = {
+	to: PropTypes.string.isRequired,
 }
 
 export const SectionHeadingStyled = styled(SectionHeading)`
