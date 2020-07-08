@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { minWidth } from '../../theme/mixins/minWidth';
 
 // import all images as object
 function importAll(r) {
@@ -40,7 +41,32 @@ Item.propTypes = {
 }
 
 export const ItemStyled = styled(Item)`
-	display: block;
+	display: none;
+	@media screen and (max-width: 460px) {
+		&:nth-child(-n + 3) {
+			display: block;
+		}
+	}
+	@media screen and (min-width: 460px) {
+		&:nth-child(-n + 4) {
+			display: block;
+		}
+	}
+	${minWidth.xs`
+		&:nth-child(-n + 5) {
+			display: block;
+		}
+	`}
+	${minWidth.sm`
+		&:nth-child(-n + 6) {
+			display: block;
+		}
+	`}
+	${minWidth.md`
+		&:nth-child(-n + 8) {
+			display: block;
+		}
+	`}
 
 	& img {
 		width: 100px;
