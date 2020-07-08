@@ -42,37 +42,58 @@ Item.propTypes = {
 
 export const ItemStyled = styled(Item)`
 	display: none;
+
 	@media screen and (max-width: 460px) {
 		&:nth-child(-n + 3) {
 			display: block;
 		}
 	}
+
 	@media screen and (min-width: 460px) {
 		&:nth-child(-n + 4) {
 			display: block;
 		}
 	}
+
 	${minWidth.xs`
+		margin: 0 2rem 0 0;
+		&:nth-child(4) {
+			margin: 0;
+		}
+	`}
+
+	${minWidth.sm`
 		&:nth-child(-n + 5) {
 			display: block;
 		}
-	`}
-	${minWidth.sm`
-		&:nth-child(-n + 6) {
-			display: block;
+		&:nth-child(4) {
+			margin: 0 2rem 0 0;
+		}
+		&:nth-child(5) {
+			margin: 0;
 		}
 	`}
-	${minWidth.md`
-		&:nth-child(-n + 8) {
-			display: block;
-		}
-	`}
+
+	
 
 	& img {
 		width: 100px;
 		height: 100px;
 		border-radius: 15px;
 		margin: 0 0 0.5rem;
+
+		${minWidth.sm`
+			width: 120px;
+			height: 120px;
+			border-radius: 20px;
+		`}
+
+		${minWidth.md`
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+		`}
+
 	}
 
 	& h3 {
@@ -80,12 +101,37 @@ export const ItemStyled = styled(Item)`
 		font-weight: 700;
 		margin: 0 0 0.2rem;
 		max-width: 100px;
+
+		${minWidth.xs`
+			font-size: 1rem;
+		`}
+
+		${minWidth.sm`
+			max-width: 120px;
+		`}
+
+		${minWidth.md`
+			font-size: 1.4rem;
+			text-align: center;
+			max-width: 150px;
+		`}
+
 	}
 
 	& p {
 		font-size: 0.75rem;
 		color: ${({ theme }) => theme.beta};
 		margin: 0;
+
+		${minWidth.xs`
+			font-size: 0.85rem;
+		`}
+
+		${minWidth.md`
+			font-size: 1rem;
+			text-align: center;
+		`}
+
 	}
 
 `
