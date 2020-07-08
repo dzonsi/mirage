@@ -3,24 +3,24 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+// import all images as object
+function importAll(r) {
+  let images = {};
+  r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+  return images;
+}
+const images = importAll(require.context('../../assets/images/avatar', false, /\.png/));
+
+// array from all images keys
+const imgArray = Object.keys(images);
+
+// math random between to numbers
+function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
 
 function Item(props) {
 
-	// import all images as object
-	function importAll(r) {
-	  let images = {};
-	  r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
-	  return images;
-	}
-	const images = importAll(require.context('../../assets/images/avatar', false, /\.png/));
-
-	// array from all images keys
-	const imgArray = Object.keys(images);
-
-	// math random between to numbers
-	function getRandom(min, max) {
-	  return Math.floor(Math.random() * (max - min + 1) ) + min;
-	}
 	const num = getRandom(0, imgArray.length - 1);
 
 	const { user } = props;
@@ -40,9 +40,26 @@ Item.propTypes = {
 }
 
 export const ItemStyled = styled(Item)`
+	display: block;
+
 	& img {
-		width: 80px;
-		height: 80px;
-		border-radius: 10px;
+		width: 100px;
+		height: 100px;
+		border-radius: 15px;
+		margin: 0 0 0.5rem;
 	}
+
+	& h3 {
+		font-size: 0.75rem;
+		font-weight: 700;
+		margin: 0 0 0.2rem;
+		max-width: 100px;
+	}
+
+	& p {
+		font-size: 0.75rem;
+		color: ${({ theme }) => theme.beta};
+		margin: 0;
+	}
+
 `
