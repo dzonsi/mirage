@@ -74,7 +74,29 @@ export const ItemStyled = styled(Item)`
 		}
 	`}
 
-	
+	${minWidth.lg`
+		&:nth-child(-n + 6) {
+			display: block;
+		}
+		&:nth-child(5) {
+			margin: 0 2rem 0 0;
+		}
+		&:nth-child(6) {
+			margin: 0;
+		}
+	`}
+
+	&:hover {
+
+		& h3 {
+			color: ${({ theme }) => theme.zeta};
+		}
+
+		& p {
+			color: ${({ theme }) => theme.name === 'light' ? theme.eta : theme.alpha};
+		}
+
+	}
 
 	& img {
 		width: 100px;
