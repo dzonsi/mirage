@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
+import { minWidth } from '../../theme/mixins/minWidth';
 
 function SectionHeading(props) {
 
@@ -31,6 +32,14 @@ export const SectionHeadingStyled = styled(SectionHeading)`
 	align-items: center;
 	margin: 0 0 1rem;
 
+	${minWidth.xs`
+		justify-content: center;
+	`}
+
+	${minWidth.md`
+		margin: 0 0 2rem;
+	`}
+
 	&:hover {
 		& h2 {
 			color: ${({ theme }) => theme.zeta};
@@ -45,9 +54,24 @@ export const SectionHeadingStyled = styled(SectionHeading)`
 		font-size: 1.4rem;
 		color: ${({ theme }) => theme.alpha};
 		margin: 0;
+
+		${minWidth.xs`
+			font-size: 1.6rem;
+			font-weight: 700;
+			color: ${({ theme }) => theme.beta};
+		`}
+
+		${minWidth.md`
+			font-size: 2rem;
+		`}
+
 	}
 
 	& svg {
 		color: ${({ theme }) => theme.beta};
+
+		${minWidth.xs`
+			display: none;
+		`}
 	}
 `
