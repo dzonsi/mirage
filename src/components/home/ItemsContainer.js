@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import { minWidth } from '../../theme/mixins/minWidth';
 
 function ItemsContainer(props) {
 
@@ -13,5 +14,10 @@ function ItemsContainer(props) {
 
 export const ItemsContainerStyled = styled(ItemsContainer)`
 	display: flex;
+	justify-content: space-between;
 	overflow: hidden;
+
+	${minWidth.xs`
+		justify-content: center;
+	`}
 `
