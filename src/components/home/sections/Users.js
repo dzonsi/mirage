@@ -1,9 +1,11 @@
 import React from "react";
-import { NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
 
-
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
+
+import { SectionHeadingStyled as Heading } from '../SectionHeading';
+import { ItemsContainerStyled as ItemsContainer } from '../ItemsContainer';
+import { ItemStyled as Item } from '../Item';
 
 function Users(props) {
 
@@ -18,24 +20,21 @@ function Users(props) {
 	}
 	if(users.length) {
 
-		const items = users.map(user => {
+		const items = users.map((user, index) => {
+			// show 6 users
+			if(index > 5) return false;
 			return (
-				<div>
-					<img width="100" height="100" src="https://via.placeholder.com/150/24f355" alt="User profile" />
-					<p>{user.name}</p>
-					<p>{user.address.city}</p>
-				</div>
+				<Item user={user} key={user.id}/>
 			);
 		});
 
 		return (
-			<div>
-				<NavLink to="users">
-					<h2>Users</h2>
-					<Icon icon={['fas', 'arrow-right']} />
-				</NavLink>
-				{items}
-			</div>
+			<section>
+				<Heading to="users" />
+				<ItemsContainer>
+					{items}
+				</ItemsContainer>
+			</section>
 		)
 	}
 	if(error) {
