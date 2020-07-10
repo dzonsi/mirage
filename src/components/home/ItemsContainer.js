@@ -5,9 +5,9 @@ import { minWidth } from '../../theme/mixins/minWidth';
 function ItemsContainer(props) {
 
 	return (
-		<div className={props.className}>
+		<ul className={props.className}>
 			{props.children}
-		</div>
+		</ul>
 	)
 
 }
@@ -16,8 +16,10 @@ export const ItemsContainerStyled = styled(ItemsContainer)`
 	display: flex;
 	justify-content: space-between;
 	overflow: hidden;
+	padding: 0.5rem 0;
 
 	${minWidth.xs`
 		justify-content: center;
+		padding: 1rem 0;
 	`}
 `
