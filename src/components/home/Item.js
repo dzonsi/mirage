@@ -88,6 +88,8 @@ export const ItemStyled = styled(Item)`
 		}
 	`}
 
+	display: ${({ show }) => show === 'all' ? 'block' : null};
+
 	&:hover {
 
 		& h3 {
