@@ -22,4 +22,14 @@ export const ItemsContainerStyled = styled(ItemsContainer)`
 		justify-content: center;
 		padding: 1rem 0;
 	`}
+
+	${({ show }) => show === 'all' ? `
+		flex-direction: column;
+
+		@media screen and (min-width: 576px) {
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+
+	` : null};
 `
