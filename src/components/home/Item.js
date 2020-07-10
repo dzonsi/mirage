@@ -7,7 +7,7 @@ import { minWidth } from '../../theme/mixins/minWidth';
 // import all images as object
 function importAll(r) {
   let images = {};
-  r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+  r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); return false; });
   return images;
 }
 const images = importAll(require.context('../../assets/images/avatar', false, /\.png/));
@@ -27,11 +27,13 @@ function Item(props) {
 	const { user } = props;
 
 	return (
-		<NavLink to={`/users/${user.id}`} className={props.className}>
-			<img src={images[imgArray[num]]} alt="User profile" />
-			<h3>{user.name}</h3>
-			<p>{user.address.city}</p>
-		</NavLink>
+		<li className={props.className}>
+			<NavLink to={`/users/${user.id}`}>
+				<img src={images[imgArray[num]]} alt="User profile" />
+				<h3>{user.name}</h3>
+				<p>{user.address.city}</p>
+			</NavLink>
+		</li>
 	)
 
 }
@@ -96,6 +98,10 @@ export const ItemStyled = styled(Item)`
 			color: ${({ theme }) => theme.name === 'light' ? theme.eta : theme.alpha};
 		}
 
+	}
+
+	& a {
+		display: inline-block;
 	}
 
 	& img {
