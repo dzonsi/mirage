@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
-
+import { SectionLoadingStyled as Loading } from '../SectionLoading';
 import { SectionHeadingStyled as Heading } from '../SectionHeading';
 import { ItemsContainerStyled as ItemsContainer } from '../ItemsContainer';
 import { ItemStyled as Item } from '../Item';
@@ -13,9 +12,7 @@ function Users(props) {
 
 	if(loading) {
 		return (
-			<div>
-				<Icon icon={['fas', 'spinner']} size="3x" spin />
-			</div>
+			<Loading />
 		)
 	}
 	if(users.length) {
@@ -39,7 +36,7 @@ function Users(props) {
 	}
 	if(error) {
 		return (
-			<h2>Something went wrong!</h2>
+			<h2>Something went wrong while fetching users!</h2>
 		)
 	}
 	return (
