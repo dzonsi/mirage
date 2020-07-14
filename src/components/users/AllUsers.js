@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { LoadingStyled as Loading } from '../home/Loading';
 import { ItemsContainerStyled as ItemsContainer } from '../home/ItemsContainer';
 import { ItemStyled as Item } from '../home/Item';
+import { DefaultButton as Button } from '../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 function AllUsers(props) {
@@ -36,10 +37,12 @@ function AllUsers(props) {
 		return (
 			<section className={props.className}>
 				<div>
-					<Icon
-						icon={['fas', 'arrow-left']}
-						onClick={() => history.goBack()}
-					/>
+					<Button>
+						<Icon
+							icon={['fas', 'arrow-left']}
+							onClick={() => history.goBack()}
+						/>
+					</Button>
 					<h2>Users</h2>
 				</div>
 				<ItemsContainer show="all">
@@ -74,12 +77,21 @@ const AllUsersStyled = styled(AllUsers)`
 		align-items: center;
 	}
 
-	& svg {
+	& button {
+		padding: 0 5px;
 		margin: 0 0 0 20px;
+
+		&:hover {
+			color: ${({ theme }) => theme.zeta};
+		}
+
+		&:active {
+			padding: 0 5px;
+		}
 	}
 
 	& h2 {
-		margin: 0 0 0 18px;
+		margin: 0 0 0 8px;
 	}
 `
 
