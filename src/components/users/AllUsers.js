@@ -1,15 +1,18 @@
 import React, { useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import { connect } from "react-redux";
 import { fetchUsers } from '../../action-creators/usersCreators';
+import styled from 'styled-components';
 
 import { LoadingStyled as Loading } from '../home/Loading';
 import { ItemsContainerStyled as ItemsContainer } from '../home/ItemsContainer';
 import { ItemStyled as Item } from '../home/Item';
-
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 function AllUsers(props) {
 
 	const { loading, users, error } = props;
+	const history = useHistory();
 
 	useEffect(() => {
 		if(!props.users.length) {
@@ -31,8 +34,14 @@ function AllUsers(props) {
 		});
 
 		return (
-			<section>
-				<h2>All users!</h2>
+			<section className={props.className}>
+				<div>
+					<Icon
+						icon={['fas', 'arrow-left']}
+						onClick={() => history.goBack()}
+					/>
+					<h2>Users</h2>
+				</div>
 				<ItemsContainer show="all">
 					{items}
 				</ItemsContainer>
@@ -57,4 +66,21 @@ const mapStateToProps = state => ({
 	error: state.usersReducer.error
 });
 
-export const AllUsersConnected = connect(mapStateToProps) (AllUsers);
+const AllUsersStyled = styled(AllUsers)`
+
+	& div {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+	}
+
+	& svg {
+		margin: 0 0 0 20px;
+	}
+
+	& h2 {
+		margin: 0 0 0 18px;
+	}
+`
+
+export const AllUsersConnected = connect(mapStateToProps) (AllUsersStyled);
