@@ -88,30 +88,6 @@ export const ItemStyled = styled(Item)`
 		}
 	`}
 
-	${({ show }) => show === 'all' ? `
-
-		display: block;
-
-		& > li {
-			margin: 0 2rem 0 0;
-		}
-
-		&:nth-child(4) {
-			margin: 0 2rem 0 0;
-		}
-
-		&:nth-child(5) {
-			margin: 0 2rem 0 0;
-		}
-
-		&:nth-child(6) {
-			margin: 0 2rem 0 0;
-		}
-
-	` : null
-
-	}
-
 	&:hover {
 
 		& h3 {
@@ -183,6 +159,32 @@ export const ItemStyled = styled(Item)`
 			font-size: 1rem;
 			text-align: center;
 		`}
+
+	}
+
+	${({ show }) => show === 'all' ? `
+
+		display: block;
+		margin: 0 2rem 0 0;
+
+		&:nth-child(4) {
+			margin: 0 2rem 0 0;
+		}
+
+		&:nth-child(5) {
+			margin: 0 2rem 0 0;
+		}
+
+		&:nth-child(6) {
+			margin: 0 2rem 0 0;
+		}
+
+		& a {
+			margin: 0 0 1rem 2rem;
+		}
+
+
+	` : null
 
 	}
 
