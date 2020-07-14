@@ -24,13 +24,14 @@ export const ItemsContainerStyled = styled(ItemsContainer)`
 	`}
 
 	${({ show }) => show === 'all' ? `
-		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: center;
 		padding: 0;
 		margin: 20px;
 
-		@media screen and (min-width: 576px) {
-			flex-direction: row;
-			flex-wrap: wrap;
+		@media screen and (min-width: 992px) {
+			max-width: 952px;
+			margin: 0 auto;
 		}
 
 	` : null};
