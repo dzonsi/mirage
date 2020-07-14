@@ -25,6 +25,8 @@ export const ItemsContainerStyled = styled(ItemsContainer)`
 
 	${({ show }) => show === 'all' ? `
 		flex-direction: column;
+		padding: 0;
+		margin: 20px;
 
 		@media screen and (min-width: 576px) {
 			flex-direction: row;
