@@ -37,11 +37,8 @@ function AllUsers(props) {
 		return (
 			<section className={props.className}>
 				<div>
-					<Button>
-						<Icon
-							icon={['fas', 'arrow-left']}
-							onClick={() => history.goBack()}
-						/>
+					<Button onClick={() => history.goBack()}>
+						<Icon icon={['fas', 'arrow-left']} />
 					</Button>
 					<h2>Users</h2>
 				</div>
