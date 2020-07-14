@@ -88,7 +88,29 @@ export const ItemStyled = styled(Item)`
 		}
 	`}
 
-	display: ${({ show }) => show === 'all' ? 'block' : null};
+	${({ show }) => show === 'all' ? `
+
+		display: block;
+
+		& > li {
+			margin: 0 2rem 0 0;
+		}
+
+		&:nth-child(4) {
+			margin: 0 2rem 0 0;
+		}
+
+		&:nth-child(5) {
+			margin: 0 2rem 0 0;
+		}
+
+		&:nth-child(6) {
+			margin: 0 2rem 0 0;
+		}
+
+	` : null
+
+	}
 
 	&:hover {
 
