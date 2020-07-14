@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { connect } from "react-redux";
 import { fetchUsers } from '../../action-creators/usersCreators';
 import styled from 'styled-components';
@@ -14,7 +14,9 @@ function SingleUser(props) {
 
 	const { loading, users, error } = props;
 	const history = useHistory();
-	const location = useLocation();
+	const params = useParams();
+	const user = users[params.id - 1];
+	console.log(user);
 
 	useEffect(() => {
 		if(!props.users.length) {
@@ -29,11 +31,13 @@ function SingleUser(props) {
 	}
 	if(users.length) {
 
-
-
 		return (
 			<section className={props.className}>
+				<Button onClick={() => history.goBack()}>
+					<Icon icon={['fas', 'arrow-left']} />
+				</Button>
 				<h2>Single user</h2>
+				<p>{user.id}</p>
 			</section>
 		)
 	}
