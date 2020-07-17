@@ -8,6 +8,7 @@ import { LoadingStyled as Loading } from '../home/Loading';
 import { UserHeadingStyled as UserHeading } from './UserHeading';
 import { UserBodyStyled as UserBody } from './UserBody';
 import { UserAddressStyled as UserAddress } from './UserAddress';
+import { UserLinksStyled as UserLinks } from './UserLinks';
 import { DefaultButton as Button } from '../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
@@ -41,6 +42,7 @@ function SingleUser(props) {
 				<UserBody user={user} />
 				<hr />
 				<UserAddress address={user.address} />
+				<UserLinks />
 			</section>
 		)
 	}
