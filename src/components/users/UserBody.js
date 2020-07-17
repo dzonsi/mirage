@@ -17,6 +17,7 @@ function UserBody(props) {
 	if(user) {
 		return (
 			<div className={props.className}>
+				<p><span>Email:</span> {user.email}</p>
 				<p><span>Phone:</span> {user.phone}</p>
 				<p><span>Website:</span> {user.website}</p>
 				<p><span>Company:</span> {user.company.name}</p>
@@ -38,6 +39,11 @@ UserBody.propTypes = {
 
 export const UserBodyStyled = styled(UserBody)`
 	margin: 10px;
+
+	& p {
+		font-size: 0.8rem;
+		margin: 0 0 0.5rem 0;
+	}
 
 	& span {
 		font-weight: 700;
