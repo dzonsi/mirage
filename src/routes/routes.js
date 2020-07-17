@@ -11,6 +11,7 @@ import { SingleUserConnected as User } from '../components/users/SingleUser';
 const routes = (
 	<Switch>
     <Route exact path="/" render={() => <Home />}/>
+    <Route path="/users/:id/:resources" render={() => <h2>Resources</h2>}></Route>
     <Route path="/users/:id" render={() => <User />}></Route>
     <Route path="/users" render={() => <Users />}></Route>
     <Route path="*" render={() => (<h2>No Match</h2>)}></Route>
