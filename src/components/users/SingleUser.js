@@ -37,9 +37,10 @@ function SingleUser(props) {
 					<Icon icon={['fas', 'arrow-left']} />
 				</Button>
 				<UserHeading user={user} />
-				<UserBody user={user} />
-				<UserAddress address={user.address} />
 				<hr />
+				<UserBody user={user} />
+				<hr />
+				<UserAddress address={user.address} />
 			</section>
 		)
 	}
@@ -63,6 +64,11 @@ const mapStateToProps = state => ({
 
 const SingleUserStyled = styled(SingleUser)`
 	margin: 20px;
+
+	& hr {
+		background-color: ${({ theme }) => theme.delta};
+		margin: 10px;
+	}
 `
 
 export const SingleUserConnected = connect(mapStateToProps) (SingleUserStyled);
