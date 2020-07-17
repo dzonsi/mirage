@@ -5,8 +5,7 @@ import { fetchUsers } from '../../action-creators/usersCreators';
 import styled from 'styled-components';
 
 import { LoadingStyled as Loading } from '../home/Loading';
-import { ItemsContainerStyled as ItemsContainer } from '../home/ItemsContainer';
-import { ItemStyled as Item } from '../home/Item';
+import { UserHeadingStyled as UserHeading } from './UserHeading';
 import { DefaultButton as Button } from '../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
@@ -36,8 +35,8 @@ function SingleUser(props) {
 				<Button onClick={() => history.goBack()}>
 					<Icon icon={['fas', 'arrow-left']} />
 				</Button>
-				<h2>Single user</h2>
-				<p>{user.id}</p>
+				<UserHeading user={user} />
+				<hr />
 			</section>
 		)
 	}
@@ -60,7 +59,7 @@ const mapStateToProps = state => ({
 });
 
 const SingleUserStyled = styled(SingleUser)`
-
+	margin: 20px;
 `
 
 export const SingleUserConnected = connect(mapStateToProps) (SingleUserStyled);
