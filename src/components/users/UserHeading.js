@@ -3,9 +3,12 @@ import React from "react";
 // import { connect } from "react-redux";
 // import { fetchUsers } from '../../action-creators/usersCreators';
 import styled from 'styled-components';
+//import { minWidth } from '../../../theme/mixins/minWidth';
 
 import { DefaultButton as Button } from '../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
+
+import PropTypes from 'prop-types';
 
 // import all images as object
 function importAll(r) {
@@ -32,10 +35,10 @@ function UserHeading(props) {
 	if(user) {
 		return (
 			<div className={props.className}>
-				<img width="100" height="100" src={images[imgArray[num]]} alt="User profile" />
+				<img src={images[imgArray[num]]} alt="User profile" />
 				<div>
 					<h2>{user.name}</h2>
-					<p>{user.username}</p>
+					<p>"{user.username}"</p>
 					<p>{user.email}</p>
 				</div>
 			</div>
@@ -50,6 +53,42 @@ function UserHeading(props) {
 
 }
 
+UserHeading.propTypes = {
+	user: PropTypes.object.isRequired
+}
+
 export const UserHeadingStyled = styled(UserHeading)`
+	display: flex;
+
+	& img {
+		width: 100px;
+		height: 100px;
+		border-radius: 15px;
+		margin: 10px;
+	}
+
+	& div {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		flex: 1;
+		margin: 10px;
+	}
+
+	& h2 {
+		font-size: 1.3rem;
+		font-weight: 700;
+	}
+
+	& p {
+		font-size: 0.8rem;
+		color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.beta};
+		margin: 0 0 0.5rem 0;
+
+		&:last-child {
+			margin: 0;
+		}
+	}
 
 `
