@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import { LoadingStyled as Loading } from '../home/Loading';
 import { UserHeadingStyled as UserHeading } from './UserHeading';
+import { UserBodyStyled as UserBody } from './UserBody';
 import { DefaultButton as Button } from '../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
@@ -36,6 +37,7 @@ function SingleUser(props) {
 					<Icon icon={['fas', 'arrow-left']} />
 				</Button>
 				<UserHeading user={user} />
+				<UserBody user={user} />
 				<hr />
 			</section>
 		)
