@@ -17,7 +17,9 @@ function UserBody(props) {
 	if(user) {
 		return (
 			<div className={props.className}>
-				<h2>UserBody</h2>
+				<p><span>Phone:</span> {user.phone}</p>
+				<p><span>Website:</span> {user.website}</p>
+				<p><span>Company:</span> {user.company.name}</p>
 			</div>
 		)
 	}
@@ -35,5 +37,10 @@ UserBody.propTypes = {
 }
 
 export const UserBodyStyled = styled(UserBody)`
+	margin: 10px;
 
+	& span {
+		font-weight: 700;
+		color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.beta};
+	}
 `
