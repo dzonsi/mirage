@@ -9,7 +9,6 @@ import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 function UserLinks(props) {
 
 	const params = useParams();
-	console.log(params.id);
 
 	return (
 		<div className={props.className}>
@@ -33,11 +32,16 @@ export const UserLinksStyled = styled(UserLinks)`
 		font-weight: 700;
 		padding: 0.5rem 1rem;
 		border: 1px solid ${({ theme }) => theme.beta};
-		border-radius: 21px;
+		border-radius: 10px;
 		margin: 0 0.7rem 0 0;
 
 		&:last-child {
 			margin: 0;
+		}
+
+		&:hover {
+			color: ${({ theme }) => theme.zeta};
+			border-color: ${({ theme }) => theme.zeta};
 		}
 	}
 
