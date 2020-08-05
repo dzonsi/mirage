@@ -34,9 +34,14 @@ function SingleUser(props) {
 
 		return (
 			<section className={props.className}>
-				<Button onClick={() => history.goBack()}>
-					<Icon icon={['fas', 'arrow-left']} />
-				</Button>
+				<div>
+					<Button onClick={() => history.goBack()}>
+						<Icon icon={['fas', 'arrow-left']} />
+					</Button>
+					<Button onClick={() => history.goBack()}>
+						<Icon icon={['fas', 'ellipsis-v']} />
+					</Button>
+				</div>
 				<UserHeading user={user} />
 				<hr />
 				<UserBody user={user} />
@@ -66,6 +71,16 @@ const mapStateToProps = state => ({
 
 const SingleUserStyled = styled(SingleUser)`
 	margin: 20px;
+
+	& div:first-child {
+		margin: 10px;
+		display: flex;
+		justify-content: space-between;
+
+		& button {
+			color: ${({ theme }) => theme.beta};
+		}
+	}
 
 	& hr {
 		background-color: ${({ theme }) => theme.delta};
