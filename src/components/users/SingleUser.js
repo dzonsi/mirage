@@ -83,7 +83,7 @@ const SingleUserStyled = styled(SingleUser)`
 	}
 
 	& hr {
-		background-color: ${({ theme }) => theme.delta};
+		background-color: ${({ theme }) => theme.name === 'light' ? theme.delta : theme.gamma};
 		margin: 10px;
 	}
 `
