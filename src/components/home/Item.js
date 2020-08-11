@@ -88,20 +88,9 @@ export const ItemStyled = styled(Item)`
 		}
 	`}
 
-	&:hover {
-
-		& h3 {
-			color: ${({ theme }) => theme.zeta};
-		}
-
-		& p {
-			color: ${({ theme }) => theme.name === 'light' ? theme.eta : theme.alpha};
-		}
-
-	}
-
 	& a {
 		display: inline-block;
+		padding: 5px 0 0 0;
 	}
 
 	& img {
@@ -109,6 +98,7 @@ export const ItemStyled = styled(Item)`
 		height: 100px;
 		border-radius: 15px;
 		margin: 0 0 0.5rem;
+		transition: transform .1s linear;
 
 		${minWidth.sm`
 			width: 120px;
@@ -159,6 +149,22 @@ export const ItemStyled = styled(Item)`
 			font-size: 1rem;
 			text-align: center;
 		`}
+
+	}
+
+	&:hover {
+
+		& h3 {
+			color: ${({ theme }) => theme.zeta};
+		}
+
+		& p {
+			color: ${({ theme }) => theme.name === 'light' ? theme.eta : theme.alpha};
+		}
+
+		& img {
+			transform: scale(1.05);
+		}
 
 	}
 
