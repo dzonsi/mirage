@@ -60,7 +60,7 @@ function AllUsers(props) {
 						<Icon icon={['fas', 'ellipsis-v']} />
 					</Button>
 				</div>
-				<Status />
+				<Status type="Users" />
 				<ItemsContainer show="all">
 					{items}
 				</ItemsContainer>
@@ -94,28 +94,6 @@ const mapDispatchToProps = {
 
 const AllUsersStyled = styled(AllUsers)`
 
-	& div {
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-	}
-
-	& button {
-		padding: 0 5px;
-		margin: 0 0 0 20px;
-
-		&:hover {
-			color: ${({ theme }) => theme.zeta};
-		}
-
-		&:active {
-			padding: 0 5px;
-		}
-	}
-
-	& h2 {
-		margin: 0 0 0 8px;
-	}
 `
 
 export const AllUsersConnected = connect(mapStateToProps, mapDispatchToProps) (AllUsersStyled);
