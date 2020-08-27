@@ -14,3 +14,9 @@ export const SORT_LOADING = 'SORT_LOADING';
 export const SORT_ID = 'SORT_ID';
 export const SORT_ASC = 'SORT_ASC';
 export const SORT_DESC = 'SORT_DESC';
+
+// single user options
+export const TOGGLE_USER_OPTIONS = 'TOGGLE_USER_OPTIONS';
+
+// users options
+export const TOGGLE_USERS_OPTIONS = 'TOGGLE_USERS_OPTIONS';
