@@ -5,16 +5,21 @@ import { SORT_LOADING } from '../actions/actionTypes';
 import { SORT_ID } from '../actions/actionTypes';
 import { SORT_ASC } from '../actions/actionTypes';
 import { SORT_DESC } from '../actions/actionTypes';
+import { TOGGLE_USER_OPTIONS } from '../actions/actionTypes';
+import { TOGGLE_USERS_OPTIONS } from '../actions/actionTypes';
 
 const initialState = {
 	users: [],
 	loading: false,
 	error: null,
-	order: 'id'
+	order: 'id',
+	userOptions: false,
+	usersOptions: false
 };
 
 export default function usersReducer(state = initialState, action) {
 	switch(action.type) {
+		// fetch users
 		case FETCH_USERS_BEGIN:
 			return {
 				...state,
@@ -34,6 +39,7 @@ export default function usersReducer(state = initialState, action) {
 				error: action.payload,
 				users: []
 			}
+		// sort users
 		case SORT_LOADING:
 			return {
 				...state,
@@ -62,6 +68,18 @@ export default function usersReducer(state = initialState, action) {
 				...state,
 				users: descSorted,
 				loading: false
+			}
+		// single user options
+		case TOGGLE_USER_OPTIONS:
+			return {
+				...state,
+				userOptions: !state.userOptions
+			}
+		// users options
+		case TOGGLE_USERS_OPTIONS:
+			return {
+				...state,
+				usersOptions: !state.usersOptions
 			}
 		default:
 			return state;
