@@ -36,7 +36,6 @@ UserAddress.propTypes = {
 
 export const UserAddressStyled = styled(UserAddress)`
 	margin: 10px;
-	border-radius: 15px;
 
 	& p {
 		font-size: 0.8rem;
