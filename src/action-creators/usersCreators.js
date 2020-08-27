@@ -5,6 +5,8 @@ import { SORT_LOADING } from '../actions/actionTypes';
 import { SORT_ID } from '../actions/actionTypes';
 import { SORT_ASC } from '../actions/actionTypes';
 import { SORT_DESC } from '../actions/actionTypes';
+import { TOGGLE_USER_OPTIONS } from '../actions/actionTypes';
+import { TOGGLE_USERS_OPTIONS } from '../actions/actionTypes';
 
 import axios from 'axios';
 
@@ -78,3 +80,15 @@ export function sortByDesc() {
 		return setTimeout(() => {dispatch(sortDesc())}, 500);
 	}
 }
+
+// single user options
+
+export const toggleUserOptions = () => ({
+	type: TOGGLE_USER_OPTIONS
+});
+
+// users options
+
+export const toggleUsersOptions = () => ({
+	type: TOGGLE_USERS_OPTIONS
+});
