@@ -1,8 +1,14 @@
 import { FETCH_USERS_BEGIN } from '../actions/actionTypes';
 import { FETCH_USERS_SUCCESS } from '../actions/actionTypes';
 import { FETCH_USERS_ERROR } from '../actions/actionTypes';
+import { SORT_LOADING } from '../actions/actionTypes';
+import { SORT_ID } from '../actions/actionTypes';
+import { SORT_ASC } from '../actions/actionTypes';
+import { SORT_DESC } from '../actions/actionTypes';
 
 import axios from 'axios';
+
+// fetch users
 
 export const fetchUsersBegin = () => ({
 	type: FETCH_USERS_BEGIN
@@ -30,6 +36,45 @@ export function fetchUsers() {
 			.catch(error => {
 				dispatch(fetchUsersError(error));
 			})
-		}, 5000);
+		}, 500);
+	}
+}
+
+// sort users
+
+export const sortLoading = () => ({
+	type: SORT_LOADING
+});
+
+export const sortId = () => ({
+	type: SORT_ID
+});
+
+export const sortAsc = () => ({
+	type: SORT_ASC
+});
+
+export const sortDesc = () => ({
+	type: SORT_DESC
+});
+
+export function sortById() {
+	return function(dispatch) {
+		dispatch(sortLoading());
+		return setTimeout(() => {dispatch(sortId())}, 500);
+	}
+}
+
+export function sortByAsc() {
+	return function(dispatch) {
+		dispatch(sortLoading());
+		return setTimeout(() => {dispatch(sortAsc())}, 500);
+	}
+}
+
+export function sortByDesc() {
+	return function(dispatch) {
+		dispatch(sortLoading());
+		return setTimeout(() => {dispatch(sortDesc())}, 500);
 	}
 }
