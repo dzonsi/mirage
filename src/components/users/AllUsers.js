@@ -1,23 +1,35 @@
 import React, { useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import { connect } from "react-redux";
-import { fetchUsers } from '../../action-creators/usersCreators';
 import styled from 'styled-components';
+
+import { fetchUsers } from '../../action-creators/usersCreators';
+import { sortById } from '../../action-creators/usersCreators';
+import { sortByAsc } from '../../action-creators/usersCreators';
+import { sortByDesc } from '../../action-creators/usersCreators';
 
 import { LoadingStyled as Loading } from '../home/Loading';
 import { ItemsContainerStyled as ItemsContainer } from '../home/ItemsContainer';
 import { ItemStyled as Item } from '../home/Item';
 import { DefaultButton as Button } from '../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
+import { StatusStyled as Status } from '../shared/Status';
 
 function AllUsers(props) {
 
-	const { loading, users, error } = props;
+	const {
+		loading,
+		users,
+		error,
+		sortById,
+		sortByAsc,
+		sortByDesc
+	} = props;
 	const history = useHistory();
 
 	useEffect(() => {
 		if(!props.users.length) {
-			props.dispatch(fetchUsers());
+			props.fetchUsers();
 		}
 	}, []);
 
@@ -41,7 +53,14 @@ function AllUsers(props) {
 						<Icon icon={['fas', 'arrow-left']} />
 					</Button>
 					<h2>Users</h2>
+					<button onClick={sortById}>Id</button>
+					<button onClick={sortByAsc}>Asc</button>
+					<button onClick={sortByDesc}>Desc</button>
+					<Button onClick={() => {console.log('Options')}}>
+						<Icon icon={['fas', 'ellipsis-v']} />
+					</Button>
 				</div>
+				<Status />
 				<ItemsContainer show="all">
 					{items}
 				</ItemsContainer>
@@ -65,6 +84,13 @@ const mapStateToProps = state => ({
 	loading: state.usersReducer.loading,
 	error: state.usersReducer.error
 });
+
+const mapDispatchToProps = {
+	fetchUsers,
+	sortById,
+	sortByAsc,
+	sortByDesc
+}
 
 const AllUsersStyled = styled(AllUsers)`
 
@@ -92,4 +118,4 @@ const AllUsersStyled = styled(AllUsers)`
 	}
 `
 
-export const AllUsersConnected = connect(mapStateToProps) (AllUsersStyled);
+export const AllUsersConnected = connect(mapStateToProps, mapDispatchToProps) (AllUsersStyled);
