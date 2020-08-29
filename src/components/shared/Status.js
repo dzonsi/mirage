@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 
 function Status(props) {
 	const type = props.type;
+	const Options = props.options;
 
 	return (
 		<div className={props.className}>
@@ -18,16 +19,23 @@ function Status(props) {
 				</Button>
 				{type && <h2>{type}</h2>}
 			</div>
-			<Button onClick={() => {console.log('Options')}}>
-				<Icon icon={['fas', 'ellipsis-v']} />
-			</Button>
+			<div>
+				<Button onClick={props.toggle}>
+					{!props.show ?
+						<Icon icon={['fas', 'ellipsis-v']} /> :
+						<Icon icon={['fas', 'window-close']} />
+					}
+				</Button>
+				{props.show && Options}
+			</div>
 		</div>
 	)
 
 }
 
 Status.propTypes = {
-	type: PropTypes.string
+	type: PropTypes.string,
+	toggle: PropTypes.func.isRequired
 }
 
 export const StatusStyled = styled(Status)`
@@ -42,13 +50,16 @@ export const StatusStyled = styled(Status)`
 		align-items: center;
 	}
 
+	& div:nth-child(2) {
+		position: relative;
+	}
+
 	& button {
 		padding: 0 5px;
 		transition: all .1s linear;
 
 		&:hover {
 			color: ${({ theme }) => theme.zeta};
-			transform: scale(1.2);
 		}
 
 		&:active {
@@ -61,11 +72,13 @@ export const StatusStyled = styled(Status)`
 	}
 
 	& > button {
+		position: relative;
 		padding: 0 9px;
 
 		&:active {
 			padding: 0 9px;
 		}
+
 	}
 
 `
