@@ -11,6 +11,7 @@ import { UserAddressStyled as UserAddress } from './UserAddress';
 import { UserLinksStyled as UserLinks } from './UserLinks';
 import { DefaultButton as Button } from '../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
+import { SingleUserMoreStyled as More } from './SingleUserMore';
 
 function SingleUser(props) {
 
@@ -35,12 +36,10 @@ function SingleUser(props) {
 		return (
 			<section className={props.className}>
 				<div>
-					<Button onClick={() => history.goBack()}>
+					<Button padding="0 5px" title="Go back" onClick={() => history.goBack()}>
 						<Icon icon={['fas', 'arrow-left']} />
 					</Button>
-					<Button onClick={() => history.goBack()}>
-						<Icon icon={['fas', 'ellipsis-v']} />
-					</Button>
+					<More />
 				</div>
 				<UserHeading user={user} />
 				<hr />
@@ -73,12 +72,16 @@ const SingleUserStyled = styled(SingleUser)`
 	margin: 20px;
 
 	& div:first-child {
-		margin: 10px;
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 
 		& button {
 			color: ${({ theme }) => theme.beta};
+
+			&:hover {
+				color: ${({ theme }) => theme.zeta};
+			}
 		}
 	}
 
