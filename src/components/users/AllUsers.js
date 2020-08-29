@@ -7,6 +7,7 @@ import { fetchUsers } from '../../action-creators/usersCreators';
 import { sortById } from '../../action-creators/usersCreators';
 import { sortByAsc } from '../../action-creators/usersCreators';
 import { sortByDesc } from '../../action-creators/usersCreators';
+import { toggleUsersOptions } from '../../action-creators/usersCreators';
 
 import { LoadingStyled as Loading } from '../home/Loading';
 import { ItemsContainerStyled as ItemsContainer } from '../home/ItemsContainer';
@@ -14,6 +15,7 @@ import { ItemStyled as Item } from '../home/Item';
 import { DefaultButton as Button } from '../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { StatusStyled as Status } from '../shared/Status';
+import { AllUsersOptionsStyled as Options } from './AllUsersOptions';
 
 function AllUsers(props) {
 
@@ -23,7 +25,8 @@ function AllUsers(props) {
 		error,
 		sortById,
 		sortByAsc,
-		sortByDesc
+		sortByDesc,
+		toggleUsersOptions
 	} = props;
 	const history = useHistory();
 
@@ -60,7 +63,12 @@ function AllUsers(props) {
 						<Icon icon={['fas', 'ellipsis-v']} />
 					</Button>
 				</div>
-				<Status type="Users" />
+				<Status
+					type="Users"
+					toggle={toggleUsersOptions}
+					show={props.show}
+					options={<Options />}
+				/>
 				<ItemsContainer show="all">
 					{items}
 				</ItemsContainer>
@@ -82,14 +90,16 @@ function AllUsers(props) {
 const mapStateToProps = state => ({
 	users: state.usersReducer.users,
 	loading: state.usersReducer.loading,
-	error: state.usersReducer.error
+	error: state.usersReducer.error,
+	show: state.usersReducer.usersOptions
 });
 
 const mapDispatchToProps = {
 	fetchUsers,
 	sortById,
 	sortByAsc,
-	sortByDesc
+	sortByDesc,
+	toggleUsersOptions
 }
 
 const AllUsersStyled = styled(AllUsers)`
