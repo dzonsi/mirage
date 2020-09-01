@@ -19,7 +19,7 @@ function SingleUserMore(props) {
 			<Button ref={btn} padding="0 9px" onClick={() => setShow(!show)} title="More options">
 				<Icon icon={['fas', 'ellipsis-v']} />
 			</Button>
-			{show === true ? <Options show={show} setShow={setShow} getBtn={getBtn} /> : null}
+			{show && <Options show={show} setShow={setShow} getBtn={getBtn} /> }
 		</div>
 	)
 
