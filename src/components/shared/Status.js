@@ -1,5 +1,8 @@
 import React from "react";
 import styled from 'styled-components';
+import { connect } from "react-redux";
+
+import { toggleUsersOptions } from '../../action-creators/usersCreators';
 //import { minWidth } from '../../../theme/mixins/minWidth';
 
 import { DefaultButton as Button } from '../shared/DefaultButton';
@@ -10,6 +13,8 @@ import PropTypes from 'prop-types';
 function Status(props) {
 	const type = props.type;
 	const Options = props.options;
+	const showOptions = props.showOptions;
+	const toggleOptions = props.toggleUsersOptions;
 
 	return (
 		<div className={props.className}>
@@ -20,13 +25,13 @@ function Status(props) {
 				{type && <h2>{type}</h2>}
 			</div>
 			<div>
-				<Button onClick={props.toggle}>
-					{!props.show ?
+				<Button onClick={toggleOptions}>
+					{!showOptions ?
 						<Icon icon={['fas', 'ellipsis-v']} /> :
 						<Icon icon={['fas', 'window-close']} />
 					}
 				</Button>
-				{props.show && Options}
+				{showOptions && Options}
 			</div>
 		</div>
 	)
@@ -35,10 +40,20 @@ function Status(props) {
 
 Status.propTypes = {
 	type: PropTypes.string,
-	toggle: PropTypes.func.isRequired
+	options: PropTypes.object.isRequired
 }
 
-export const StatusStyled = styled(Status)`
+const mapStateToProps = state => ({
+	showOptions: state.usersReducer.usersOptions
+});
+
+const mapDispatchToProps = {
+	toggleUsersOptions
+}
+
+export const StatusConnected = connect(mapStateToProps, mapDispatchToProps) (Status);
+
+export const StatusConnectedStyled = styled(StatusConnected)`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
