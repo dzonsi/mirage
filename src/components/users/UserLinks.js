@@ -27,21 +27,33 @@ export const UserLinksStyled = styled(UserLinks)`
 	align-items: center;
 
 	& a {
-		display: inline-block;
-		color: ${({ theme }) => theme.beta};
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100px;
+		height: 100px;
+		color: ${({ theme }) => theme.name === 'light' ? theme.gamma : theme.epsilon };
+		background-color: ${({ theme }) => theme.beta};
 		font-weight: 700;
 		padding: 0.5rem 1rem;
-		border: 1px solid ${({ theme }) => theme.beta};
-		border-radius: 10px;
-		margin: 0 0.7rem 0 0;
+		border-radius: 25px;
+		margin: 0 1rem 0 0;
+    background: linear-gradient(-45deg, rgba(0,0,0,0.2), rgba(255,255,255,0.25));
 
 		&:last-child {
 			margin: 0;
 		}
 
 		&:hover {
-			color: ${({ theme }) => theme.zeta};
-			border-color: ${({ theme }) => theme.zeta};
+			color: ${({ theme }) => theme.name === 'light' ? theme.gamma : theme.epsilon };
+			box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5),
+			-2px -2px 8px 0 rgba(255, 255, 255, 0.2);
+		}
+
+		&:active {
+			background: linear-gradient(-45deg, rgba(255,255,255,0.25 ), rgba(0,0,0,0.2));
+			box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5),
+			-2px -2px 8px 0 rgba(255, 255, 255, 0.2);
 		}
 	}
 
