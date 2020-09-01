@@ -46,6 +46,7 @@ function SingleUser(props) {
 				<UserBody user={user} />
 				<hr />
 				<UserAddress address={user.address} />
+				<hr />
 				<UserLinks />
 			</section>
 		)
