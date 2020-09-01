@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, cloneElement } from "react";
 import styled from 'styled-components';
 import { connect } from "react-redux";
 
@@ -16,6 +16,12 @@ function Status(props) {
 	const showOptions = props.showOptions;
 	const toggleOptions = props.toggleUsersOptions;
 
+	const btn = useRef(null);
+
+	const getBtn = () => {
+		return btn;
+	}
+
 	return (
 		<div className={props.className}>
 			<div>
@@ -25,13 +31,13 @@ function Status(props) {
 				{type && <h2>{type}</h2>}
 			</div>
 			<div>
-				<Button onClick={toggleOptions}>
+				<Button onClick={toggleOptions} ref={btn}>
 					{!showOptions ?
 						<Icon icon={['fas', 'ellipsis-v']} /> :
 						<Icon icon={['fas', 'window-close']} />
 					}
 				</Button>
-				{showOptions && Options}
+				{showOptions && cloneElement(Options, { getBtn: getBtn, toggleOptions: toggleOptions })}
 			</div>
 		</div>
 	)
