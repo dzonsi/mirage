@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled, { keyframes } from 'styled-components';
+import { useCloseOutside } from '../../hooks/useCloseOutside';
 
 function AllUsersOptions(props) {
 
+	const btn = props.getBtn();
+	const close = props.toggleOptions;
+
+	const element = useRef(null);
+	useCloseOutside(element, btn, close);
+
 	return (
-		<h3 className={props.className}>Users options</h3>
+		<div className={props.className} ref={element}>
+			<h3 className={props.className}>Users options</h3>
+		</div>
 	)
 
 }
