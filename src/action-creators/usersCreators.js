@@ -60,26 +60,23 @@ export const sortDesc = () => ({
 	type: SORT_DESC
 });
 
-export function sortById() {
-	return function(dispatch) {
+export const sortBy = type => {
+	return dispatch => {
 		dispatch(sortLoading());
-		return setTimeout(() => {dispatch(sortId())}, 500);
+		return setTimeout(() => {
+			switch(type) {
+				case SORT_ID:
+				 	return dispatch(sortId());
+				case SORT_ASC:
+				 	return dispatch(sortAsc());
+				case SORT_DESC:
+				 	return dispatch(sortDesc());
+				default:
+					return dispatch(sortId());
+			}
+		}, 500);
 	}
-}
-
-export function sortByAsc() {
-	return function(dispatch) {
-		dispatch(sortLoading());
-		return setTimeout(() => {dispatch(sortAsc())}, 500);
-	}
-}
-
-export function sortByDesc() {
-	return function(dispatch) {
-		dispatch(sortLoading());
-		return setTimeout(() => {dispatch(sortDesc())}, 500);
-	}
-}
+};
 
 // single user options
 
