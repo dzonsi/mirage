@@ -45,9 +45,7 @@ function AllUsersBody(props) {
 		)
 	}
 
-	return (
-		<h2>All Users Body</h2>
-	)
+	return null
 
 }
 
