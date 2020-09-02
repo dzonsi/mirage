@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 
 import { HomeStyled as Home } from '../components/home/Home';
-import { AllUsersConnected as Users } from '../components/users/AllUsers';
+import { AllUsersStyled as Users } from '../components/users/AllUsers';
 import { SingleUserConnected as User } from '../components/users/SingleUser';
 
 const routes = (
