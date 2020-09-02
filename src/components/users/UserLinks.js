@@ -46,8 +46,9 @@ export const UserLinksStyled = styled(UserLinks)`
 
 		&:hover {
 			color: ${({ theme }) => theme.name === 'light' ? theme.gamma : theme.epsilon };
-			box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5),
-			-2px -2px 8px 0 rgba(255, 255, 255, 0.2);
+			box-shadow: ${({ theme }) => theme.name === 'light' ? `2px 2px 8px 0 rgba(0, 0, 0, 0.5),
+			-2px -2px 8px 0 rgba(255, 255, 255, 0.2);` : `2px 2px 8px 0 rgba(0, 0, 0, 0.9),
+			-2px -2px 8px 0 rgba(255, 255, 255, 0.1);` };
 		}
 
 		&:active {
