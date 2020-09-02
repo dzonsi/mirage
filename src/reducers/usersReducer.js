@@ -12,7 +12,7 @@ const initialState = {
 	users: [],
 	loading: false,
 	error: null,
-	order: 'id',
+	order: SORT_ID,
 	userOptions: false,
 	usersOptions: false
 };
@@ -52,7 +52,7 @@ export default function usersReducer(state = initialState, action) {
 				...state,
 				users: idSorted,
 				loading: false,
-				order: 'id'
+				order: SORT_ID
 			}
 		case SORT_ASC:
 			const asc = [...state.users];
@@ -61,7 +61,7 @@ export default function usersReducer(state = initialState, action) {
 				...state,
 				users: ascSorted,
 				loading: false,
-				order: 'asc'
+				order: SORT_ASC
 			}
 		case SORT_DESC:
 			const desc = [...state.users];
@@ -70,7 +70,7 @@ export default function usersReducer(state = initialState, action) {
 				...state,
 				users: descSorted,
 				loading: false,
-				order: 'desc'
+				order: SORT_DESC
 			}
 		// single user options
 		case TOGGLE_USER_OPTIONS:
