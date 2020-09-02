@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 
 import { SectionLoadingStyled as Loading } from '../SectionLoading';
 import { SectionHeadingStyled as Heading } from '../SectionHeading';
-import { ItemsContainerStyled as ItemsContainer } from '../ItemsContainer';
-import { ItemStyled as Item } from '../Item';
+import { ItemsContainerStyled as ItemsContainer } from '../../shared/ItemsContainer';
+import { ItemStyled as Item } from '../../shared/Item';
 
 function Users(props) {
 

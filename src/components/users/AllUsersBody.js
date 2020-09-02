@@ -4,9 +4,9 @@ import styled from 'styled-components';
 
 import { fetchUsers } from '../../action-creators/usersCreators';
 
-import { LoadingStyled as Loading } from '../home/Loading';
-import { ItemsContainerStyled as ItemsContainer } from '../home/ItemsContainer';
-import { ItemStyled as Item } from '../home/Item';
+import { LoadingStyled as Loading } from '../shared/Loading';
+import { ItemsContainerStyled as ItemsContainer } from '../shared/ItemsContainer';
+import { ItemStyled as Item } from '../shared/Item';
 
 function AllUsersBody(props) {
 
@@ -61,8 +61,8 @@ const mapDispatchToProps = {
 	fetchUsers
 }
 
-const AllUsersBodyStyled = styled(AllUsersBody)`
+const AllUsersBodyConnected = connect(mapStateToProps, mapDispatchToProps) (AllUsersBody);
+
+export const AllUsersBodyStyled = styled(AllUsersBodyConnected)`
 
 `
-
-export const AllUsersBodyConnected = connect(mapStateToProps, mapDispatchToProps) (AllUsersBodyStyled);

@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from "react-redux";
 import { fetchUsers } from '../../action-creators/usersCreators';
 //import { minWidth } from '../../../theme/mixins/minWidth';
-import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 import Users from './sections/Users';
-import { LoadingStyled as Loading } from './Loading';
 
 function Home(props) {
 

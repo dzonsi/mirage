@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { fetchUsers } from '../../action-creators/usersCreators';
 import styled from 'styled-components';
 
-import { LoadingStyled as Loading } from '../home/Loading';
+import { LoadingStyled as Loading } from '../shared/Loading';
 import { UserHeadingStyled as UserHeading } from './UserHeading';
 import { UserBodyStyled as UserBody } from './UserBody';
 import { UserAddressStyled as UserAddress } from './UserAddress';

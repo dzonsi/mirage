@@ -47,7 +47,6 @@ function Status(props) {
 Status.propTypes = {
 	type: PropTypes.string,
 	options: PropTypes.object.isRequired,
-	goBack: PropTypes.func.isRequired,
 	showOptions: PropTypes.bool.isRequired,
 	toggleUsersOptions: PropTypes.func.isRequired,
 }

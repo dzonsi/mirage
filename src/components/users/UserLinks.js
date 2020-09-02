@@ -1,10 +1,7 @@
 import React from "react";
+import { NavLink, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 //import { minWidth } from '../../../theme/mixins/minWidth';
-import { NavLink, useParams } from 'react-router-dom';
-
-import { DefaultButton as Button } from '../shared/DefaultButton';
-import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 function UserLinks(props) {
 

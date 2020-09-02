@@ -21,7 +21,7 @@ function AllUsersOptions(props) {
 
 	return (
 		<div className={props.className} ref={element}>
-			<h3 className={props.className}>Users options</h3>
+			<h3>Users options</h3>
 			<button onClick={sortById}>Id</button>
 			<button onClick={sortByAsc}>Asc</button>
 			<button onClick={sortByDesc}>Desc</button>
