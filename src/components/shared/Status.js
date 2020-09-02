@@ -11,10 +11,12 @@ import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 
 function Status(props) {
+
 	const type = props.type;
 	const Options = props.options;
 	const showOptions = props.showOptions;
 	const toggleOptions = props.toggleUsersOptions;
+	const goBack = props.goBack;
 
 	const btn = useRef(null);
 
@@ -25,7 +27,7 @@ function Status(props) {
 	return (
 		<div className={props.className}>
 			<div>
-				<Button padding="0 5px" onClick={() => {console.log('Go back')}}>
+				<Button padding="0 5px" onClick={goBack}>
 					<Icon icon={['fas', 'arrow-left']} />
 				</Button>
 				{type && <h2>{type}</h2>}
@@ -44,6 +46,7 @@ function Status(props) {
 Status.propTypes = {
 	type: PropTypes.string,
 	options: PropTypes.object.isRequired,
+	goBack: PropTypes.func.isRequired,
 	showOptions: PropTypes.bool.isRequired,
 	toggleUsersOptions: PropTypes.func.isRequired,
 }
