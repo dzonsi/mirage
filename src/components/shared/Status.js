@@ -1,7 +1,7 @@
 import React, { useRef, cloneElement } from "react";
 import styled from 'styled-components';
 import { connect } from "react-redux";
-
+import { useHistory } from 'react-router-dom';
 import { toggleUsersOptions } from '../../action-creators/usersCreators';
 //import { minWidth } from '../../../theme/mixins/minWidth';
 
@@ -16,7 +16,8 @@ function Status(props) {
 	const Options = props.options;
 	const showOptions = props.showOptions;
 	const toggleOptions = props.toggleUsersOptions;
-	const goBack = props.goBack;
+	const history = useHistory();
+	const goBack = history.goBack;
 
 	const btn = useRef(null);
 
