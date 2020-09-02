@@ -3,9 +3,11 @@ import styled, { keyframes } from 'styled-components';
 import { useCloseOutside } from '../../hooks/useCloseOutside';
 import { connect } from "react-redux";
 
-import { sortById } from '../../action-creators/usersCreators';
-import { sortByAsc } from '../../action-creators/usersCreators';
-import { sortByDesc } from '../../action-creators/usersCreators';
+import { SORT_ID } from '../../actions/actionTypes';
+import { SORT_ASC } from '../../actions/actionTypes';
+import { SORT_DESC } from '../../actions/actionTypes';
+
+import { sortBy } from '../../action-creators/usersCreators';
 
 import PropTypes from 'prop-types';
 
@@ -17,14 +19,21 @@ function AllUsersOptions(props) {
 	const element = useRef(null);
 	useCloseOutside(element, btn, close);
 
-	const { sortById, sortByAsc, sortByDesc } = props;
+	const { sortBy, order } = props;
+
+	function sort(ev) {
+		sortBy(ev.target.value);
+		close();
+	}
 
 	return (
 		<div className={props.className} ref={element}>
 			<h3>Users options</h3>
-			<button onClick={sortById}>Id</button>
-			<button onClick={sortByAsc}>Asc</button>
-			<button onClick={sortByDesc}>Desc</button>
+			<select value={order} onChange={sort}>
+				<option value={SORT_ID}>Id</option>
+				<option value={SORT_ASC}>Asc</option>
+				<option value={SORT_DESC}>Desc</option>
+			</select>
 		</div>
 	)
 
@@ -33,15 +42,19 @@ function AllUsersOptions(props) {
 AllUsersOptions.propsTypes = {
 	getBtn: PropTypes.func.isRequired,
 	toggleOptions: PropTypes.func.isRequired,
+	order: PropTypes.string.isRequired,
+	sortBy: PropTypes.func.isRequired
 }
+
+const mapStateToProps = state => ({
+	order: state.usersReducer.order
+});
 
 const mapDispatchToProps = {
-	sortById,
-	sortByAsc,
-	sortByDesc
+	sortBy
 }
 
-const AllUsersOptionsConnected = connect(null, mapDispatchToProps)(AllUsersOptions);
+const AllUsersOptionsConnected = connect(mapStateToProps, mapDispatchToProps)(AllUsersOptions);
 
 const animation = keyframes`
 	0% { top: 100%; right: 200%; opacity: 0.3; }
