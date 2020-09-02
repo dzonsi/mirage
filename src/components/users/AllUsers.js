@@ -7,7 +7,6 @@ import { fetchUsers } from '../../action-creators/usersCreators';
 import { sortById } from '../../action-creators/usersCreators';
 import { sortByAsc } from '../../action-creators/usersCreators';
 import { sortByDesc } from '../../action-creators/usersCreators';
-import { toggleUsersOptions } from '../../action-creators/usersCreators';
 
 import { LoadingStyled as Loading } from '../home/Loading';
 import { ItemsContainerStyled as ItemsContainer } from '../home/ItemsContainer';
@@ -28,6 +27,7 @@ function AllUsers(props) {
 		sortByDesc
 	} = props;
 	const history = useHistory();
+	const goBack = history.goBack;
 
 	useEffect(() => {
 		if(!props.users.length) {
@@ -65,6 +65,7 @@ function AllUsers(props) {
 				<Status
 					type="Users"
 					options={<Options />}
+					goBack={goBack}
 				/>
 				<ItemsContainer show="all">
 					{items}
