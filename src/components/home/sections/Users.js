@@ -39,9 +39,7 @@ function Users(props) {
 			<h2>Something went wrong while fetching users!</h2>
 		)
 	}
-	return (
-		<h2>Users</h2>
-	)
+	return null
 
 }
 
