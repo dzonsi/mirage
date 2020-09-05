@@ -3,7 +3,7 @@ import { breakPoints } from './breakPoints';
 export const darkTheme = {
 	name: 'dark',
 	alpha: '#d9d9de',// grey-lighter
-	beta: '#99a0a7',// grey-light
+	beta: '#99a0a0',// grey-light
 	gamma: '#2d3439',// grey
 	delta: '#141618',// grey-dark
 	epsilon: '#0d0e10',// grey-darker
