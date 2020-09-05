@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { useCloseOutside } from '../../hooks/useCloseOutside';
 import { connect } from "react-redux";
 
@@ -10,6 +10,8 @@ import { SORT_DESC } from '../../actions/actionTypes';
 import { sortBy } from '../../action-creators/usersCreators';
 
 import PropTypes from 'prop-types';
+
+import { optionsFadeIn } from '../../style/animations/optionsFadeIn';
 
 function AllUsersOptions(props) {
 
@@ -34,6 +36,8 @@ function AllUsersOptions(props) {
 				<option value={SORT_ASC}>Asc</option>
 				<option value={SORT_DESC}>Desc</option>
 			</select>
+			<button>Add new</button>
+			<button>Delete</button>
 		</div>
 	)
 
@@ -56,19 +60,10 @@ const mapDispatchToProps = {
 
 const AllUsersOptionsConnected = connect(mapStateToProps, mapDispatchToProps)(AllUsersOptions);
 
-const animation = keyframes`
-	0% { top: 100%; right: 200%; opacity: 0.3; }
-	100% { top: 0; right: 100%; opacity: 1; }
-`
-
 export const AllUsersOptionsStyled = styled(AllUsersOptionsConnected)`
 	position: absolute;
-	top: 100%;
+	top: 0;
 	right: 100%;
 	background-color: ${({ theme }) => theme.gamma};
-	opacity: 0.3;
-	transition: all .2s;
-	animation-name: ${animation};
-	animation-duration: .2s;
-	animation-fill-mode: forwards;
+	animation: ${optionsFadeIn} .2s forwards;
 `
