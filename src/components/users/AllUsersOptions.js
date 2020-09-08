@@ -31,7 +31,6 @@ function AllUsersOptions(props) {
 
 	return (
 		<div className={props.className} ref={element}>
-			<h3>Users options</h3>
 			<div>
 				<label htmlFor="sort">Sort by:</label>
 				<select id="sort" value={order} onChange={sort}>
@@ -40,9 +39,10 @@ function AllUsersOptions(props) {
 					<option value={SORT_DESC}>Desc</option>
 				</select>
 			</div>
+			<hr />
 			<div>
-				<Button padding="1rem"><span>Add new</span></Button>
-				<Button padding="1rem"><span>Delete</span></Button>
+				<Button padding=".6rem .8rem .5rem"><span>Add new</span></Button>
+				<Button padding=".6rem .8rem .5rem"><span>Delete</span></Button>
 			</div>
 		</div>
 	)
@@ -72,24 +72,17 @@ export const AllUsersOptionsStyled = styled(AllUsersOptionsConnected)`
 	right: 100%;
 	z-index: 9;
 	width: 200px;
-	height: 200px;
 	text-align: center;
 	color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.epsilon};
 	background-color: ${({ theme }) => theme.name === 'light' ? theme.delta : theme.beta};
 	border-radius: 20px;
+	padding: 1rem;
 	animation: ${optionsFadeIn} .2s forwards;
-
-	& button {
-		display: block;
-	}
 
 	& div {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-	}
-
-	& div:nth-child(2) {
 		flex-direction: column;
 	}
 
@@ -99,7 +92,7 @@ export const AllUsersOptionsStyled = styled(AllUsersOptionsConnected)`
 
 	& select {
 		display: block;
-		width: 80%;
+		width: 100%;
 		max-width: 100%;
 		font-size: 1rem;
 		font-weight: 700;
@@ -129,6 +122,28 @@ export const AllUsersOptionsStyled = styled(AllUsersOptionsConnected)`
     & option {
     	font-weight: 700;
     }
+
+	}
+
+	& button {
+		font-weight: 700;
+		border-radius: 0.5rem;
+		margin: 0 0 0.5rem;
+		opacity: 0.7;
+		width: 100%;
+
+		&:first-child {
+			background-color: ${({ theme }) => theme.zeta};
+		}
+
+		&:nth-child(2) {
+			background-color: ${({ theme }) => theme.eta};
+		}
+
+		&:hover {
+			color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.epsilon};
+			opacity: 1;
+		}
 	}
 
 `
