@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { fetchUsers } from '../../../action-creators/usersCreators';
 
 import { SectionLoadingStyled as Loading } from '../SectionLoading';
 import { SectionHeadingStyled as Heading } from '../SectionHeading';
@@ -9,6 +10,12 @@ import { ItemStyled as Item } from '../../shared/Item';
 function Users(props) {
 
 	const { loading, users, error } = props;
+
+	useEffect(() => {
+		if(!props.users.length) {
+			props.dispatch(fetchUsers());
+		}
+	}, []);
 
 	if(loading) {
 		return (
