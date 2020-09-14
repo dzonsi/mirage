@@ -74,6 +74,17 @@ export const ItemStyled = styled(Item)`
 		&:nth-child(5) {
 			margin: 0;
 		}
+		background-color: ${({ theme }) => theme.name === 'light' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)'};
+		padding: 1rem;
+		border-radius: 20px 20px 90px 20px;
+		margin-bottom: 1rem;
+		transition: all .1s linear;
+
+		&:hover {
+			background-color: ${({ theme }) => theme.name === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)'};
+			border-radius: 20px;
+		}
+
 	`}
 
 	${minWidth.lg`
