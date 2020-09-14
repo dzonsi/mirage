@@ -16,7 +16,7 @@ export const ItemsContainerStyled = styled(ItemsContainer)`
 	display: flex;
 	justify-content: space-between;
 	overflow: hidden;
-	padding: 0.5rem 0;
+	padding: 0.5rem;
 
 	${minWidth.xs`
 		justify-content: center;
