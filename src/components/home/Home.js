@@ -2,13 +2,11 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from "react-redux";
 import { fetchUsers } from '../../action-creators/usersCreators';
-//import { minWidth } from '../../../theme/mixins/minWidth';
+import { minWidth } from '../../theme/mixins/minWidth';
 
 import Users from './sections/Users';
 
 function Home(props) {
-
-	const { users, loading, error } = props;
 
 	useEffect(() => {
 		if(!props.users.length) {
@@ -16,30 +14,24 @@ function Home(props) {
 		}
 	}, []);
 
-	if(error) {
-		return <h2>Error</h2>
-	}
-
 	return (
 		<div className={props.className}>
-			<h2>Home component</h2>
 			<Users />
 		</div>
 	)
 }
 
 const mapStateToProps = state => ({
-	users: state.usersReducer.users,
-	loading: state.usersReducer.loading,
-	error: state.usersReducer.error
+	users: state.usersReducer.users
 });
 
 const HomeConnected = connect(mapStateToProps) (Home);
 
 export const HomeStyled = styled(HomeConnected)`
 	margin: 20px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	aligh-items: center;
+	max-width: 992px;
+
+	${minWidth.md`
+		margin: auto;
+	`}
 `
