@@ -28,10 +28,10 @@ function Status(props) {
 	return (
 		<div className={props.className}>
 			<div>
+				{type && <h2>{type}</h2>}
 				<Button padding="0 5px" onClick={goBack}>
 					<Icon icon={['fas', 'arrow-left']} />
 				</Button>
-				{type && <h2>{type}</h2>}
 			</div>
 			<div>
 				<Button padding="0 9px" onClick={toggleOptions} ref={btn}>
@@ -71,6 +71,12 @@ export const StatusConnectedStyled = styled(StatusConnected)`
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+
+		&:first-child {
+			& button  {
+				order: 1;
+			}
+		}
 	}
 
 	& > div:nth-child(2) {
@@ -87,6 +93,7 @@ export const StatusConnectedStyled = styled(StatusConnected)`
 
 	& h2 {
 		margin: 0 0 0 8px;
+		order: 2;
 	}
 
 `
