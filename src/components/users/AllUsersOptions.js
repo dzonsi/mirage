@@ -41,8 +41,8 @@ function AllUsersOptions(props) {
 			</div>
 			<hr />
 			<div>
-				<Button padding=".6rem .8rem .5rem"><span>Add new</span></Button>
-				<Button padding=".6rem .8rem .5rem"><span>Delete</span></Button>
+				<Button padding=".6rem .8rem .6rem">Add new</Button>
+				<Button padding=".6rem .8rem .6rem">Delete</Button>
 			</div>
 		</div>
 	)
@@ -71,6 +71,7 @@ export const AllUsersOptionsStyled = styled(AllUsersOptionsConnected)`
 	top: 0;
 	right: 100%;
 	z-index: 9;
+	font-size: 1rem;
 	width: 200px;
 	text-align: center;
 	color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.epsilon};
