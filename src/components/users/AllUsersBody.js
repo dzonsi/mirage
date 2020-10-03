@@ -32,11 +32,11 @@ function AllUsersBody(props) {
 		});
 
 		return (
-			<section className={props.className}>
+			<div className={props.className}>
 				<ItemsContainer show="all">
 					{items}
 				</ItemsContainer>
-			</section>
+			</div>
 		)
 	}
 	if(error) {
