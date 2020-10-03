@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { connect } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { toggleUsersOptions } from '../../action-creators/usersCreators';
-//import { minWidth } from '../../../theme/mixins/minWidth';
+import { minWidth } from '../../theme/mixins/minWidth';
 
 import { DefaultButton as Button } from '../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
@@ -66,6 +66,7 @@ export const StatusConnectedStyled = styled(StatusConnected)`
 	justify-content: space-between;
 	align-items: center;
 	margin: 0 20px;
+	max-width: 952px;
 
 	& > div {
 		display: flex;
@@ -73,14 +74,25 @@ export const StatusConnectedStyled = styled(StatusConnected)`
 		align-items: center;
 
 		&:first-child {
+
 			& button  {
 				order: 1;
+
+				${minWidth.xs`
+					display: none;
+				`}
 			}
+
 		}
 	}
 
 	& > div:nth-child(2) {
 		position: relative;
+		transition: font-size .2s linear;
+
+		${minWidth.xs`
+			font-size: 1.3rem;
+		`}
 	}
 
 	& button {
@@ -95,5 +107,9 @@ export const StatusConnectedStyled = styled(StatusConnected)`
 		margin: 0 0 0 8px;
 		order: 2;
 	}
+
+	${minWidth.md`
+		margin: auto;
+	`}
 
 `
