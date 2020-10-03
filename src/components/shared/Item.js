@@ -45,13 +45,13 @@ Item.propTypes = {
 export const ItemStyled = styled(Item)`
 	display: none;
 
-	@media screen and (max-width: 460px) {
+	@media screen and (max-width: 500px) {
 		&:nth-child(-n + 3) {
 			display: block;
 		}
 	}
 
-	@media screen and (min-width: 460px) {
+	@media screen and (min-width: 500px) {
 		&:nth-child(-n + 4) {
 			display: block;
 		}
@@ -62,10 +62,25 @@ export const ItemStyled = styled(Item)`
 		&:nth-child(4) {
 			margin: 0;
 		}
+
+		${({ show }) => show === 'all' ? `margin: 0 2rem 2rem 0 !important;` : null }
 	`}
 
 	${minWidth.sm`
-		&:nth-child(-n + 5) {
+		overflow: hidden;
+		background-color: ${({ theme }) => theme.name === 'light' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)'};
+		border-radius: 20px;
+		${({ theme }) => theme.name === 'light' ? 'box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.25);' : null }
+		transition: all .1s linear;
+
+		&:hover {
+			background-color: ${({ theme }) => theme.name === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)'};
+		}
+
+	`}
+
+	${minWidth.lg`
+		&:nth-child(5) {
 			display: block;
 		}
 		&:nth-child(4) {
@@ -74,34 +89,18 @@ export const ItemStyled = styled(Item)`
 		&:nth-child(5) {
 			margin: 0;
 		}
-		background-color: ${({ theme }) => theme.name === 'light' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)'};
-		padding: 1rem;
-		border-radius: 20px 20px 90px 20px;
-		margin-bottom: 1rem;
-		transition: all .1s linear;
-
-		&:hover {
-			background-color: ${({ theme }) => theme.name === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)'};
-			border-radius: 20px;
-		}
-
-	`}
-
-	${minWidth.lg`
-		&:nth-child(-n + 6) {
-			display: block;
-		}
-		&:nth-child(5) {
-			margin: 0 2rem 0 0;
-		}
-		&:nth-child(6) {
-			margin: 0;
-		}
 	`}
 
 	& a {
-		display: inline-block;
-		padding: 5px 0 0 0;
+		display: block;
+
+		${minWidth.sm`
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 1rem;
+		`}
 	}
 
 	& img {
@@ -114,7 +113,7 @@ export const ItemStyled = styled(Item)`
 		${minWidth.sm`
 			width: 120px;
 			height: 120px;
-			border-radius: 20px;
+			border-radius: 50%;
 		`}
 
 		${minWidth.md`
@@ -130,18 +129,18 @@ export const ItemStyled = styled(Item)`
 		font-weight: 700;
 		margin: 0 0 0.2rem;
 		max-width: 100px;
+		text-align: left;
 
 		${minWidth.xs`
 			font-size: 1rem;
 		`}
 
 		${minWidth.sm`
-			max-width: 120px;
+			text-align: center;
 		`}
 
 		${minWidth.md`
 			font-size: 1.4rem;
-			text-align: center;
 			max-width: 150px;
 		`}
 
@@ -159,6 +158,7 @@ export const ItemStyled = styled(Item)`
 		${minWidth.md`
 			font-size: 1rem;
 			text-align: center;
+			text-align: left;
 		`}
 
 	}
@@ -182,24 +182,7 @@ export const ItemStyled = styled(Item)`
 	${({ show }) => show === 'all' ? `
 
 		display: block;
-		margin: 0 2rem 0 0;
-
-		&:nth-child(4) {
-			margin: 0 2rem 0 0;
-		}
-
-		&:nth-child(5) {
-			margin: 0 2rem 0 0;
-		}
-
-		&:nth-child(6) {
-			margin: 0 2rem 0 0;
-		}
-
-		& a {
-			margin: 0 0 1rem 2rem;
-		}
-
+		margin: 0 2rem 1rem 0;
 
 	` : null
 
