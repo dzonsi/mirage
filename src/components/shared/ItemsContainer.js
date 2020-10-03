@@ -26,11 +26,11 @@ export const ItemsContainerStyled = styled(ItemsContainer)`
 	${({ show }) => show === 'all' ? `
 		flex-wrap: wrap;
 		justify-content: center;
-		padding: 0;
-		margin: 20px;
+		margin: 20px 20px 20px calc(20px + 2rem);
 
 		@media screen and (min-width: 992px) {
 			max-width: 952px;
+			padding-left: 2rem;
 			margin: 0 auto;
 		}
 
