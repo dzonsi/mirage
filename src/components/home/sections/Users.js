@@ -25,8 +25,8 @@ function Users(props) {
 	if(users.length) {
 
 		const items = users.map((user, index) => {
-			// show 6 users
-			if(index > 5) return false;
+			// show 5 users
+			if(index > 4) return false;
 			return (
 				<Item user={user} key={user.id}/>
 			);
