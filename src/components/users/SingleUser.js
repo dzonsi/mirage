@@ -3,6 +3,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { connect } from "react-redux";
 import { fetchUsers } from '../../action-creators/usersCreators';
 import styled from 'styled-components';
+import { minWidth } from '../../theme/mixins/minWidth';
 
 import { LoadingStyled as Loading } from '../shared/Loading';
 import { UserHeadingStyled as UserHeading } from './UserHeading';
@@ -72,6 +73,11 @@ const mapStateToProps = state => ({
 const SingleUserStyled = styled(SingleUser)`
 	margin: 20px 20px 0;
 
+	${minWidth.md`
+		margin: 20px auto 0;
+		max-width: 952px;
+	`}
+
 	& div:first-child {
 		display: flex;
 		justify-content: space-between;
@@ -90,6 +96,7 @@ const SingleUserStyled = styled(SingleUser)`
 		background-color: ${({ theme }) => theme.name === 'light' ? theme.delta : theme.gamma};
 		margin: 10px;
 	}
+
 `
 
 export const SingleUserConnected = connect(mapStateToProps) (SingleUserStyled);
