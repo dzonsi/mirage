@@ -70,7 +70,7 @@ const mapStateToProps = state => ({
 });
 
 const SingleUserStyled = styled(SingleUser)`
-	margin: 20px;
+	margin: 20px 20px 0;
 
 	& div:first-child {
 		display: flex;
