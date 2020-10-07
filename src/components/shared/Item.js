@@ -44,6 +44,7 @@ Item.propTypes = {
 
 export const ItemStyled = styled(Item)`
 	display: none;
+	margin: 5px;
 
 	@media screen and (max-width: 500px) {
 		&:nth-child(-n + 3) {
@@ -58,48 +59,45 @@ export const ItemStyled = styled(Item)`
 	}
 
 	${minWidth.xs`
-		margin: 0 2rem 0 0;
-		&:nth-child(4) {
-			margin: 0;
-		}
-
-		${({ show }) => show === 'all' ? `margin: 0 2rem 2rem 0 !important;` : null }
-	`}
-
-	${minWidth.sm`
-		overflow: hidden;
 		background-color: ${({ theme }) => theme.name === 'light' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)'};
-		border-radius: 20px;
-		${({ theme }) => theme.name === 'light' ? 'box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.25);' : null }
+		border: none;
+		border-radius: 15px;
 		transition: all .1s linear;
 
 		&:hover {
 			background-color: ${({ theme }) => theme.name === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)'};
+			${({ theme }) => theme.name === 'light' ? 'box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.4);' : null }
 		}
 
 	`}
+
+	${minWidth.sm`
+		border-radius: 20px;
+	`}
+
 
 	${minWidth.lg`
 		&:nth-child(5) {
 			display: block;
 		}
-		&:nth-child(4) {
-			margin: 0 2rem 0 0;
-		}
-		&:nth-child(5) {
-			margin: 0;
-		}
+
+		${({ show }) => show !== 'all' ? `box-shadow: none;&:hover { box-shadow: none; }` : null}
+
 	`}
 
 	& a {
 		display: block;
+		height: 100%;
+
+		${minWidth.xs`
+			padding: 1rem;
+		`}
 
 		${minWidth.sm`
 			display: flex;
 			flex-direction: column;
-			justify-content: center;
+			justify-content: flex-start;
 			align-items: center;
-			padding: 1rem;
 		`}
 	}
 
@@ -130,6 +128,7 @@ export const ItemStyled = styled(Item)`
 		margin: 0 0 0.2rem;
 		max-width: 100px;
 		text-align: left;
+		transition: color .1s linear;
 
 		${minWidth.xs`
 			font-size: 1rem;
@@ -150,6 +149,7 @@ export const ItemStyled = styled(Item)`
 		font-size: 0.75rem;
 		color: ${({ theme }) => theme.beta};
 		margin: 0;
+		transition: color .1s linear;
 
 		${minWidth.xs`
 			font-size: 0.85rem;
@@ -165,6 +165,10 @@ export const ItemStyled = styled(Item)`
 
 	&:hover {
 
+		& img {
+			transform: scale(1.05);
+		}
+
 		& h3 {
 			color: ${({ theme }) => theme.zeta};
 		}
@@ -173,16 +177,29 @@ export const ItemStyled = styled(Item)`
 			color: ${({ theme }) => theme.name === 'light' ? theme.eta : theme.alpha};
 		}
 
-		& img {
-			transform: scale(1.05);
-		}
-
 	}
 
 	${({ show }) => show === 'all' ? `
 
 		display: block;
-		margin: 0 2rem 1rem 0;
+
+		@media screen and (min-width: 576px) {
+			margin: 10px;
+		}
+
+		@media screen and (min-width: 992px) {
+			margin: 15px;
+		}
+
+		@media screen and (min-width: 1200px) {
+
+			${({ theme }) => theme.name === 'light' ? 'box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.25);' : null }
+
+			&:hover {
+				${({ theme }) => theme.name === 'light' ? 'box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.4);' : null }
+			}
+
+		}
 
 	` : null
 

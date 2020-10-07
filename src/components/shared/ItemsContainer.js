@@ -14,25 +14,24 @@ function ItemsContainer(props) {
 
 export const ItemsContainerStyled = styled(ItemsContainer)`
 	display: flex;
-	justify-content: space-between;
-	overflow: hidden;
-	padding: 0.5rem;
+	justify-content: space-evenly;
 
-	${minWidth.xs`
-		justify-content: center;
-		padding: 1rem 0;
+	${minWidth.md`
+		margin: 0 20px;
 	`}
 
 	${({ show }) => show === 'all' ? `
 		flex-wrap: wrap;
+		margin: 20px 20px 0px 20px;
 		justify-content: center;
-		margin: 20px 20px 20px calc(20px + 2rem);
 
 		@media screen and (min-width: 992px) {
 			max-width: 952px;
-			padding-left: 2rem;
-			margin: 0 auto;
+			margin: 20px auto 0;
 		}
 
-	` : null};
+	` : null
+
+	};
+
 `
