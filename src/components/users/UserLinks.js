@@ -18,7 +18,8 @@ function UserLinks(props) {
 }
 
 export const UserLinksStyled = styled(UserLinks)`
-	margin: 20px 10px 10px;
+	padding: 0 0 20px;
+	margin: 20px 10px 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
