@@ -20,5 +20,28 @@ function AllUsers(props) {
 }
 
 export const AllUsersStyled = styled(AllUsers)`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
 
+	&.page-enter {
+		opacity: 0.5;
+		transform: translateX(-100%);
+	}
+	&.page-enter-active {
+		opacity: 1;
+		transform: translateX(0);
+		transition: all .3s linear;
+	}
+
+	&.page-exit {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	&.page-exit-active {
+		opacity: 0.5;
+		transform: translateX(-100%);
+		transition: all .3s linear;
+	}
 `
