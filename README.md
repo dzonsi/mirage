@@ -16,6 +16,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 #### [react-bootstrap](https://react-bootstrap.github.io/)
 #### [react-fontawesome](https://github.com/FortAwesome/react-fontawesome/)
 #### [axios](https://github.com/axios/axios)
+#### [react-transition-group](https://www.npmjs.com/package/react-transition-group)
 
 ## Available Scripts
 
