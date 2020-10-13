@@ -67,6 +67,18 @@ export const UserHeadingStyled = styled(UserHeading)`
 			margin: 10px 10px 10px 50px;
 		`}
 
+		${minWidth.sm`
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			margin: 10px 10px 10px 50px;
+		`}
+
+		${minWidth.md`
+			width: 250px;
+			height: 250px;
+		`}
+
 	}
 
 	& div {
@@ -92,6 +104,11 @@ export const UserHeadingStyled = styled(UserHeading)`
 		${minWidth.xs`
 			font-size: 1.5rem;
 		`}
+
+		${minWidth.sm`
+			font-size: 1.8rem;
+		`}
+
 	}
 
 	& p {
@@ -102,6 +119,10 @@ export const UserHeadingStyled = styled(UserHeading)`
 
 		${minWidth.xs`
 			font-size: 1rem;
+		`}
+
+		${minWidth.sm`
+			font-size: 1.3rem;
 		`}
 
 		&:last-child {

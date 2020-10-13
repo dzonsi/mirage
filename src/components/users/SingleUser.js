@@ -109,21 +109,39 @@ const SingleUserStyled = styled(SingleUser)`
 		transition: transform .2s linear;
 
 		&:first-of-type {
+
 			${minWidth.xs`
-				transform: rotate(-20deg) translate(10px, -30px);
+				transform: rotate(-15deg) translate(10px, -20px);
 			`}
+
+			${minWidth.sm`
+				transform: rotate(-15deg) translate(10px, -35px);
+			`}
+
 		}
 
 		&:nth-of-type(2) {
+
 			${minWidth.xs`
 				transform: rotate(5deg) translate(10px, 10px);
 			`}
+
+			${minWidth.md`
+				transform: rotate(15deg) translate(10px, -10px);
+			`}
+
 		}
 
 		&:nth-of-type(3) {
+
 			${minWidth.xs`
 				transform: rotate(-10deg) translate(0px, 0px);
 			`}
+
+			${minWidth.md`
+				transform: rotate(-10deg) translate(0px, -20px);
+			`}
+
 		}
 
 	}

@@ -40,6 +40,10 @@ export const UserBodyStyled = styled(UserBody)`
 		margin: 10px 10px 10px 200px;
 	`}
 
+	${minWidth.md`
+		margin: -30px 10px 0 400px;
+	`}
+
 	& p {
 		font-size: 0.8rem;
 		margin: 0 0 0.5rem 0;
@@ -47,6 +51,11 @@ export const UserBodyStyled = styled(UserBody)`
 		${minWidth.xs`
 			font-size: 1rem;
 		`}
+
+		${minWidth.md`
+			font-size: 1.2rem;
+		`}
+
 	}
 
 	& span {
