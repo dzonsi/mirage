@@ -34,10 +34,19 @@ export const SingleUserMoreStyled = styled(SingleUserMore)`
 
 		& button {
 			padding: 0 12px;
+			transition: margin .2s linear;
 
 			&:active {
 				padding: 0 12px;
 			}
+		}
+
+	`}
+
+	${minWidth.sm`
+
+		& button {
+			margin-right: 50px;
 		}
 
 	`}
@@ -47,6 +56,7 @@ export const SingleUserMoreStyled = styled(SingleUserMore)`
 
 		& button {
 			padding: 0 13px;
+			margin-right: 100px;
 
 			&:active {
 				padding: 0 13px;
