@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-//import { minWidth } from '../../../theme/mixins/minWidth';
+import { minWidth } from '../../theme/mixins/minWidth';
 
 import { DefaultButton as Button } from '../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
@@ -36,10 +36,20 @@ UserAddress.propTypes = {
 
 export const UserAddressStyled = styled(UserAddress)`
 	margin: 10px;
+	transition: margin .2s linear;
+
+	${minWidth.xs`
+		margin: 10px 10px 10px 100px;
+	`}
 
 	& p {
 		font-size: 0.8rem;
 		margin: 0 0 0.5rem 0;
+
+		${minWidth.xs`
+			font-size: 1rem;
+		`}
+
 	}
 
 	& span {

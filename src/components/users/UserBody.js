@@ -1,7 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-//import { minWidth } from '../../../theme/mixins/minWidth';
-
+import { minWidth } from '../../theme/mixins/minWidth';
 
 import PropTypes from 'prop-types';
 
@@ -34,14 +33,25 @@ UserBody.propTypes = {
 
 export const UserBodyStyled = styled(UserBody)`
 	margin: 10px;
+	transition: margin .2s linear;
+
+	${minWidth.xs`
+		text-align: center;
+		margin: 10px 10px 10px 200px;
+	`}
 
 	& p {
 		font-size: 0.8rem;
 		margin: 0 0 0.5rem 0;
+
+		${minWidth.xs`
+			font-size: 1rem;
+		`}
 	}
 
 	& span {
 		font-weight: 700;
 		color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.beta};
 	}
+
 `
