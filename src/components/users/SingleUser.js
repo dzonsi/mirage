@@ -106,6 +106,26 @@ const SingleUserStyled = styled(SingleUser)`
 	& hr {
 		background-color: ${({ theme }) => theme.name === 'light' ? theme.delta : theme.gamma};
 		margin: 10px;
+		transition: transform .2s linear;
+
+		&:first-of-type {
+			${minWidth.xs`
+				transform: rotate(-20deg) translate(10px, -30px);
+			`}
+		}
+
+		&:nth-of-type(2) {
+			${minWidth.xs`
+				transform: rotate(5deg) translate(10px, 10px);
+			`}
+		}
+
+		&:nth-of-type(3) {
+			${minWidth.xs`
+				transform: rotate(-10deg) translate(0px, 0px);
+			`}
+		}
+
 	}
 
 `
