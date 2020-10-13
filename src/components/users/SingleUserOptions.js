@@ -25,4 +25,5 @@ export const SingleUserOptionsStyled = styled(SingleUserOptions)`
 	right: 100%;
 	background-color: ${({ theme }) => theme.gamma};
 	animation: ${optionsFadeIn} .2s forwards;
+	z-index: 9;
 `
