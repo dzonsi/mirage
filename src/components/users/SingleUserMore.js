@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import styled from 'styled-components';
+import { minWidth } from '../../theme/mixins/minWidth';
 
 import { DefaultButton as Button } from '../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
@@ -27,4 +28,31 @@ function SingleUserMore(props) {
 
 export const SingleUserMoreStyled = styled(SingleUserMore)`
 	position: relative;
+
+	${minWidth.xs`
+		font-size: 1.3rem;
+
+		& button {
+			padding: 0 12px;
+
+			&:active {
+				padding: 0 12px;
+			}
+		}
+
+	`}
+
+	${minWidth.md`
+		font-size: 1.5rem;
+
+		& button {
+			padding: 0 13px;
+
+			&:active {
+				padding: 0 13px;
+			}
+		}
+
+	`}
+
 `
