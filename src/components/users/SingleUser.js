@@ -37,7 +37,7 @@ function SingleUser(props) {
 		return (
 			<section className={props.className}>
 				<div>
-					<Button padding="0 5px" title="Go back" onClick={() => history.goBack()}>
+					<Button className="back" padding="0 5px" title="Go back" onClick={() => history.goBack()}>
 						<Icon icon={['fas', 'arrow-left']} />
 					</Button>
 					<More />
@@ -83,6 +83,10 @@ const SingleUserStyled = styled(SingleUser)`
 		justify-content: space-between;
 		align-items: center;
 
+		${minWidth.xs`
+			justify-content: flex-end;
+		`}
+
 		& button {
 			color: ${({ theme }) => theme.beta};
 
@@ -90,6 +94,13 @@ const SingleUserStyled = styled(SingleUser)`
 				color: ${({ theme }) => theme.zeta};
 			}
 		}
+
+		& .back {
+			${minWidth.xs`
+				display: none;
+			`}
+		}
+
 	}
 
 	& hr {
