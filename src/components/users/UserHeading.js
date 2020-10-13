@@ -1,7 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-//import { minWidth } from '../../../theme/mixins/minWidth';
-
+import { minWidth } from '../../theme/mixins/minWidth';
 
 import PropTypes from 'prop-types';
 
@@ -59,6 +58,15 @@ export const UserHeadingStyled = styled(UserHeading)`
 		height: 100px;
 		border-radius: 15px;
 		margin: 10px;
+		transition: all .2s linear;
+
+		${minWidth.xs`
+			width: 150px;
+			height: 150px;
+			border-radius: 20px;
+			margin: 10px 10px 10px 50px;
+		`}
+
 	}
 
 	& div {
@@ -68,17 +76,33 @@ export const UserHeadingStyled = styled(UserHeading)`
 		align-items: flex-start;
 		flex: 1;
 		margin: 10px;
+		transition: margin .2s linear;
+
+		${minWidth.xs`
+			margin: 10px 10px 10px 50px;
+		`}
+
 	}
 
 	& h2 {
 		font-size: 1.3rem;
 		font-weight: 700;
+		transition: font-size .2s linear;
+
+		${minWidth.xs`
+			font-size: 1.5rem;
+		`}
 	}
 
 	& p {
 		font-size: 0.8rem;
 		color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.beta};
 		margin: 0 0 0.5rem 0;
+		transition: font-size .2s linear;
+
+		${minWidth.xs`
+			font-size: 1rem;
+		`}
 
 		&:last-child {
 			margin: 0;
