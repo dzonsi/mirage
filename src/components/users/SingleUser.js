@@ -36,19 +36,21 @@ function SingleUser(props) {
 
 		return (
 			<section className={props.className}>
-				<div>
-					<Button className="back" padding="0 5px" title="Go back" onClick={() => history.goBack()}>
-						<Icon icon={['fas', 'arrow-left']} />
-					</Button>
-					<More />
+				<div className="wrapper">
+					<div>
+						<Button className="back" padding="0 5px" title="Go back" onClick={() => history.goBack()}>
+							<Icon icon={['fas', 'arrow-left']} />
+						</Button>
+						<More />
+					</div>
+					<UserHeading user={user} />
+					<hr />
+					<UserBody user={user} />
+					<hr />
+					<UserAddress address={user.address} />
+					<hr />
+					<UserLinks />
 				</div>
-				<UserHeading user={user} />
-				<hr />
-				<UserBody user={user} />
-				<hr />
-				<UserAddress address={user.address} />
-				<hr />
-				<UserLinks />
 			</section>
 		)
 	}
@@ -71,14 +73,24 @@ const mapStateToProps = state => ({
 });
 
 const SingleUserStyled = styled(SingleUser)`
-	margin: 20px 20px 0;
+	margin: 20px 0 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
 
-	${minWidth.md`
-		margin: 20px auto 0;
-		max-width: 952px;
-	`}
+	& .wrapper {
 
-	& div:first-child {
+		margin: 20px 20px 0;
+
+		${minWidth.md`
+			margin: 20px auto 0;
+			max-width: 952px;
+		`}
+
+	}
+
+	& .wrapper div:first-child {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
