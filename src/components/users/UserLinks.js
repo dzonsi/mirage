@@ -18,7 +18,6 @@ function UserLinks(props) {
 }
 
 export const UserLinksStyled = styled(UserLinks)`
-	padding: 0 0 20px;
 	margin: 20px 10px 0;
 	display: flex;
 	justify-content: center;
@@ -40,7 +39,7 @@ export const UserLinksStyled = styled(UserLinks)`
 		padding: 0.5rem 1rem;
 		border-radius: 50%;
 		margin: 0 0.5rem;
-    background: linear-gradient(-45deg, rgba(0,0,0,0.3), rgba(255,255,255,0.25));
+    background: linear-gradient(-45deg, rgba(0,10,10,0.3), rgba(255,255,255,0.25));
     box-shadow: none;
     transition: all .1s linear;
 
@@ -80,9 +79,10 @@ export const UserLinksStyled = styled(UserLinks)`
 		}
 
 		&:active {
-			background: linear-gradient(-45deg, rgba(255,255,255,0.25 ), rgba(0,0,0,0.2));
-			box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5),
-			-2px -2px 8px 0 rgba(255, 255, 255, 0.2);
+			background: linear-gradient(-45deg, rgba(255,255,255,0.25 ), rgba(0,10,10,0.3));
+			box-shadow: ${({ theme }) => theme.name === 'light' ? `4px 4px 8px 0 rgba(0, 0, 0, 0.5),
+			-4px -4px 8px 0 rgba(255, 255, 255, 0.2);` : `4px 4px 8px 0 #000,
+			-4px -4px 8px 0 rgba(255, 255, 255, 0.2);` };
 		}
 	}
 
