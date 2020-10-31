@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import { useSetHeight } from '../../hooks/useSetHeight';
 
 import { StatusConnectedStyled as Status } from '../shared/Status';
 import { AllUsersOptionsStyled as Options } from './AllUsersOptions';
@@ -7,8 +8,10 @@ import { AllUsersBodyStyled as AllUsersBody } from './AllUsersBody';
 
 function AllUsers(props) {
 
+	useSetHeight('transition-container', 'all-users', 300);
+
 	return (
-		<section className={props.className}>
+		<section className={props.className} id="all-users">
 			<Status
 				type="Users"
 				options={<Options />}
