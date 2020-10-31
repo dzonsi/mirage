@@ -23,7 +23,6 @@ function getRandom(min, max) {
 function UserHeading(props) {
 
 	const { user } = props;
-	console.log(user);
 	const num = getRandom(0, imgArray.length - 1);
 
 	if(user) {
