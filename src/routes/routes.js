@@ -15,7 +15,7 @@ import { SingleUserConnected as User } from '../components/users/SingleUser';
 
 const TransitionGroupStyled = styled(TransitionGroup)`
 	position: relative;
-`;// height of this element is important
+`;
 
 const routes = (
 
@@ -25,7 +25,7 @@ const routes = (
 			const { key } = location;
 
 			return (
-				<TransitionGroupStyled>
+				<TransitionGroupStyled id="transition-container">
 					<CSSTransition
 						timeout={300}
 						classNames="page"
