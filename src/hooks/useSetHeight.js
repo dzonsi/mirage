@@ -7,13 +7,17 @@ export const useSetHeight = (par, chi, interval) => {
 		const parent = document.getElementById(par);
 		const child = document.getElementById(chi);
 
-		parent.style.height = `${child.getBoundingClientRect().height}px`;
+		const childComputed = window.getComputedStyle(child);
 
-		let prevValue = child.getBoundingClientRect().height;
+		parent.style.height = `${parseInt(childComputed.height) + parseInt(childComputed.marginTop)}px`;
+
+		let prevValue = childComputed.height;
 
 		const setHeight = setInterval(() => {
 
-			let nextValue = child.getBoundingClientRect().height;
+			const newComputed = window.getComputedStyle(child);
+
+			let nextValue = newComputed.height;
 
 			if(prevValue == nextValue) {
 				clearInterval(setHeight);
