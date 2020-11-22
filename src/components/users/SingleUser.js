@@ -14,6 +14,8 @@ import { DefaultButton as Button } from '../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { SingleUserMoreStyled as More } from './SingleUserMore';
 
+import { useSetHeight } from '../../hooks/useSetHeight';
+
 function SingleUser(props) {
 
 	const { loading, users, error } = props;
@@ -27,6 +29,8 @@ function SingleUser(props) {
 		}
 	}, []);
 
+	useSetHeight('transition-container', 'single-user', 300);
+
 	if(loading) {
 		return (
 			<Loading />
@@ -35,7 +39,7 @@ function SingleUser(props) {
 	if(users.length) {
 
 		return (
-			<section className={props.className}>
+			<section className={props.className} id="single-user">
 				<div className="wrapper">
 					<div>
 						<Button className="back" padding="0 5px" title="Go back" onClick={() => history.goBack()}>
