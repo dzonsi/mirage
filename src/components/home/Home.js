@@ -5,6 +5,7 @@ import { fetchUsers } from '../../action-creators/usersCreators';
 import { minWidth } from '../../theme/mixins/minWidth';
 import { NavLink } from 'react-router-dom';
 import Users from './sections/Users';
+import { SectionNavLinkStyled as SectionNavLink } from './SectionNavLink';
 
 import { pageIn, pageOut } from '../../style/animations/page';
 
@@ -14,13 +15,19 @@ function Home(props) {
 		if(!props.users.length) {
 			props.dispatch(fetchUsers());
 		}
+		const transitionContainer = document.getElementById('transition-container');
+		transitionContainer.removeAttribute('style');
 	}, []);
 
 	return (
 		<div className={props.className}>
 			<div className='wrapper'>
 				<Users />
-				<NavLink to="/ds;af">Play Protect</NavLink>
+			</div>
+			<div className='wrapper'>
+				<SectionNavLink to="posts" iconName="pencil-alt" iconPrefix="fas" color="kappa" />
+				<SectionNavLink to="comments" iconName="comments" iconPrefix="fas" color="lambda" />
+				<SectionNavLink to="todos" iconName="check-double" iconPrefix="fas" color="mu" />
 			</div>
 		</div>
 	)
