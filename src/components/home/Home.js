@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
-import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
+import styled from 'styled-components';
+
 import { fetchUsers } from '../../action-creators/usersCreators';
 import { minWidth } from '../../theme/mixins/minWidth';
-import { NavLink } from 'react-router-dom';
+
 import Users from './sections/Users';
 import { SectionNavLinkStyled as SectionNavLink } from './SectionNavLink';
+import { HomeLinksStyled as HomeLinks } from './sections/HomeLinks';
 
 import { pageIn, pageOut } from '../../style/animations/page';
 
@@ -25,9 +28,7 @@ function Home(props) {
 				<Users />
 			</div>
 			<div className='wrapper'>
-				<SectionNavLink to="posts" iconName="pencil-alt" iconPrefix="fas" color="kappa" />
-				<SectionNavLink to="comments" iconName="comments" iconPrefix="fas" color="lambda" />
-				<SectionNavLink to="todos" iconName="check-double" iconPrefix="fas" color="mu" />
+				<HomeLinks />
 			</div>
 		</div>
 	)
