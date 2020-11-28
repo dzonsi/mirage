@@ -59,9 +59,28 @@ export const SectionNavLinkStyled = styled(SectionNavLink)`
 
 			&:hover {
 				color: ${({ theme }) => props => theme.name === 'light' ? hex2rgba(theme[props.color], 1) : hex2rgba(theme[props.color], 0.8)};
+				background-color: ${({ theme }) => theme.name === 'light' ? 'rgba(0, 0, 0, 0.1)' : null };
 				border-color: ${({ theme }) => props => theme.name === 'light' ? null : hex2rgba(theme[props.color], 0.8)};
-				${({ theme }) => theme.name === 'light' ? 'box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.4);' : null }
+				box-shadow: ${({ theme }) => theme.name === 'light' ? '2px 2px 10px 0 rgba(0, 0, 0, 0.4);' : null };
+
+				& h2 {
+					${minWidth.md`
+						${({ theme }) => theme.name === 'light' ? 'transform: scale(1.05);' : null }
+					`}
+				}
 			}
+
+			${minWidth.sm`
+				width: 126px;
+				height: 126px;
+			`}
+
+			${minWidth.md`
+				width: 156px;
+				height: 156px;
+				border-radius: 50%;
+				border-width: 5px;
+			`}
 
 			& h2 {
 				margin: 0;
@@ -70,6 +89,12 @@ export const SectionNavLinkStyled = styled(SectionNavLink)`
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
+				transition: transform .1s linear;
+
+				${minWidth.md`
+					font-size: 1.2rem;
+				`}
+
 			}
 
 			& span {
