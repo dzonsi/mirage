@@ -55,6 +55,10 @@ const HomeLinksConnected = connect(mapStateToProps) (HomeLinks);
 
 export const HomeLinksStyled = styled(HomeLinksConnected)`
 
+	${minWidth.md`
+		margin-top: 50px;
+	`}
+
 	.links-container {
 		display: flex;
 		flex-wrap: wrap;
