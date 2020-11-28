@@ -44,7 +44,7 @@ export const HomeStyled = styled(HomeConnected)`
 
 	& .wrapper {
 
-		margin: 20px;
+		margin: 20px 20px 0;
 		max-width: 992px;
 
 		${minWidth.md`
