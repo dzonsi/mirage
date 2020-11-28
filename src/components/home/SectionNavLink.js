@@ -39,34 +39,46 @@ const hex2rgba = (hex, alpha = 1) => {
 
 export const SectionNavLinkStyled = styled(SectionNavLink)`
 
-	width: calc(50% - 20px);
 	margin: 10px;
 
 	& a {
-			display: block;
-			width: 150px;
-			height: 150px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 106px;
+			height: 106px;
 			font-weight: 700;
 			text-align: center;
 			text-decoration: none;
 			color: #fff;
-			background-color: ${({ theme }) => props => hex2rgba(theme[props.color], 0.7)};
-			padding: 3rem 1rem;
-			border-radius: 50%;
+			color: ${({ theme }) => props => theme.name === 'light' ? theme.beta : hex2rgba(theme[props.color], 0.8)};
+			background-color: ${({ theme }) => theme.name === 'light' ? 'rgba(0, 0, 0, 0.05)' : null };
+			border-radius: 15px;
+			border: ${({ theme }) => props => theme.name === 'light' ? null : `3px solid ${theme.gamma}`};
+			transition: all .1s linear;
+
+			&:hover {
+				color: ${({ theme }) => props => theme.name === 'light' ? hex2rgba(theme[props.color], 1) : hex2rgba(theme[props.color], 0.8)};
+				border-color: ${({ theme }) => props => theme.name === 'light' ? null : hex2rgba(theme[props.color], 0.8)};
+				${({ theme }) => theme.name === 'light' ? 'box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.4);' : null }
+			}
 
 			& h2 {
 				margin: 0;
-				font-size: 1.2rem;
-				text-align: center;
+				font-size: 1rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
 			}
 
 			& span {
-				opacity: 1;
-				font-weight: 700;
 				display: block;
+				font-weight: 700;
 			}
 
 			& svg {
+				display: block;
 				font-size: 1.5rem;
 				margin-bottom: 5px;
 			}
