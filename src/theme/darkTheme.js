@@ -13,6 +13,6 @@ export const darkTheme = {
 	iota: '#00b386',// green-mint
 	kappa: '#5d52fa',// violet
 	lambda: '#fa4c5d',// red-pink
-	mu: '#0066ff',// blue
+	mu: '#3071f3',// blue
 	...breakPoints
 }
