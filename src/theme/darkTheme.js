@@ -11,8 +11,8 @@ export const darkTheme = {
 	eta: '#F64E4D',// orange
 	theta: '#a600c8',// violet-magenta
 	iota: '#00b386',// green-mint
-	kappa: '#fa4c5d',// red-pink
-	lambda: '#5d52fa',// blue-violet
-	mu: '#ff9900',// yellow-gold
+	kappa: '#5d52fa',// violet
+	lambda: '#fa4c5d',// red-pink
+	mu: '#0066ff',// blue
 	...breakPoints
 }
