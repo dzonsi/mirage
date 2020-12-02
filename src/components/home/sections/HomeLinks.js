@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import { minWidth } from '../../../theme/mixins/minWidth';
 
+import { SectionHeadingStyled as Heading } from '../SectionHeading';
 import { SectionLoadingStyled as Loading } from '../SectionLoading';
 import { SectionNavLinkStyled as SectionNavLink } from '../SectionNavLink';
 
@@ -27,6 +28,7 @@ function HomeLinks(props) {
 
 		return (
 			<div className={props.className}>
+				<Heading to="resources" />
 				<div className="links-container">
 					<SectionNavLink to="posts" iconName="pencil-alt" iconPrefix="fas" color="iota" />
 					<SectionNavLink to="comments" iconName="comments" iconPrefix="fas" color="kappa" />
