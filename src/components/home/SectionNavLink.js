@@ -30,6 +30,9 @@ function SectionNavLink(props) {
 
 SectionNavLink.propTypes = {
 	to: PropTypes.string.isRequired,
+	iconName: PropTypes.string.isRequired,
+	iconPrefix: PropTypes.string.isRequired,
+	color: PropTypes.string.isRequired,
 }
 
 const hex2rgba = (hex, alpha = 1) => {
