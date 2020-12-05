@@ -11,10 +11,10 @@ function UserBody(props) {
 	if(user) {
 		return (
 			<div className={props.className}>
-				<p><span>Email:</span> {user.email}</p>
-				<p><span>Phone:</span> {user.phone}</p>
-				<p><span>Website:</span> {user.website}</p>
-				<p><span>Company:</span> {user.company.name}</p>
+				<p><span className="u-s-n">Email: </span>{user.email}</p>
+				<p><span className="u-s-n">Phone: </span>{user.phone}</p>
+				<p><span className="u-s-n">Website: </span>{user.website}</p>
+				<p><span className="u-s-n">Company: </span>{user.company.name}</p>
 			</div>
 		)
 	}

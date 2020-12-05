@@ -31,7 +31,9 @@ function UserHeading(props) {
 				<img src={images[imgArray[num]]} alt="User profile" />
 				<div>
 					<h2>{user.name}</h2>
-					<p>"{user.username}"</p>
+					<p>
+						<span className="u-s-n">"</span>{user.username}<span className="u-s-n">"</span>
+					</p>
 				</div>
 			</div>
 		)

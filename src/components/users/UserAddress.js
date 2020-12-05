@@ -11,10 +11,10 @@ function UserAddress(props) {
 	if(address) {
 		return (
 			<div className={props.className}>
-				<p><span>Street:</span> {address.street}</p>
-				<p><span>Suite:</span> {address.suite}</p>
-				<p><span>City:</span> {address.city}</p>
-				<p><span>Zipcode:</span> {address.zipcode}</p>
+				<p><span className="u-s-n">Street: </span>{address.street}</p>
+				<p><span className="u-s-n">Suite: </span>{address.suite}</p>
+				<p><span className="u-s-n">City: </span>{address.city}</p>
+				<p><span className="u-s-n">Zipcode: </span>{address.zipcode}</p>
 			</div>
 		)
 	}
