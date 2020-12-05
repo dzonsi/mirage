@@ -20,4 +20,7 @@ export const GlobalStyles = createGlobalStyle`
 		padding-left: 0;
 		margin-bottom: 0;
 	}
+	.u-s-n {
+		user-select: none;
+	}
 `
