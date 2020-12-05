@@ -16,8 +16,8 @@ function SingleUserOptions(props) {
 	return (
 		<div className={props.className} ref={element}>
 			<div className="button-container">
-				<Button className="edit" padding=".6rem .8rem .6rem">Edit</Button>
-				<Button className="delete" padding=".6rem .8rem .6rem">Delete</Button>
+				<Button className="button edit" padding=".6rem .8rem .6rem">Edit</Button>
+				<Button className="button delete" padding=".6rem .8rem .6rem">Delete</Button>
 				<hr />
 				<div>
 					<p>Add new:</p>
@@ -46,40 +46,30 @@ export const SingleUserOptionsStyled = styled(SingleUserOptions)`
 	animation: ${optionsFadeIn} .2s forwards;
 	z-index: 9;
 
-	& div.button-container {
+	& .button-container {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
 
-		& button {
+		& .button {
 			font-weight: 700;
+			padding: .6rem .8rem .6rem;
 			border-radius: 0.5rem;
 			margin: 0 0 0.5rem;
 			opacity: 0.7;
 			width: 100%;
 
-			&.edit {
+			&.edit, &.delete {
 				color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.epsilon};
-				border: 1px solid ${({ theme }) => theme.zeta};
+				background-color: ${({ theme }) => theme.name === 'light' ? theme.epsilon : theme.alpha};
 
 				&:hover {
 					color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.epsilon};
 				}
-			}
-
-			&.delete {
-				color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.epsilon};
-				border: 1px solid ${({ theme }) => theme.eta};
-
-				&:hover {
-					color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.epsilon};
-				}
-
 			}
 
 			&:hover {
-				color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.epsilon};
 				opacity: 1;
 			}
 
