@@ -9,7 +9,7 @@ import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 function SectionNavLink(props) {
 
-	const { to, iconName, iconPrefix, color } = props;
+	const { to, iconName, iconPrefix } = props;
 
 	const capitalize = text => {
 		return text.charAt(0).toUpperCase() + text.slice(1);

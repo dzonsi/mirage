@@ -15,6 +15,7 @@ function Users(props) {
 		if(!props.users.length) {
 			props.dispatch(fetchUsers());
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	if(loading) {

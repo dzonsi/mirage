@@ -19,7 +19,7 @@ export const useSetHeight = (par, chi, interval) => {
 
 			let nextValue = newComputed.height;
 
-			if(prevValue == nextValue) {
+			if(prevValue === nextValue) {
 				clearInterval(setHeight);
 				parent.style.height = `${nextValue}px`;
 			} else {
@@ -27,7 +27,7 @@ export const useSetHeight = (par, chi, interval) => {
 			}
 
 		}, interval);
-
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 }

@@ -32,7 +32,6 @@ export function fetchUsers() {
 		return setTimeout(() => {
 			axios.get('https://jsonplaceholder.typicode.com/users')
 			.then( response => {
-				console.log(response.data);
 				dispatch(fetchUsersSuccess(response.data));
 			})
 			.catch(error => {

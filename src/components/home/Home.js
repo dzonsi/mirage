@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
 import styled from 'styled-components';
 
@@ -7,10 +6,9 @@ import { fetchUsers } from '../../action-creators/usersCreators';
 import { minWidth } from '../../theme/mixins/minWidth';
 
 import Users from './sections/Users';
-import { SectionNavLinkStyled as SectionNavLink } from './SectionNavLink';
+
 import { HomeLinksStyled as HomeLinks } from './sections/HomeLinks';
 
-import { pageIn, pageOut } from '../../style/animations/page';
 
 function Home(props) {
 
@@ -20,6 +18,7 @@ function Home(props) {
 		}
 		const transitionContainer = document.getElementById('transition-container');
 		transitionContainer.removeAttribute('style');
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
