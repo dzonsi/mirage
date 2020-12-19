@@ -18,13 +18,14 @@ function SingleUserOptions(props) {
 			<div className="button-container">
 				<Button className="button edit" padding=".6rem .8rem .6rem">Edit</Button>
 				<Button className="button delete" padding=".6rem .8rem .6rem">Delete</Button>
-				<hr />
 				<div>
-					<p>Add new:</p>
-					<Button padding=".6rem .8rem .6rem">Post</Button>
-					<Button padding=".6rem .8rem .6rem">Album</Button>
-					<Button padding=".6rem .8rem .6rem">Todo</Button>
-					<Button padding=".6rem .8rem .6rem">Image</Button>
+					<p className="add-new">Add new:</p>
+					<div className="link-container">
+						<button className="link post" padding=".6rem .8rem .6rem">Post</button>
+						<button className="link album" padding=".6rem .8rem .6rem">Album</button>
+						<button className="link todo" padding=".6rem .8rem .6rem">Todo</button>
+						<button className="link image" padding=".6rem .8rem .6rem">Image</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -71,6 +72,66 @@ export const SingleUserOptionsStyled = styled(SingleUserOptions)`
 
 			&:hover {
 				opacity: 1;
+			}
+
+		}
+
+		& .add-new {
+			font-weight: 700;
+			color: ${({ theme }) => theme.alpha};
+			margin-bottom: 0.5rem;
+		}
+
+		& .link-container {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		& .link {
+			font-weight: 700;
+			padding: .6rem 0;
+			color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.epsilon};
+			background-color: transparent;
+			border: 2px solid ${({ theme }) => theme.name === 'light' ? theme.gamma : theme.beta};
+			border-radius: .5rem;
+			margin: 0.3rem;
+			flex: 0 0 calc(50% - 0.6rem);
+			transition: all .1s linear;
+
+			&.post {
+				color: ${({ theme }) => theme.iota};
+
+				&:hover {
+					color: ${({ theme }) => theme.iota};
+					border-color: ${({ theme }) => theme.iota};
+				}
+			}
+
+			&.album {
+				color: ${({ theme }) => theme.kappa};
+
+				&:hover {
+					color: ${({ theme }) => theme.kappa};
+					border-color: ${({ theme }) => theme.kappa};
+				}
+			}
+
+			&.todo {
+				color: ${({ theme }) => theme.lambda};
+
+				&:hover {
+					color: ${({ theme }) => theme.lambda};
+					border-color: ${({ theme }) => theme.lambda};
+				}
+			}
+
+			&.image {
+				color: ${({ theme }) => theme.mu};
+
+				&:hover {
+					color: ${({ theme }) => theme.mu};
+					border-color: ${({ theme }) => theme.mu};
+				}
 			}
 
 		}
