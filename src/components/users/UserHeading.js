@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 import { minWidth } from '../../theme/mixins/minWidth';
 
@@ -25,15 +25,24 @@ function UserHeading(props) {
 	const { user } = props;
 	const num = getRandom(0, imgArray.length - 1);
 
+	const [tempUser, setTempUser] = useState({...user});
+
+	const [edit, setEdit] = useState(false);
+
+	function changeUsername(value) {
+		setTempUser(value);
+	}
+
 	if(user) {
 		return (
 			<div className={props.className}>
 				<img src={images[imgArray[num]]} alt="User profile" />
 				<div>
-					<h2>{user.name}</h2>
+					<h2 id="name" className="name" contentEditable={edit ? true : false}>{user.name}</h2>
 					<p>
-						<span className="u-s-n">"</span>{user.username}<span className="u-s-n">"</span>
+						<input onInput={e => changeUsername(e.target.value)} id="input" type="text" name="username" value={tempUser.username} className="username" disabled={edit ? false : true} />
 					</p>
+					<p onClick={() => setEdit(!edit)}>Edit: {edit ? 'true' : 'false'}</p>
 				</div>
 			</div>
 		)
@@ -97,10 +106,17 @@ export const UserHeadingStyled = styled(UserHeading)`
 
 	}
 
-	& h2 {
+	& .name {
 		font-size: 1.3rem;
 		font-weight: 700;
-		transition: font-size .2s linear;
+		padding: .2rem .4rem;
+		max-width: 190px;
+		word-break: break-word;
+		transition: font-size .2s linear, background-color .2s;
+
+		@media screen and (min-width: 450px) {
+			max-width: 240px;
+		}
 
 		${minWidth.xs`
 			font-size: 1.5rem;
@@ -108,7 +124,12 @@ export const UserHeadingStyled = styled(UserHeading)`
 
 		${minWidth.sm`
 			font-size: 1.8rem;
+			max-width: 300px;
 		`}
+
+		&[contenteditable='true'] {
+			background-color: rgba(255, 255, 255, 0.25);
+		}
 
 	}
 
@@ -129,6 +150,34 @@ export const UserHeadingStyled = styled(UserHeading)`
 		&:last-child {
 			margin: 0;
 			color: ${({ theme }) => theme.eta};
+		}
+	}
+
+	& .username {
+
+		width: 190px;
+		max-width: 190px;
+
+		@media screen and (min-width: 450px) {
+			width: 240px;
+			max-width: 240px;
+		}
+
+		${minWidth.sm`
+			width: 300px;
+			max-width: 300px;
+		`}
+
+		color: ${({ theme }) => theme.eta};
+		background-color: rgba(255, 255, 255, 0.25);
+		padding: .2rem .4rem;
+		border: none;
+		transition: background-color .2s;
+
+		&:disabled {
+			color: ${({ theme }) => theme.eta};
+			background-color: transparent;
+			border: none;
 		}
 	}
 
