@@ -6,6 +6,7 @@ import { SORT_ID } from '../actions/actionTypes';
 import { SORT_ASC } from '../actions/actionTypes';
 import { SORT_DESC } from '../actions/actionTypes';
 import { TOGGLE_USER_OPTIONS } from '../actions/actionTypes';
+import { TOGGLE_USER_EDIT } from '../actions/actionTypes';
 import { TOGGLE_USERS_OPTIONS } from '../actions/actionTypes';
 
 const initialState = {
@@ -14,6 +15,7 @@ const initialState = {
 	error: null,
 	order: SORT_ID,
 	userOptions: false,
+	userEdit: false,
 	usersOptions: false
 };
 
@@ -77,6 +79,12 @@ export default function usersReducer(state = initialState, action) {
 			return {
 				...state,
 				userOptions: !state.userOptions
+			}
+		// single user edit
+		case TOGGLE_USER_EDIT:
+			return {
+				...state,
+				userEdit: !state.userEdit
 			}
 		// users options
 		case TOGGLE_USERS_OPTIONS:
