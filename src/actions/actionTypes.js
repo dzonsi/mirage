@@ -1,8 +1,8 @@
-// navbar
+// NAVBAR
 export const TOGGLE_USER_INFO = 'TOGGLE_USER_INFO';
 export const TOGGLE_SIDE_NAV = 'TOGGLE_SIDE_NAV';
 
-// users
+// USERS
 
 // fetch users
 export const FETCH_USERS_BEGIN = 'FETCH_USERS_BEGIN';
@@ -17,6 +17,7 @@ export const SORT_DESC = 'SORT_DESC';
 
 // single user options
 export const TOGGLE_USER_OPTIONS = 'TOGGLE_USER_OPTIONS';
+export const TOGGLE_USER_EDIT = 'TOGGLE_USER_EDIT';
 
 // users options
 export const TOGGLE_USERS_OPTIONS = 'TOGGLE_USERS_OPTIONS';
