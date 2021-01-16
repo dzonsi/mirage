@@ -6,10 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## App dependencies:
 
+#### [React](https://reactjs.org/)
 #### [react-app-polyfill](https://www.npmjs.com/package/react-app-polyfill)
 #### [prop-types](https://www.npmjs.com/package/prop-types)
 #### [react-router-dom](https://reacttraining.com/react-router/)
-#### [redux](https://redux.js.org/)
+#### [Redux](https://redux.js.org/)
 #### [react-redux](https://react-redux.js.org/)
 #### [redux-thunk](https://github.com/reduxjs/redux-thunk)
 #### [styled-components](https://styled-components.com/)
