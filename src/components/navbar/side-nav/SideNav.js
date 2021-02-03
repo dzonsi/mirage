@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { minWidth } from '../../../theme/mixins/minWidth';
@@ -13,23 +12,28 @@ import { toggleSideNav } from '../../../action-creators/navbarCreators';
 import PropTypes from 'prop-types';
 
 function SideNav(props) {
+
+	const toggle = props.toggleSideNav;
+
 	return (
 		<div className={props.className}>
-			<nav>
-				<Router>
-					<NavLink to="/home"><Icon icon={['fas', 'list-ul']} />My apps & games</NavLink>
-					<NavLink to="/about">Notifications</NavLink>
-					<NavLink to="/left">Subscriptions</NavLink>
-					<NavLink to="/right">Wishlist</NavLink>
-					<NavLink to="/home">Account</NavLink>
-					<NavLink to="/home">Payment methods</NavLink>
-					<NavLink to="/home">Play Protect</NavLink>
-					<NavLink to="/home">Settings</NavLink>
-				</Router>
+			<nav className="nav">
+				<div className="links-container">
+					<NavLink onClick={toggle} exact to="/">Home</NavLink>
+					<NavLink onClick={toggle} to="/users">Users</NavLink>
+					<NavLink onClick={toggle} to="/posts">Posts</NavLink>
+					<NavLink onClick={toggle} to="/comments">Comments</NavLink>
+					<NavLink onClick={toggle} to="/todos">Todos</NavLink>
+					<NavLink onClick={toggle} to="/photos">Photos</NavLink>
+					<NavLink onClick={toggle} to="/contact">Contact Us</NavLink>
+					<NavLink onClick={toggle} to="/about">About</NavLink>
+				</div>
 			</nav>
-			<Button onClick={props.toggleSideNav} title="Close side navigation">
+			<Button className="close-btn" onClick={toggle} title="Close side navigation">
 				<Icon icon={['fas', 'times']} />
 			</Button>
+			<div className="round-decoration"></div>
+			<div className="square-decoration"></div>
 		</div>
 	)
 }
@@ -50,6 +54,7 @@ const mapDispatchToProps = {
 }
 
 const SideNavStyled = styled(SideNav)`
+	overflow: hidden;
 	width: 100%;
 	height: 100%;
 	position: fixed;
@@ -69,7 +74,7 @@ const SideNavStyled = styled(SideNav)`
 	}}
 
 
-	& nav {
+	& .nav {
 		width: 100%;
 		height: 100%;
 		display: flex;
@@ -77,12 +82,20 @@ const SideNavStyled = styled(SideNav)`
 		justify-content: center;
 		align-items: center;
 
+		& .links-container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
 		& a {
-			font-size: 18px;
+			font-size: 20px;
 			font-weight: 700;
 			color: ${({ theme }) => theme.beta};
 			padding: 0.25rem 0.5rem;
 			margin-bottom: 0.5rem;
+			transition: font-size .1s linear;
 
 			&.active {
 				color: ${({ theme }) => theme.eta};
@@ -94,13 +107,13 @@ const SideNavStyled = styled(SideNav)`
 
 			${
 				minWidth.sm`
-					font-size: 22px;
+					font-size: 25px;
 				`
 			}
 
 			${
 				minWidth.lg`
-					font-size: 25px;
+					font-size: 30px;
 				`
 			}
 
@@ -108,13 +121,13 @@ const SideNavStyled = styled(SideNav)`
 
 	}
 
-	& button {
-		font-size: 22px;
+	& .close-btn {
+		font-size: 2rem;
 		color: ${({ theme }) => theme.beta};
-		padding: 0 0.5rem;
+		padding: 0 0.8rem;
 		position: absolute;
-		top: 1rem;
-		right: 1rem;
+		top: 1.5rem;
+		right: 1.5rem;
 
 		&:hover {
 			color: ${({ theme }) => theme.zeta};
@@ -150,6 +163,29 @@ const SideNavStyled = styled(SideNav)`
 			`
 		}
 
+	}
+
+	.round-decoration {
+		width: 250px;
+		height: 250px;
+		border: 30px solid ${({ theme }) => theme.zeta};
+		border-radius: 50%;
+		opacity: 0.2;
+		position: absolute;
+		bottom: -50px;
+		right: -50px;
+	}
+
+	.square-decoration {
+		width: 200px;
+		height: 200px;
+		border: 30px solid ${({ theme }) => theme.kappa};
+		border-radius: 20px;
+		opacity: 0.2;
+		transform: rotate(45deg);
+		position: absolute;
+		top: -50px;
+		left: -50px;
 	}
 `
 
