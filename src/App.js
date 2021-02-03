@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import routes from './routes/routes';
 
 import { GlobalStyles } from './style/GlobalStyle';
@@ -47,9 +46,7 @@ function App() {
         <Navbar />
         <h2>{ theme === 'light' ? 'Light theme' : 'Dark Theme'}</h2>
         <button onClick={toggleTheme}>Toggle theme</button>
-        <Router>
-          {routes}
-        </Router>
+        {routes}
       </AppContainer>
     </ThemeProvider>
   );
