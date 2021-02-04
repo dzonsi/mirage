@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import styled from 'styled-components';
 import { useCloseOutside } from '../../hooks/useCloseOutside';
 
-import { DefaultButton as Button } from '../shared/DefaultButton';
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 import { optionsFadeIn } from '../../style/animations/optionsFadeIn';
 
@@ -16,15 +16,37 @@ function SingleUserOptions(props) {
 	return (
 		<div className={props.className} ref={element}>
 			<div className="button-container">
-				<Button className="button edit" padding=".6rem .8rem .6rem">Edit</Button>
-				<Button className="button delete" padding=".6rem .8rem .6rem">Delete</Button>
-				<div>
+				<div className="e-d-container">
+					<p className="add-new">Choose action:</p>
+					<button className="link edit" padding=".6rem .8rem .6rem">
+						<Icon icon={['fas', 'user-edit']} fixedWidth />
+						<span className="text">Edit</span>
+					</button>
+					<button className="link delete" padding=".6rem .8rem .6rem">
+						<Icon icon={['fas', 'trash-alt']} fixedWidth />
+						<span className="text">Delete</span>
+					</button>
+				</div>
+				<hr className="divider"/>
+				<div className="add-new-container">
 					<p className="add-new">Add new:</p>
 					<div className="link-container">
-						<button className="link post" padding=".6rem .8rem .6rem">Post</button>
-						<button className="link album" padding=".6rem .8rem .6rem">Album</button>
-						<button className="link todo" padding=".6rem .8rem .6rem">Todo</button>
-						<button className="link image" padding=".6rem .8rem .6rem">Image</button>
+						<button className="link post" padding=".6rem .8rem .6rem">
+							<Icon icon={['fas', 'pencil-alt']} fixedWidth />
+							<span className="text">Post</span>
+						</button>
+						<button className="link album" padding=".6rem .8rem .6rem">
+							<Icon icon={['fas', 'comments']} fixedWidth />
+							<span className="text">Comment</span>
+						</button>
+						<button className="link todo" padding=".6rem .8rem .6rem">
+							<Icon icon={['fas', 'check-double']} fixedWidth />
+							<span className="text">Todo</span>
+						</button>
+						<button className="link image" padding=".6rem .8rem .6rem">
+							<Icon icon={['fas', 'images']} fixedWidth />
+							<span className="text">Image</span>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -46,6 +68,11 @@ export const SingleUserOptionsStyled = styled(SingleUserOptions)`
 	padding: 1rem;
 	animation: ${optionsFadeIn} .2s forwards;
 	z-index: 9;
+
+	.divider {
+		background-color: white;
+		width: 100%;
+	}
 
 	& .button-container {
 		display: flex;
@@ -70,68 +97,99 @@ export const SingleUserOptionsStyled = styled(SingleUserOptions)`
 				}
 			}
 
+			&.delete {
+				background-color: ${({ theme }) => theme.eta};
+			}
+
 			&:hover {
 				opacity: 1;
 			}
 
 		}
 
+		& .e-d-container {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		& .add-new-container {
+			width: 100%;
+		}
+
 		& .add-new {
 			font-weight: 700;
 			color: ${({ theme }) => theme.alpha};
-			margin-bottom: 0.5rem;
+			margin-bottom: 0.3rem;
 		}
 
 		& .link-container {
 			display: flex;
-			flex-wrap: wrap;
+			flex-direction: column;
 		}
 
 		& .link {
 			font-weight: 700;
-			padding: .6rem 0;
+			padding: .2rem 0;
 			color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.epsilon};
 			background-color: transparent;
-			border: 2px solid ${({ theme }) => theme.name === 'light' ? theme.gamma : theme.beta};
-			border-radius: .5rem;
+			border: none;
 			margin: 0.3rem;
 			flex: 0 0 calc(50% - 0.6rem);
 			transition: all .1s linear;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			& .text {
+				display: inline-block;
+				margin-left: 15px;
+				flex: 1;
+				text-align: left;
+			}
+
+			&.edit {
+				&:hover {
+					color: ${({ theme }) => theme.alpha};
+				}
+			}
+
+			&.delete {
+				&:hover {
+					color: ${({ theme }) => theme.alpha};
+				}
+			}
 
 			&.post {
-				color: ${({ theme }) => theme.iota};
 
 				&:hover {
-					color: ${({ theme }) => theme.iota};
-					border-color: ${({ theme }) => theme.iota};
+					color: ${({ theme }) => theme.alpha};
 				}
+
 			}
 
 			&.album {
-				color: ${({ theme }) => theme.kappa};
 
 				&:hover {
-					color: ${({ theme }) => theme.kappa};
-					border-color: ${({ theme }) => theme.kappa};
+					color: ${({ theme }) => theme.alpha};
 				}
+
 			}
 
 			&.todo {
-				color: ${({ theme }) => theme.lambda};
 
 				&:hover {
-					color: ${({ theme }) => theme.lambda};
-					border-color: ${({ theme }) => theme.lambda};
+					color: ${({ theme }) => theme.alpha};
 				}
+
 			}
 
 			&.image {
-				color: ${({ theme }) => theme.mu};
 
 				&:hover {
-					color: ${({ theme }) => theme.mu};
-					border-color: ${({ theme }) => theme.mu};
+					color: ${({ theme }) => theme.alpha};
 				}
+
 			}
 
 		}
