@@ -42,7 +42,7 @@ function SingleUser(props) {
 		return (
 			<section className={props.className} id="single-user">
 				<div className="wrapper">
-					<div>
+					<div className="btn-container">
 						<Button className="back" padding="0 5px" title="Go back" onClick={() => history.goBack()}>
 							<Icon icon={['fas', 'arrow-left']} />
 						</Button>
@@ -95,7 +95,7 @@ const SingleUserStyled = styled(SingleUser)`
 
 	}
 
-	& .wrapper div:first-child {
+	& .wrapper .btn-container {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
