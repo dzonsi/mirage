@@ -17,7 +17,7 @@ function SingleUserMore(props) {
 
 	return (
 		<div className={props.className}>
-			<Button ref={btn} padding="0 9px" onClick={() => setShow(!show)} title="More options">
+			<Button className="more" ref={btn} padding="0 9px" onClick={() => setShow(!show)} title="More options">
 				<Icon icon={['fas', 'ellipsis-v']} />
 			</Button>
 			{show && <Options show={show} setShow={setShow} getBtn={getBtn} /> }
@@ -32,7 +32,7 @@ export const SingleUserMoreStyled = styled(SingleUserMore)`
 	${minWidth.xs`
 		font-size: 1.3rem;
 
-		& button {
+		& .more {
 			padding: 0 12px;
 			transition: margin .2s linear;
 
@@ -45,7 +45,7 @@ export const SingleUserMoreStyled = styled(SingleUserMore)`
 
 	${minWidth.sm`
 
-		& button {
+		& .more {
 			margin-right: 50px;
 		}
 
@@ -54,7 +54,7 @@ export const SingleUserMoreStyled = styled(SingleUserMore)`
 	${minWidth.md`
 		font-size: 1.5rem;
 
-		& button {
+		& .more {
 			padding: 0 13px;
 			margin-right: 100px;
 

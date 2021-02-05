@@ -49,11 +49,11 @@ function SingleUser(props) {
 						<More />
 					</div>
 					<UserHeading user={user} />
-					<hr />
+					<hr className="divider"/>
 					<UserBody user={user} />
-					<hr />
+					<hr className="divider"/>
 					<UserAddress address={user.address} />
-					<hr />
+					<hr className="divider"/>
 					<UserLinks />
 				</div>
 			</section>
@@ -104,7 +104,7 @@ const SingleUserStyled = styled(SingleUser)`
 			justify-content: flex-end;
 		`}
 
-		& button {
+		& .back, & .more {
 			color: ${({ theme }) => theme.beta};
 
 			&:hover {
@@ -120,7 +120,7 @@ const SingleUserStyled = styled(SingleUser)`
 
 	}
 
-	& hr {
+	& .divider {
 		background-color: ${({ theme }) => theme.name === 'light' ? theme.delta : theme.gamma};
 		margin: 10px;
 		transition: transform .2s linear;
