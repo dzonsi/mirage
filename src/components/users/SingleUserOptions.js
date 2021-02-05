@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import styled from 'styled-components';
 import { useCloseOutside } from '../../hooks/useCloseOutside';
 
+import { minWidth } from '../../theme/mixins/minWidth';
+
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 import { optionsFadeIn } from '../../style/animations/optionsFadeIn';
@@ -15,19 +17,18 @@ function SingleUserOptions(props) {
 
 	return (
 		<div className={props.className} ref={element}>
-			<div className="button-container">
-				<div className="e-d-container">
-					<p className="add-new">Choose action:</p>
+			<div className="options-container">
+				<div className="link-container">
 					<button className="link edit" padding=".6rem .8rem .6rem">
 						<Icon icon={['fas', 'user-edit']} fixedWidth />
-						<span className="text">Edit</span>
+						<span className="text">Edit user</span>
 					</button>
 					<button className="link delete" padding=".6rem .8rem .6rem">
 						<Icon icon={['fas', 'trash-alt']} fixedWidth />
-						<span className="text">Delete</span>
+						<span className="text">Delete user</span>
 					</button>
 				</div>
-				<hr className="divider"/>
+				<hr className="separator"/>
 				<div className="add-new-container">
 					<p className="add-new">Add new:</p>
 					<div className="link-container">
@@ -59,59 +60,34 @@ export const SingleUserOptionsStyled = styled(SingleUserOptions)`
 	position: absolute;
 	top: 0;
 	right: 100%;
-	font-size: 1rem;
-	width: 200px;
-	text-align: center;
+	font-size: 0.8rem;
+	min-width: 160px;
 	color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.epsilon};
 	background-color: ${({ theme }) => theme.name === 'light' ? theme.delta : theme.gamma};
 	border-radius: 20px;
-	padding: 1rem;
+	padding 0.5rem 1rem;
 	animation: ${optionsFadeIn} .2s forwards;
 	z-index: 9;
 
-	.divider {
-		background-color: white;
-		width: 100%;
+	${
+		minWidth.xs`
+			font-size: 1rem;
+			min-width: 200px;
+		`
 	}
 
-	& .button-container {
+	.separator {
+		width: 100%;
+		background-color: ${({ theme }) => theme.beta};
+		margin: 0.5rem 0 0.8rem;
+		opacity: 0.5;
+	}
+
+	& .options-container {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-
-		& .button {
-			font-weight: 700;
-			padding: .6rem .8rem .6rem;
-			border-radius: 0.5rem;
-			margin: 0 0 0.5rem;
-			opacity: 0.7;
-			width: 100%;
-
-			&.edit, &.delete {
-				color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.epsilon};
-				background-color: ${({ theme }) => theme.name === 'light' ? theme.epsilon : theme.alpha};
-
-				&:hover {
-					color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.epsilon};
-				}
-			}
-
-			&.delete {
-				background-color: ${({ theme }) => theme.eta};
-			}
-
-			&:hover {
-				opacity: 1;
-			}
-
-		}
-
-		& .e-d-container {
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-		}
 
 		& .add-new-container {
 			width: 100%;
@@ -119,11 +95,13 @@ export const SingleUserOptionsStyled = styled(SingleUserOptions)`
 
 		& .add-new {
 			font-weight: 700;
+			text-align: center;
 			color: ${({ theme }) => theme.alpha};
 			margin-bottom: 0.3rem;
 		}
 
 		& .link-container {
+			width: 100%;
 			display: flex;
 			flex-direction: column;
 		}
@@ -131,65 +109,29 @@ export const SingleUserOptionsStyled = styled(SingleUserOptions)`
 		& .link {
 			font-weight: 700;
 			padding: .2rem 0;
-			color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.epsilon};
+			color: ${({ theme }) => theme.name === 'light' ? theme.gamma : theme.beta};
 			background-color: transparent;
 			border: none;
 			margin: 0.3rem;
-			flex: 0 0 calc(50% - 0.6rem);
 			transition: all .1s linear;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+
+			&:hover {
+				color: ${({ theme }) => theme.alpha};
+			}
+
+			&:active {
+				color: ${({ theme }) => theme.zeta};
+				transition: none;
+			}
 
 			& .text {
 				display: inline-block;
 				margin-left: 15px;
 				flex: 1;
 				text-align: left;
-			}
-
-			&.edit {
-				&:hover {
-					color: ${({ theme }) => theme.alpha};
-				}
-			}
-
-			&.delete {
-				&:hover {
-					color: ${({ theme }) => theme.alpha};
-				}
-			}
-
-			&.post {
-
-				&:hover {
-					color: ${({ theme }) => theme.alpha};
-				}
-
-			}
-
-			&.album {
-
-				&:hover {
-					color: ${({ theme }) => theme.alpha};
-				}
-
-			}
-
-			&.todo {
-
-				&:hover {
-					color: ${({ theme }) => theme.alpha};
-				}
-
-			}
-
-			&.image {
-
-				&:hover {
-					color: ${({ theme }) => theme.alpha};
-				}
-
 			}
 
 		}
