@@ -19,12 +19,12 @@ function SingleUserOptions(props) {
 		<div className={props.className} ref={element}>
 			<div className="options-container">
 				<div className="link-container">
-					<button className="link edit" padding=".6rem .8rem .6rem">
+					<button className="link">
 						<Icon icon={['fas', 'user-edit']} fixedWidth />
 						<span className="text">Edit user</span>
 					</button>
-					<button className="link delete" padding=".6rem .8rem .6rem">
-						<Icon icon={['fas', 'trash-alt']} fixedWidth />
+					<button className="link">
+						<Icon icon={['fas', 'user-slash']} fixedWidth />
 						<span className="text">Delete user</span>
 					</button>
 				</div>
@@ -32,19 +32,19 @@ function SingleUserOptions(props) {
 				<div className="add-new-container">
 					<p className="add-new">Add new:</p>
 					<div className="link-container">
-						<button className="link post" padding=".6rem .8rem .6rem">
+						<button className="link">
 							<Icon icon={['fas', 'pencil-alt']} fixedWidth />
 							<span className="text">Post</span>
 						</button>
-						<button className="link album" padding=".6rem .8rem .6rem">
+						<button className="link">
 							<Icon icon={['fas', 'comments']} fixedWidth />
 							<span className="text">Comment</span>
 						</button>
-						<button className="link todo" padding=".6rem .8rem .6rem">
+						<button className="link">
 							<Icon icon={['fas', 'check-double']} fixedWidth />
 							<span className="text">Todo</span>
 						</button>
-						<button className="link image" padding=".6rem .8rem .6rem">
+						<button className="link">
 							<Icon icon={['fas', 'images']} fixedWidth />
 							<span className="text">Image</span>
 						</button>
@@ -81,6 +81,13 @@ export const SingleUserOptionsStyled = styled(SingleUserOptions)`
 		background-color: ${({ theme }) => theme.beta};
 		margin: 0.5rem 0 0.8rem;
 		opacity: 0.5;
+
+		${
+			minWidth.xs`
+				margin: 0.5rem 0 0.9rem;
+			`
+		}
+
 	}
 
 	& .options-container {
