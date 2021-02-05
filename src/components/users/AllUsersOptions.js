@@ -11,8 +11,11 @@ import { sortBy } from '../../action-creators/usersCreators';
 
 import PropTypes from 'prop-types';
 
+import { minWidth } from '../../theme/mixins/minWidth';
+
 import { optionsFadeIn } from '../../style/animations/optionsFadeIn';
 import { DefaultButton as Button } from '../shared/DefaultButton';
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 function AllUsersOptions(props) {
 
@@ -31,7 +34,7 @@ function AllUsersOptions(props) {
 
 	return (
 		<div className={props.className} ref={element}>
-			<div>
+			<div className="sort-container">
 				<label htmlFor="sort">Sort by:</label>
 				<select id="sort" value={order} onChange={sort}>
 					<option value={SORT_ID}>Id</option>
@@ -39,10 +42,16 @@ function AllUsersOptions(props) {
 					<option value={SORT_DESC}>Desc</option>
 				</select>
 			</div>
-			<hr />
-			<div>
-				<Button padding=".6rem .8rem .6rem">Add new</Button>
-				<Button padding=".6rem .8rem .6rem">Delete</Button>
+			<hr className="separator"/>
+			<div className="link-container">
+				<Button className="link" padding=".2rem .0rem .2rem">
+					<Icon icon={['fas', 'user-plus']} fixedWidth />
+					<span className="text">Add new</span>
+				</Button>
+				<Button className="link" padding=".2rem .0rem .2rem">
+					<Icon icon={['fas', 'user-slash']} fixedWidth />
+					<span className="text">Delete&nbsp;user(s)</span>
+				</Button>
 			</div>
 		</div>
 	)
@@ -71,34 +80,49 @@ export const AllUsersOptionsStyled = styled(AllUsersOptionsConnected)`
 	top: 0;
 	right: 100%;
 	z-index: 9;
-	font-size: 1rem;
-	width: 200px;
-	text-align: center;
+	font-size: 0.8rem;
+	min-width: 160px;
 	color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.epsilon};
 	background-color: ${({ theme }) => theme.name === 'light' ? theme.delta : theme.gamma};
 	border-radius: 20px;
-	padding: 1rem;
+	padding 0.5rem 1rem;
 	animation: ${optionsFadeIn} .2s forwards;
 
-	& div {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
+	${
+		minWidth.xs`
+			font-size: 1rem;
+			min-width: 200px;
+		`
+	}
+
+	.separator {
+		width: 100%;
+		background-color: ${({ theme }) => theme.beta};
+		margin: 1rem 0 0.4rem;
+		opacity: 0.5;
+
+		${
+			minWidth.xs`
+				margin: 1.2rem 0 0.4rem;
+			`
+		}
 	}
 
 	& label {
+		display: block;
 		font-weight: 700;
-		color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.beta};
+		color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.alpha};
+		text-align: center;
+		margin: .3rem 0 .6rem;
 	}
 
 	& select {
 		display: block;
 		width: 100%;
 		max-width: 100%;
-		font-size: 1rem;
+		font-size: 0.8rem;
 		font-weight: 700;
-		padding: .6rem 1.4rem .5rem .8rem;
+		padding: .4rem 1.1rem .3rem .6rem;
 		border-color: ${({ theme }) => theme.name === 'light' ? theme.gamma : theme.gamma};
 		border-radius: 0.5rem;
 		margin: 0;
@@ -108,6 +132,13 @@ export const AllUsersOptionsStyled = styled(AllUsersOptionsConnected)`
     background-repeat: no-repeat;
     background-position: right .7em top 50%;
     background-size: .65em auto;
+    transition: background-color .1s linear;
+
+    ${
+			minWidth.xs`
+				font-size: 1rem;
+			`
+		}
 
     &::-ms-expand {
     	display: none;
@@ -115,6 +146,7 @@ export const AllUsersOptionsStyled = styled(AllUsersOptionsConnected)`
 
     &:hover {
     	cursor: pointer;
+    	background-color: ${({ theme }) => theme.name === 'light' ? theme.epsilon : theme.alpha};
     	border-color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.epsilon};
     }
 
@@ -128,29 +160,40 @@ export const AllUsersOptionsStyled = styled(AllUsersOptionsConnected)`
 
 	}
 
-	& button {
-		font-weight: 700;
-		border-radius: 0.5rem;
-		margin: 0 0 0.5rem;
-		opacity: 0.7;
+	& .link-container {
 		width: 100%;
-
-		&:first-child {
-			background-color: ${({ theme }) => theme.zeta};
-		}
-
-		&:nth-child(2) {
-			background-color: ${({ theme }) => theme.eta};
-		}
-
-		&:hover {
-			color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.epsilon};
-			opacity: 1;
-		}
+		display: flex;
+		flex-direction: column;
 	}
 
-	& hr {
-		border-top-color: rgba(0, 0, 0, .3);
+	& .link {
+		font-weight: 700;
+		padding: .2rem 0;
+		color: ${({ theme }) => theme.name === 'light' ? theme.gamma : theme.beta};
+		background-color: transparent;
+		border: none;
+		margin: 0.3rem;
+		transition: all .1s linear;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		&:hover {
+			color: ${({ theme }) => theme.alpha};
+		}
+
+		&:active {
+			color: ${({ theme }) => theme.zeta};
+			transition: none;
+		}
+
+		& .text {
+			display: inline-block;
+			margin-left: 15px;
+			flex: 1;
+			text-align: left;
+		}
+
 	}
 
 `
