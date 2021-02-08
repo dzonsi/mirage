@@ -14,8 +14,6 @@ import { DefaultButton as Button } from '../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { SingleUserMoreStyled as More } from './SingleUserMore';
 
-import { useSetHeight } from '../../hooks/useSetHeight';
-
 function SingleUser(props) {
 
 	const { loading, users, error } = props;
@@ -29,8 +27,6 @@ function SingleUser(props) {
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
-
-	useSetHeight('transition-container', 'single-user', 300);
 
 	if(loading) {
 		return (
@@ -79,10 +75,6 @@ const mapStateToProps = state => ({
 
 const SingleUserStyled = styled(SingleUser)`
 	margin: 20px 0 0;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
 
 	& .wrapper {
 

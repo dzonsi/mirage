@@ -16,8 +16,6 @@ function Home(props) {
 		if(!props.users.length) {
 			props.dispatch(fetchUsers());
 		}
-		const transitionContainer = document.getElementById('transition-container');
-		transitionContainer.removeAttribute('style');
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -50,31 +48,5 @@ export const HomeStyled = styled(HomeConnected)`
 			margin: auto;
 		`}
 	}
-
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-
-	&.page-enter {
-		opacity: 0.5;
-		transform: translateX(-100%);
-	}
-	&.page-enter-active {
-		opacity: 1;
-		transform: translateX(0);
-		transition: all .3s linear;
-	}
-
-	&.page-exit {
-		opacity: 1;
-		transform: translateX(0);
-	}
-	&.page-exit-active {
-		opacity: 0.5;
-		transform: translateX(-100%);
-		transition: all .3s linear;
-	}
-
 
 `
