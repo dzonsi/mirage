@@ -7,6 +7,7 @@ import {
 import { HomeStyled as Home } from '../components/home/Home';
 import { AllUsersStyled as Users } from '../components/users/AllUsers';
 import { SingleUserConnected as User } from '../components/users/SingleUser';
+import { PostsStyled as Posts } from '../components/posts/Posts';
 
 const routes = (
 
@@ -19,6 +20,7 @@ const routes = (
   		  	<Route path="/users/:id/:resources" render={() => <h2>Resources</h2>}></Route>
   		  	<Route path="/users/:id" render={() => <User />}></Route>
   		  	<Route path="/users" render={() => <Users />}></Route>
+  		  	<Route path="/posts" render={() => <Posts />}></Route>
   		  	<Route path="*" render={() => (<h2>No Match</h2>)}></Route>
   			</Switch>
 			);
