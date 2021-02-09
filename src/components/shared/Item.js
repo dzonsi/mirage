@@ -88,6 +88,7 @@ export const ItemStyled = styled(Item)`
 	& a {
 		display: block;
 		height: 100%;
+		border-radius: 15px;
 
 		${minWidth.xs`
 			padding: 1rem;
@@ -98,6 +99,7 @@ export const ItemStyled = styled(Item)`
 			flex-direction: column;
 			justify-content: flex-start;
 			align-items: center;
+			border-radius: 20px;
 		`}
 	}
 
