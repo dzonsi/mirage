@@ -67,5 +67,11 @@ const mapDispatchToProps = {
 const PostsConnected = connect(mapStateToProps, mapDispatchToProps) (Posts);
 
 export const PostsStyled = styled(PostsConnected)`
+	margin: 20px 20px 0px 20px;
+
+	${minWidth.md`
+		max-width: 952px;
+		margin: 20px auto 0;
+	`}
 
 `

@@ -10,9 +10,9 @@ function Post(props) {
 
 	return (
 		<article className={props.className}>
-			<NavLink to={`/users/${post.userId}`}>User name</NavLink>
-			<h3>{post.title}</h3>
-			<p>{post.body}</p>
+			<NavLink to={`/users/${post.userId}`} className="user">User name</NavLink>
+			<h3 className="title">{post.title}</h3>
+			<p className="body">{post.body}</p>
 		</article>
 	)
 }
@@ -23,4 +23,23 @@ Post.propTypes = {
 
 export const PostStyled = styled(Post)`
 
+	background-color: ${({ theme }) => theme.name === 'light' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)'};
+	padding: 1rem;
+	margin-bottom: 1rem;
+	border-radius: 6px;
+
+	& .user, & .title, & .body {
+		font-size: 0.8rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.user {
+		display: inline-block;
+		font-size: 1rem;
+		font-weight: 700;
+	}
+
+	.title {
+		color: ${({ theme }) => theme.zeta};
+	}
 `
