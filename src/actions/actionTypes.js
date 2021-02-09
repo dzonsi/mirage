@@ -21,3 +21,10 @@ export const TOGGLE_USER_EDIT = 'TOGGLE_USER_EDIT';
 
 // users options
 export const TOGGLE_USERS_OPTIONS = 'TOGGLE_USERS_OPTIONS';
+
+// POSTS
+
+// fetch posts
+export const FETCH_POSTS_BEGIN = 'FETCH_POSTS_BEGIN';
+export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS';
+export const FETCH_POSTS_ERROR = 'FETCH_POSTS_ERROR';
