@@ -17,6 +17,10 @@ function Posts(props) {
 
 	const [showOptions, toggleOptions] = useState(false);
 
+	const [filter, setFilter] = useState('');
+
+	const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(filter.toLowerCase()) || post.body.toLowerCase().includes(filter.toLowerCase()));
+
 	const toggle = () => {
 		toggleOptions(!showOptions);
 	}
@@ -39,12 +43,12 @@ function Posts(props) {
 			<section id="posts" className={props.className}>
 				<Status
 					type="Posts"
-					options={<Options />}
+					options={<Options filter={filter} setFilter={setFilter} />}
 					showOptions={showOptions}
 					toggleUsersOptions={toggle}
 				/>
 				<div className="posts-container">
-					{posts.map(post => <Post key={post.id} post={post} />)}
+					{filteredPosts.map(post => <Post key={post.id} post={post} />)}
 				</div>
 			</section>
 		)
