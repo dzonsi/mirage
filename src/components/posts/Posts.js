@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 import styled from 'styled-components';
 
@@ -6,13 +6,20 @@ import { fetchPosts } from '../../action-creators/postsCreators';
 import PropTypes from 'prop-types';
 import { minWidth } from '../../theme/mixins/minWidth';
 
-import { StatusConnectedStyled as Status } from '../shared/Status';
+import { StatusStyled as Status } from '../shared/Status';
 import { LoadingStyled as Loading } from '../shared/Loading';
 import { PostStyled as Post } from './Post';
+import { PostsOptionsStyled as Options } from './PostsOptions';
 
 function Posts(props) {
 
 	const { posts, loading, error } = props;
+
+	const [showOptions, toggleOptions] = useState(false);
+
+	const toggle = () => {
+		toggleOptions(!showOptions);
+	}
 
 	useEffect(() => {
 		if(!posts.length) {
@@ -32,7 +39,9 @@ function Posts(props) {
 			<section id="posts" className={props.className}>
 				<Status
 					type="Posts"
-					options={<div>Test</div>}
+					options={<Options />}
+					showOptions={showOptions}
+					toggleUsersOptions={toggle}
 				/>
 				<div className="posts-container">
 					{posts.map(post => <Post key={post.id} post={post} />)}
