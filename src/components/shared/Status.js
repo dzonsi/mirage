@@ -1,8 +1,6 @@
 import React, { useRef, cloneElement } from "react";
 import styled from 'styled-components';
-import { connect } from "react-redux";
 import { useHistory } from 'react-router-dom';
-import { toggleUsersOptions } from '../../action-creators/usersCreators';
 import { minWidth } from '../../theme/mixins/minWidth';
 
 import { DefaultButton as Button } from '../shared/DefaultButton';
@@ -52,17 +50,7 @@ Status.propTypes = {
 	toggleUsersOptions: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = state => ({
-	showOptions: state.usersReducer.usersOptions
-});
-
-const mapDispatchToProps = {
-	toggleUsersOptions
-}
-
-export const StatusConnected = connect(mapStateToProps, mapDispatchToProps) (Status);
-
-export const StatusConnectedStyled = styled(StatusConnected)`
+export const StatusStyled = styled(Status)`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
