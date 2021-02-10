@@ -12,12 +12,13 @@ import PropTypes from 'prop-types';
 
 function Status(props) {
 
-	const type = props.type;
-	const Options = props.options;
-	const showOptions = props.showOptions;
-	const toggleOptions = props.toggleUsersOptions;
-	const history = useHistory();
-	const goBack = history.goBack;
+	const {
+		type,
+		options: Options,
+		showOptions,
+		toggleUsersOptions: toggleOptions
+	} = props;
+	const { goBack } = useHistory();
 
 	const btn = useRef(null);
 
