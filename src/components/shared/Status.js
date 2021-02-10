@@ -27,14 +27,14 @@ function Status(props) {
 
 	return (
 		<div className={props.className}>
-			<div>
-				{type && <h2>{type}</h2>}
-				<Button padding="0 5px" onClick={goBack}>
+			<div className="heading">
+				{type && <h2 className="title">{type}</h2>}
+				<Button className="back" padding="0 5px" onClick={goBack}>
 					<Icon icon={['fas', 'arrow-left']} />
 				</Button>
 			</div>
-			<div>
-				<Button padding="0 9px" onClick={toggleOptions} ref={btn}>
+			<div className="options">
+				<Button className="options-btn" padding="0 9px" onClick={toggleOptions} ref={btn}>
 					<Icon icon={['fas', 'ellipsis-v']} />
 				</Button>
 				{showOptions && cloneElement(Options, { getBtn: getBtn, toggleOptions: toggleOptions })}
@@ -68,25 +68,35 @@ export const StatusConnectedStyled = styled(StatusConnected)`
 	margin: 0 20px;
 	max-width: 952px;
 
-	& > div {
+	${minWidth.md`
+		margin: auto;
+	`}
+
+	& .heading, & .options {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-
-		&:first-child {
-
-			& button  {
-				order: 1;
-
-				${minWidth.xs`
-					display: none;
-				`}
-			}
-
-		}
 	}
 
-	& > div:nth-child(2) {
+	& .heading {
+
+		& .title {
+			margin: 0 0 0 8px;
+			order: 2;
+		}
+
+		& .back  {
+			order: 1;
+
+			${minWidth.xs`
+				display: none;
+			`}
+
+		}
+
+	}
+
+	& .options {
 		position: relative;
 		transition: font-size .2s linear;
 
@@ -95,21 +105,12 @@ export const StatusConnectedStyled = styled(StatusConnected)`
 		`}
 	}
 
-	& button {
+	& .back, & .options-btn {
 		transition: all .1s linear;
 
 		&:hover {
 			color: ${({ theme }) => theme.zeta};
 		}
 	}
-
-	& h2 {
-		margin: 0 0 0 8px;
-		order: 2;
-	}
-
-	${minWidth.md`
-		margin: auto;
-	`}
 
 `
