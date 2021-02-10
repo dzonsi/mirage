@@ -12,10 +12,11 @@ function PostsOptions(props) {
 	const close = props.toggleOptions;
 	const element = useRef(null);
 	useCloseOutside(element, btn, close);
+	const { filter, setFilter } = props;
 
 	return (
 		<div className={props.className} ref={element}>
-			<h2>PostsOptions</h2>
+			<input type="text" placeholder="Filter posts" value={filter} onInput={e => setFilter(e.target.value)} />
 		</div>
 	)
 }
