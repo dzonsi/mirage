@@ -6,6 +6,7 @@ import { fetchPosts } from '../../action-creators/postsCreators';
 import PropTypes from 'prop-types';
 import { minWidth } from '../../theme/mixins/minWidth';
 
+import { StatusConnectedStyled as Status } from '../shared/Status';
 import { LoadingStyled as Loading } from '../shared/Loading';
 import { PostStyled as Post } from './Post';
 
@@ -29,8 +30,13 @@ function Posts(props) {
 	if(posts.length) {
 		return (
 			<section id="posts" className={props.className}>
-				<h2>Posts</h2>
-				{posts.map(post => <Post key={post.id} post={post} />)}
+				<Status
+					type="Posts"
+					options={<div>Test</div>}
+				/>
+				<div className="posts-container">
+					{posts.map(post => <Post key={post.id} post={post} />)}
+				</div>
 			</section>
 		)
 	}
@@ -67,11 +73,14 @@ const mapDispatchToProps = {
 const PostsConnected = connect(mapStateToProps, mapDispatchToProps) (Posts);
 
 export const PostsStyled = styled(PostsConnected)`
-	margin: 20px 20px 0px 20px;
 
-	${minWidth.md`
-		max-width: 952px;
-		margin: 20px auto 0;
-	`}
+	& .posts-container {
+		margin: 20px 20px 0px 20px;
+
+		${minWidth.md`
+			max-width: 952px;
+			margin: 20px auto 0;
+		`}
+	}
 
 `
