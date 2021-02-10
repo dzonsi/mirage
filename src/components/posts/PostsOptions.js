@@ -16,7 +16,7 @@ function PostsOptions(props) {
 
 	return (
 		<div className={props.className} ref={element}>
-			<input type="text" placeholder="Filter posts" value={filter} onInput={e => setFilter(e.target.value)} />
+			<input type="text" placeholder="Filter posts" value={filter} onChange={e => setFilter(e.target.value)} />
 		</div>
 	)
 }
