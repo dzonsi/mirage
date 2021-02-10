@@ -28,6 +28,10 @@ export const PostStyled = styled(Post)`
 	margin-bottom: 1rem;
 	border-radius: 6px;
 
+	&:last-child {
+		margin-bottom: 0;
+	}
+
 	& .user, & .title, & .body {
 		font-size: 0.8rem;
 		margin-bottom: 0.5rem;
