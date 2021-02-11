@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import styled from 'styled-components';
 
 import { fetchPosts } from '../../action-creators/postsCreators';
+import { fetchUsers } from '../../action-creators/usersCreators';
 import PropTypes from 'prop-types';
 import { minWidth } from '../../theme/mixins/minWidth';
 
@@ -13,26 +14,34 @@ import { PostsOptionsStyled as Options } from './PostsOptions';
 
 function Posts(props) {
 
-	const { posts, loading, error } = props;
+	const { posts, loading, error, users, usersLoading, usersError } = props;
 
 	const [showOptions, toggleOptions] = useState(false);
 
 	const [filter, setFilter] = useState('');
 
-	const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(filter.toLowerCase()) || post.body.toLowerCase().includes(filter.toLowerCase()));
+	const filteredPosts = posts
+		.filter(post => post.title.toLowerCase()
+			.includes(filter.toLowerCase()) || post.body.toLowerCase()
+				.includes(filter.toLowerCase()));
 
 	const toggle = () => {
 		toggleOptions(!showOptions);
 	}
 
+	const getUser = id => users.filter(user => user.id === id)[0];
+
 	useEffect(() => {
 		if(!posts.length) {
 			props.fetchPosts();
 		}
+		if(!users.length) {
+			props.fetchUsers();
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	if(loading) {
+	if(loading || usersLoading) {
 		return (
 			<Loading />
 		)
@@ -48,13 +57,13 @@ function Posts(props) {
 					toggleUsersOptions={toggle}
 				/>
 				<div className="posts-container">
-					{filteredPosts.map(post => <Post key={post.id} post={post} />)}
+					{filteredPosts.map(post => <Post key={post.id} post={post} user={getUser(post.userId)} />)}
 				</div>
 			</section>
 		)
 	}
 
-	if(error) {
+	if(error || usersError) {
 		return (
 			<section id="posts" className={props.className}>
 				<h2>Posts</h2>
@@ -70,17 +79,24 @@ function Posts(props) {
 Posts.propTypes = {
 	posts: PropTypes.array.isRequired,
 	loading: PropTypes.bool.isRequired,
-	error: PropTypes.any
+	error: PropTypes.any,
+	users: PropTypes.array.isRequired,
+	usersLoading: PropTypes.bool.isRequired,
+	usersError: PropTypes.any
 }
 
 const mapStateToProps = state => ({
 	posts: state.postsReducer.posts,
 	loading: state.postsReducer.loading,
-	error: state.postsReducer.error
+	error: state.postsReducer.error,
+	users: state.usersReducer.users,
+	usersLoading: state.usersReducer.loading,
+	usersError: state.usersReducer.error
 });
 
 const mapDispatchToProps = {
-	fetchPosts
+	fetchPosts,
+	fetchUsers
 }
 
 const PostsConnected = connect(mapStateToProps, mapDispatchToProps) (Posts);
