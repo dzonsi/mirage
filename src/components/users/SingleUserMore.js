@@ -5,6 +5,7 @@ import { minWidth } from '../../theme/mixins/minWidth';
 import { DefaultButton as Button } from '../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { SingleUserOptionsStyled as Options } from './SingleUserOptions';
+import { OptionsOverlayStyled as Overlay } from '../shared/OptionsOverlay';
 
 function SingleUserMore(props) {
 
@@ -21,6 +22,7 @@ function SingleUserMore(props) {
 				<Icon icon={['fas', 'ellipsis-v']} />
 			</Button>
 			{show && <Options show={show} setShow={setShow} getBtn={getBtn} /> }
+			{show && <Overlay />}
 		</div>
 	)
 

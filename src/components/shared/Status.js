@@ -5,6 +5,7 @@ import { minWidth } from '../../theme/mixins/minWidth';
 
 import { DefaultButton as Button } from '../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
+import { OptionsOverlayStyled as Overlay } from '../shared/OptionsOverlay';
 
 import PropTypes from 'prop-types';
 
@@ -37,6 +38,7 @@ function Status(props) {
 					<Icon icon={['fas', 'ellipsis-v']} />
 				</Button>
 				{showOptions && cloneElement(Options, { getBtn: getBtn, toggleOptions: toggleOptions })}
+				{showOptions && <Overlay />}
 			</div>
 		</div>
 	)
