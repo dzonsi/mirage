@@ -6,11 +6,11 @@ import { minWidth } from '../../theme/mixins/minWidth';
 
 function Post(props) {
 
-	const { post } = props;
+	const { post, user } = props;
 
 	return (
 		<article className={props.className}>
-			<NavLink to={`/users/${post.userId}`} className="user">User name</NavLink>
+			<NavLink to={`/users/${post.userId}`} className="user">{user.name}</NavLink>
 			<h3 className="title">{post.title}</h3>
 			<p className="body">{post.body}</p>
 		</article>
@@ -19,6 +19,7 @@ function Post(props) {
 
 Post.propTypes = {
 	post: PropTypes.object.isRequired,
+	user: PropTypes.object.isRequired
 }
 
 export const PostStyled = styled(Post)`
