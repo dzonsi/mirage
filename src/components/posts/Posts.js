@@ -6,6 +6,10 @@ import { fetchPosts } from '../../action-creators/postsCreators';
 import { fetchUsers } from '../../action-creators/usersCreators';
 import PropTypes from 'prop-types';
 import { minWidth } from '../../theme/mixins/minWidth';
+import {
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
 
 import { StatusStyled as Status } from '../shared/Status';
 import { LoadingStyled as Loading } from '../shared/Loading';
@@ -56,9 +60,13 @@ function Posts(props) {
 					showOptions={showOptions}
 					toggleUsersOptions={toggle}
 				/>
-				<div className="posts-container">
-					{filteredPosts.map(post => <Post key={post.id} post={post} user={getUser(post.userId)} />)}
-				</div>
+				<TransitionGroup className="posts-container">
+					{filteredPosts.map(post => (
+						<CSSTransition key={post.id} timeout={300} classNames="post">
+							<Post post={post} user={getUser(post.userId)} />
+						</CSSTransition>
+					))}
+				</TransitionGroup>
 			</section>
 		)
 	}
@@ -110,6 +118,25 @@ export const PostsStyled = styled(PostsConnected)`
 			max-width: 952px;
 			margin: 20px auto 0;
 		`}
+	}
+
+	& .post-enter {
+	  opacity: 0;
+	  transform: scale(0.9);
+	}
+ 	& .post-enter-active {
+	  opacity: 1;
+	  transform: scale(1);
+	  transition: all 300ms ease-in;
+	}
+	& .post-exit {
+	  opacity: 1;
+	  transform: scale(1);
+	}
+	& .post-exit-active {
+	  opacity: 0;
+	  transform: scale(0.9);
+	  transition: all 300ms ease-in;
 	}
 
 `
