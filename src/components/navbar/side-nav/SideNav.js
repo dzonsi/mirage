@@ -18,16 +18,32 @@ function SideNav(props) {
 	return (
 		<div className={props.className}>
 			<nav className="nav">
-				<div className="links-container">
-					<NavLink onClick={toggle} exact to="/">Home</NavLink>
-					<NavLink onClick={toggle} to="/users">Users</NavLink>
-					<NavLink onClick={toggle} to="/posts">Posts</NavLink>
-					<NavLink onClick={toggle} to="/comments">Comments</NavLink>
-					<NavLink onClick={toggle} to="/todos">Todos</NavLink>
-					<NavLink onClick={toggle} to="/photos">Photos</NavLink>
-					<NavLink onClick={toggle} to="/contact">Contact Us</NavLink>
-					<NavLink onClick={toggle} to="/about">About</NavLink>
-				</div>
+				<ul className="links-container">
+					<li>
+						<NavLink className="link" activeClassName="active" onClick={toggle} exact to="/">Home</NavLink>
+					</li>
+					<li>
+						<NavLink className="link" activeClassName="active" onClick={toggle} to="/users">Users</NavLink>
+					</li>
+					<li>
+						<NavLink className="link" activeClassName="active" onClick={toggle} to="/posts">Posts</NavLink>
+					</li>
+					<li>
+						<NavLink className="link" activeClassName="active" onClick={toggle} to="/comments">Comments</NavLink>
+					</li>
+					<li>
+						<NavLink className="link" activeClassName="active" onClick={toggle} to="/todos">Todos</NavLink>
+					</li>
+					<li>
+						<NavLink className="link" activeClassName="active" onClick={toggle} to="/photos">Photos</NavLink>
+					</li>
+					<li>
+						<NavLink className="link" activeClassName="active" onClick={toggle} to="/contact">Contact Us</NavLink>
+					</li>
+					<li>
+						<NavLink className="link" activeClassName="active" onClick={toggle} to="/about">About</NavLink>
+					</li>
+				</ul>
 			</nav>
 			<Button className="close-btn" onClick={toggle} title="Close side navigation">
 				<Icon icon={['fas', 'times']} />
@@ -102,7 +118,8 @@ const SideNavStyled = styled(SideNav)`
 			}
 		}
 
-		& a {
+		& .link {
+			display: block;
 			font-size: 20px;
 			font-weight: 700;
 			color: ${({ theme }) => theme.beta};
