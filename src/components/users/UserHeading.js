@@ -1,24 +1,14 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
 import { minWidth } from '../../theme/mixins/minWidth';
-
 import PropTypes from 'prop-types';
+import { importAll, getRandom } from '../../functions/functions';
 
 // import all images as object
-function importAll(r) {
-  let images = {};
-  r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); return false; });
-  return images;
-}
 const images = importAll(require.context('../../assets/images/avatar', false, /\.png/));
 
 // array from all images keys
 const imgArray = Object.keys(images);
-
-// math random between to numbers
-function getRandom(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) ) + min;
-}
 
 function UserHeading(props) {
 

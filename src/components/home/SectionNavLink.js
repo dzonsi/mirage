@@ -6,14 +6,12 @@ import { minWidth } from '../../theme/mixins/minWidth';
 
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
+import { capitalize } from '../../functions/functions';
+
 
 function SectionNavLink(props) {
 
 	const { to, iconName, iconPrefix } = props;
-
-	const capitalize = text => {
-		return text.charAt(0).toUpperCase() + text.slice(1);
-	}
 
 	return (
 		<section className={props.className}>

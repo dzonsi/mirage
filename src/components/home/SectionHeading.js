@@ -4,14 +4,11 @@ import styled from 'styled-components';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import { minWidth } from '../../theme/mixins/minWidth';
+import { capitalize } from '../../functions/functions';
 
 function SectionHeading(props) {
 
 	const { to } = props;
-
-	const capitalize = text => {
-		return text.charAt(0).toUpperCase() + text.slice(1);
-	}
 
 	return (
 		<NavLink to={to} className={props.className}>
