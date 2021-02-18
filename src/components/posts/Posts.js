@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import styled from 'styled-components';
 
 import { fetchPosts } from '../../action-creators/postsCreators';
+import { togglePostsOptions } from '../../action-creators/postsCreators';
 import { fetchUsers } from '../../action-creators/usersCreators';
 import PropTypes from 'prop-types';
 import { minWidth } from '../../theme/mixins/minWidth';
@@ -18,9 +19,16 @@ import { PostsOptionsStyled as Options } from './PostsOptions';
 
 function Posts(props) {
 
-	const { posts, loading, error, users, usersLoading, usersError } = props;
-
-	const [showOptions, toggleOptions] = useState(false);
+	const {
+		posts,
+		loading,
+		error,
+		showOptions,
+		togglePostsOptions: toggle,
+		users,
+		usersLoading,
+		usersError
+	} = props;
 
 	const [filter, setFilter] = useState('');
 
@@ -28,10 +36,6 @@ function Posts(props) {
 		.filter(post => post.title.toLowerCase()
 			.includes(filter.toLowerCase()) || post.body.toLowerCase()
 				.includes(filter.toLowerCase()));
-
-	const toggle = () => {
-		toggleOptions(!showOptions);
-	}
 
 	const getUser = id => users.filter(user => user.id === id)[0];
 
@@ -88,6 +92,7 @@ Posts.propTypes = {
 	posts: PropTypes.array.isRequired,
 	loading: PropTypes.bool.isRequired,
 	error: PropTypes.any,
+	showOptions: PropTypes.bool.isRequired,
 	users: PropTypes.array.isRequired,
 	usersLoading: PropTypes.bool.isRequired,
 	usersError: PropTypes.any
@@ -97,6 +102,7 @@ const mapStateToProps = state => ({
 	posts: state.postsReducer.posts,
 	loading: state.postsReducer.loading,
 	error: state.postsReducer.error,
+	showOptions: state.postsReducer.postsOptions,
 	users: state.usersReducer.users,
 	usersLoading: state.usersReducer.loading,
 	usersError: state.usersReducer.error
@@ -104,6 +110,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
 	fetchPosts,
+	togglePostsOptions,
 	fetchUsers
 }
 
