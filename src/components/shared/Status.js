@@ -15,8 +15,9 @@ function Status(props) {
 		type,
 		options: Options,
 		showOptions,
-		toggleUsersOptions: toggleOptions
+		toggleOptions
 	} = props;
+
 	const { goBack } = useHistory();
 
 	const btn = useRef(null);
@@ -37,7 +38,7 @@ function Status(props) {
 				<Button className="options-btn" padding="0 9px" onClick={toggleOptions} ref={btn}>
 					<Icon icon={['fas', 'ellipsis-v']} />
 				</Button>
-				{showOptions && cloneElement(Options, { getBtn: getBtn, toggleOptions: toggleOptions })}
+				{showOptions && cloneElement(Options, { getBtn, toggleOptions })}
 				{showOptions && <Overlay />}
 			</div>
 		</div>
@@ -49,7 +50,7 @@ Status.propTypes = {
 	type: PropTypes.string,
 	options: PropTypes.object.isRequired,
 	showOptions: PropTypes.bool.isRequired,
-	toggleUsersOptions: PropTypes.func.isRequired,
+	toggleOptions: PropTypes.func.isRequired,
 }
 
 export const StatusStyled = styled(Status)`
@@ -58,6 +59,8 @@ export const StatusStyled = styled(Status)`
 	align-items: center;
 	margin: 0 20px;
 	max-width: 952px;
+	position: sticky;
+	top: 88px;
 
 	${minWidth.md`
 		margin: auto;
