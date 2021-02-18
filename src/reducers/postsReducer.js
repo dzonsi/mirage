@@ -1,11 +1,13 @@
 import { FETCH_POSTS_BEGIN } from '../actions/actionTypes';
 import { FETCH_POSTS_SUCCESS } from '../actions/actionTypes';
 import { FETCH_POSTS_ERROR } from '../actions/actionTypes';
+import { TOGGLE_POSTS_OPTIONS } from '../actions/actionTypes';
 
 const initialState = {
 	posts: [],
 	loading: false,
 	error: null,
+	postsOptions: false
 };
 
 export default function postsReducer(state = initialState, action) {
@@ -29,6 +31,11 @@ export default function postsReducer(state = initialState, action) {
 				loading: false,
 				error: action.payload,
 				posts: []
+			}
+		case TOGGLE_POSTS_OPTIONS:
+			return {
+				...state,
+				postsOptions: !state.postsOptions
 			}
 		default:
 			return state;
