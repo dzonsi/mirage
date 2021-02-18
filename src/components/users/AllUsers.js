@@ -21,7 +21,7 @@ function AllUsers(props) {
 				type="Users"
 				options={<Options />}
 				showOptions={showOptions}
-				toggleUsersOptions={toggleUsersOptions}
+				toggleOptions={toggleUsersOptions}
 			/>
 			<AllUsersBody />
 		</section>
