@@ -21,7 +21,8 @@ function Post(props) {
 			<div className="post-heading">
 				<img className="user-img" src={images[imgArray[num]]} alt="User profile" />
 				<NavLink to={`/users/${post.userId}`} className="user">
-					<span className="name">{user.name}</span>&nbsp;
+					<span className="name">{user.name}</span>
+					<span>&nbsp;</span>
 					<span className="username">@{user.username}</span>
 				</NavLink>
 			</div>
@@ -45,6 +46,10 @@ export const PostStyled = React.memo(styled(Post)`
 	margin-bottom: 1rem;
 	border-radius: 6px;
 
+	${minWidth.sm`
+		padding: 1.5rem;
+	`}
+
 	&:last-child {
 		margin-bottom: 0;
 	}
@@ -61,29 +66,92 @@ export const PostStyled = React.memo(styled(Post)`
 		width: 30px;
 		height: 30px;
 		border-radius: 50%;
-	}
+		transition: all .1s linear;
 
-	& .title, & .body {
-		font-size: 0.8rem;
-		margin-bottom: 0.5rem;
+		${minWidth.xs`
+			width: 50px;
+			height: 50px;
+		`}
+
+		${minWidth.sm`
+			width: 70px;
+			height: 70px;
+		`}
 	}
 
 	& .user {
 		display: inline-block;
 		font-size: 0.8rem;
 		margin-left: 10px;
+		position: relative;
+
+		&:after {
+			content: "";
+			display: block;
+			width: 0;
+			height: 2px;
+			border-radius: 1px;
+			position: absolute;
+			left: 50%;
+			bottom: -2px;
+			background-color: ${({ theme }) => theme.name === 'light' ? theme.gamma : theme.beta};
+			transition: all .2s ease-out;
+
+		}
+
+		${minWidth.xs`
+			margin-left: 20px;
+		`}
+
+		&:hover, &:focus {
+			&:after {
+				width: 100%;
+				left: 0;
+			}
+		}
+
+		&:active {
+			color: ${({ theme }) => theme.zeta};
+
+			& .username {
+				color: ${({ theme }) => theme.zeta};
+			}
+		}
 	}
 
 	& .name {
 		font-size: 1rem;
 		font-weight: 700;
+
+		${minWidth.xs`
+			font-size: 1.2rem;
+		`}
 	}
 
 	& .username {
 		color: ${({ theme }) => theme.beta};
+
+		${minWidth.xs`
+			font-size: 1rem;
+		`}
+	}
+
+	& .title, & .body {
+		font-size: 0.8rem;
+		margin-bottom: 0.5rem;
+
+		${minWidth.xs`
+			font-size: 1rem;
+			margin: 0 70px 0.5rem 70px;
+		`}
+
+		${minWidth.sm`
+			margin: 0 90px 0.5rem 90px;
+		`}
 	}
 
 	& .title {
-		color: ${({ theme }) => theme.zeta};
+		color: ${({ theme }) => theme.iota};
+		font-weight: 700;
 	}
 `, areEqual);
