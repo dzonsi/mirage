@@ -62,7 +62,7 @@ function Posts(props) {
 					type="Posts"
 					options={<Options filter={filter} setFilter={setFilter} />}
 					showOptions={showOptions}
-					toggleUsersOptions={toggle}
+					toggleOptions={toggle}
 				/>
 				<TransitionGroup className="posts-container">
 					{filteredPosts.map(post => (
