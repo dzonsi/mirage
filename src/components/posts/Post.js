@@ -36,7 +36,9 @@ Post.propTypes = {
 	user: PropTypes.object.isRequired
 }
 
-export const PostStyled = styled(Post)`
+const areEqual = (prevProps, nextProps) => true;
+
+export const PostStyled = React.memo(styled(Post)`
 
 	background-color: ${({ theme }) => theme.name === 'light' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)'};
 	padding: 1rem;
@@ -84,4 +86,4 @@ export const PostStyled = styled(Post)`
 	& .title {
 		color: ${({ theme }) => theme.zeta};
 	}
-`
+`, areEqual);
