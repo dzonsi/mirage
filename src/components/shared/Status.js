@@ -61,6 +61,7 @@ export const StatusStyled = styled(Status)`
 	max-width: 952px;
 	position: sticky;
 	top: 88px;
+	z-index: 7;
 
 	${minWidth.md`
 		margin: auto;
