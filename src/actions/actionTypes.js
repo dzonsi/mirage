@@ -31,3 +31,6 @@ export const FETCH_POSTS_ERROR = 'FETCH_POSTS_ERROR';
 
 // posts options
 export const TOGGLE_POSTS_OPTIONS = 'TOGGLE_POSTS_OPTIONS';
+
+// posts filter
+export const CHANGE_POSTS_FILTER = 'CHANGE_POSTS_FILTER';
