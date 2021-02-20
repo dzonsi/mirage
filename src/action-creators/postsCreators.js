@@ -2,6 +2,7 @@ import { FETCH_POSTS_BEGIN } from '../actions/actionTypes';
 import { FETCH_POSTS_SUCCESS } from '../actions/actionTypes';
 import { FETCH_POSTS_ERROR } from '../actions/actionTypes';
 import { TOGGLE_POSTS_OPTIONS } from '../actions/actionTypes';
+import { CHANGE_POSTS_FILTER } from '../actions/actionTypes';
 
 import axios from 'axios';
 
@@ -39,4 +40,9 @@ export function fetchPosts() {
 // posts options
 export const togglePostsOptions = () => ({
 	type: TOGGLE_POSTS_OPTIONS
+});
+
+export const changePostsFilter = text => ({
+	type: CHANGE_POSTS_FILTER,
+	payload: text
 });
