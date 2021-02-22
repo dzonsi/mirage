@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { minWidth } from '../../../theme/mixins/minWidth';
@@ -13,14 +13,21 @@ import PropTypes from 'prop-types';
 
 function SideNav(props) {
 
-	const toggle = props.toggleSideNav;
+	const { sideNavShow: show, toggleSideNav: toggle } = props;
+	const home = useRef(null);
+
+	useEffect(() => {
+		if(show) {
+			home.current.focus();
+		}
+	}, [show]);
 
 	return (
 		<div className={props.className}>
 			<nav className="nav">
 				<ul className="links-container">
 					<li>
-						<NavLink className="link" activeClassName="active" onClick={toggle} exact to="/">Home</NavLink>
+						<NavLink className="link" activeClassName="active" onClick={toggle} exact to="/" ref={home}>Home</NavLink>
 					</li>
 					<li>
 						<NavLink className="link" activeClassName="active" onClick={toggle} to="/users">Users</NavLink>
@@ -86,11 +93,13 @@ const SideNavStyled = styled(SideNav)`
 	z-index: 15;
 	background-color: ${({ theme }) => theme.delta
 	};
+	visibility: hidden;
 	transform: translateX(0);
 	transition: transform .3s linear;
 	${({ sideNavShow }) => {
 		if(sideNavShow) {
 			return `
+				visibility: visible;
 				transform: translateX(100%);
 			`
 		}
