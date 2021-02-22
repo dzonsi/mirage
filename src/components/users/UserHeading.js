@@ -91,13 +91,7 @@ export const UserHeadingStyled = styled(UserHeading)`
 		font-size: 1.3rem;
 		font-weight: 700;
 		padding: .2rem .4rem;
-		max-width: 190px;
-		word-break: break-word;
-		transition: font-size .2s linear, background-color .2s;
-
-		@media screen and (min-width: 450px) {
-			max-width: 240px;
-		}
+		transition: font-size .2s linear;
 
 		${minWidth.xs`
 			font-size: 1.5rem;
@@ -105,30 +99,25 @@ export const UserHeadingStyled = styled(UserHeading)`
 
 		${minWidth.sm`
 			font-size: 1.8rem;
-			max-width: 300px;
 		`}
-
-		&[contenteditable='true'] {
-			background-color: rgba(255, 255, 255, 0.25);
-		}
 
 	}
 
 	& .username {
 		font-weight: 700;
-		color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.beta};
+		color: ${({ theme }) => theme.eta};
 		padding: .2rem .4rem;
-		margin: 0 0 0.5rem 0;
+		margin: 0;
 		transition: font-size .2s linear;
+
+		${minWidth.xs`
+			font-size: 1.3rem;
+		`}
 
 		${minWidth.sm`
 			font-size: 1.3rem;
 		`}
 
-		&:last-child {
-			margin: 0;
-			color: ${({ theme }) => theme.eta};
-		}
 	}
 
 `
