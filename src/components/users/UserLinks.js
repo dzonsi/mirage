@@ -9,17 +9,23 @@ function UserLinks(props) {
 
 	return (
 		<div className={props.className}>
-			<NavLink to={`/users/${params.id}/posts`}>Posts</NavLink>
-			<NavLink to={`/users/${params.id}/albums`}>Albums</NavLink>
-			<NavLink to={`/users/${params.id}/todos`}>Todos</NavLink>
+			<div className="link-container">
+				<NavLink className="link" to={`/users/${params.id}/posts`}>Posts</NavLink>
+				<NavLink className="link" to={`/users/${params.id}/comments`}>Comments</NavLink>
+			</div>
+			<div className="link-container">
+				<NavLink className="link" to={`/users/${params.id}/todos`}>Todos</NavLink>
+				<NavLink className="link" to={`/users/${params.id}/photos`}>Photos</NavLink>
+			</div>
 		</div>
 	)
 
 }
 
 export const UserLinksStyled = styled(UserLinks)`
-	margin: 20px 10px 0;
+	margin: 10px 10px 0;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
 
@@ -27,25 +33,29 @@ export const UserLinksStyled = styled(UserLinks)`
 		margin-top: 50px;
 	`}
 
-	& a {
+	& .link-container {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 80px;
-		height: 80px;
-		color: ${({ theme }) => theme.name === 'light' ? theme.beta : theme.beta };
-		background-color: ${({ theme }) => theme.beta};
+		flex: 1 1 100%;
+	}
+
+	& .link {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex: 0 0 calc(50% - 1rem);
 		font-weight: 700;
+		color: ${({ theme }) => theme.name === 'light' ? theme.beta : theme.alpha};
+		background-color: ${({ theme }) => theme.name === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)'};
+		border-radius: 6px;
 		padding: 0.5rem 1rem;
-		border-radius: 50%;
-		margin: 0 0.5rem;
-    background: linear-gradient(-45deg, rgba(0,10,10,0.3), rgba(255,255,255,0.25));
-    box-shadow: none;
-    transition: all .1s linear;
+		margin: 0.25rem;
+		opacity: 0.6;
+		transition: all .1s linear;
 
     ${minWidth.xs`
-			width: 100px;
-			height: 100px;
+
 		`}
 
 		${minWidth.sm`
@@ -54,8 +64,6 @@ export const UserLinksStyled = styled(UserLinks)`
 
 		${minWidth.md`
 			font-size: 1.1rem;
-			width: 120px;
-			height: 120px;
 		`}
 
 		${minWidth.lg`
@@ -63,26 +71,15 @@ export const UserLinksStyled = styled(UserLinks)`
 		`}
 
 		&:hover {
-			color: ${({ theme }) => theme.name === 'light' ? theme.beta : theme.beta };
-			box-shadow: ${({ theme }) => theme.name === 'light' ? `4px 4px 16px 0 rgba(0, 0, 0, 0.5),
-			-4px -4px 16px 0 rgba(255, 255, 255, 0.2);` : `4px 4px 16px 0 #000,
-			-4px -4px 16px 0 rgba(255, 255, 255, 0.2);` };
+			opacity: 1;
+		}
 
-			${minWidth.xs`
-				font-size: 1.3rem;
-			`}
-
-			${minWidth.lg`
-				font-size: 1.4rem;
-			`}
-
+		&:focus {
+			opacity: 1;
 		}
 
 		&:active {
-			background: linear-gradient(-45deg, rgba(255,255,255,0.25 ), rgba(0,10,10,0.3));
-			box-shadow: ${({ theme }) => theme.name === 'light' ? `4px 4px 8px 0 rgba(0, 0, 0, 0.5),
-			-4px -4px 8px 0 rgba(255, 255, 255, 0.2);` : `4px 4px 8px 0 #000,
-			-4px -4px 8px 0 rgba(255, 255, 255, 0.2);` };
+			opacity: 1;
 		}
 	}
 
