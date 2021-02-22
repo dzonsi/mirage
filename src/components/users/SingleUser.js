@@ -115,13 +115,26 @@ const SingleUserStyled = styled(SingleUser)`
 	& .divider {
 		background-color: ${({ theme }) => theme.name === 'light' ? theme.delta : theme.gamma};
 		background: linear-gradient(to right, ${({ theme }) => `${theme.epsilon}, ${theme.name === 'light' ? theme.delta : theme.gamma}, ${theme.epsilon}`});
-		margin: 10px auto;
+		margin: 10px;
 		height: 1px;
 		border: none;
 		transition: transform .2s linear;
 
 		${minWidth.xs`
-			display: none;
+			width: 150px;
+			height: 6px;
+			margin-left: 50px;
+			background: none;
+			background-color: ${({ theme }) => theme.eta};
+			opacity: 0.5;
+
+			&:nth-of-type(2) {
+				width: 300px;
+			}
+
+			&:nth-of-type(3) {
+				width: 450px;
+			}
 		`}
 
 	}
