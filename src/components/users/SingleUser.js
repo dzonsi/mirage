@@ -114,44 +114,15 @@ const SingleUserStyled = styled(SingleUser)`
 
 	& .divider {
 		background-color: ${({ theme }) => theme.name === 'light' ? theme.delta : theme.gamma};
-		margin: 10px;
+		background: linear-gradient(to right, ${({ theme }) => `${theme.epsilon}, ${theme.name === 'light' ? theme.delta : theme.gamma}, ${theme.epsilon}`});
+		margin: 10px auto;
+		height: 1px;
+		border: none;
 		transition: transform .2s linear;
 
-		&:first-of-type {
-
-			${minWidth.xs`
-				transform: rotate(-15deg) translate(10px, -20px);
-			`}
-
-			${minWidth.sm`
-				transform: rotate(-15deg) translate(10px, -35px);
-			`}
-
-		}
-
-		&:nth-of-type(2) {
-
-			${minWidth.xs`
-				transform: rotate(5deg) translate(10px, 10px);
-			`}
-
-			${minWidth.md`
-				transform: rotate(15deg) translate(10px, -10px);
-			`}
-
-		}
-
-		&:nth-of-type(3) {
-
-			${minWidth.xs`
-				transform: rotate(-10deg) translate(0px, 0px);
-			`}
-
-			${minWidth.md`
-				transform: rotate(-10deg) translate(0px, -20px);
-			`}
-
-		}
+		${minWidth.xs`
+			display: none;
+		`}
 
 	}
 
