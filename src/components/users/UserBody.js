@@ -36,8 +36,7 @@ export const UserBodyStyled = styled(UserBody)`
 	transition: margin .2s linear;
 
 	${minWidth.xs`
-		text-align: center;
-		margin: 10px 10px 10px 200px;
+		margin: 10px 10px 10px 125px;
 	`}
 
 	${minWidth.md`
@@ -47,6 +46,7 @@ export const UserBodyStyled = styled(UserBody)`
 	& p {
 		font-size: 0.8rem;
 		margin: 0 0 0.5rem 0;
+		font-weight: 700;
 
 		${minWidth.xs`
 			font-size: 1rem;
@@ -59,7 +59,7 @@ export const UserBodyStyled = styled(UserBody)`
 	}
 
 	& span {
-		font-weight: 700;
+		font-weight: 400;
 		color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.beta};
 	}
 

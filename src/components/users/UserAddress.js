@@ -36,7 +36,7 @@ export const UserAddressStyled = styled(UserAddress)`
 	transition: margin .2s linear;
 
 	${minWidth.xs`
-		margin: 10px 10px 10px 100px;
+		margin: 10px 10px 10px 125px;
 	`}
 
 	${minWidth.md`
@@ -46,6 +46,7 @@ export const UserAddressStyled = styled(UserAddress)`
 	& p {
 		font-size: 0.8rem;
 		margin: 0 0 0.5rem 0;
+		font-weight: 700;
 
 		${minWidth.xs`
 			font-size: 1rem;
@@ -58,7 +59,7 @@ export const UserAddressStyled = styled(UserAddress)`
 	}
 
 	& span {
-		font-weight: 700;
+		font-weight: 400;
 		color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.beta};
 	}
 
