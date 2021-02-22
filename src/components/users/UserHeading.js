@@ -15,24 +15,15 @@ function UserHeading(props) {
 	const { user } = props;
 	const num = getRandom(0, imgArray.length - 1);
 
-	const [tempUser, setTempUser] = useState({...user});
-
-	const [edit, setEdit] = useState(false);
-
-	function changeUsername(value) {
-		setTempUser(value);
-	}
-
 	if(user) {
 		return (
 			<div className={props.className}>
-				<img src={images[imgArray[num]]} alt="User profile" />
-				<div>
-					<h2 id="name" className="name" contentEditable={edit ? true : false}>{user.name}</h2>
-					<p>
-						<input onInput={e => changeUsername(e.target.value)} id="input" type="text" name="username" value={tempUser.username} className="username" disabled={edit ? false : true} />
+				<img className="user-img" src={images[imgArray[num]]} alt="User profile" />
+				<div className="user">
+					<h2 className="name">{user.name}</h2>
+					<p className="username">
+						<span className="u-s-n">"</span>{user.username}<span className="u-s-n">"</span>
 					</p>
-					<p onClick={() => setEdit(!edit)}>Edit: {edit ? 'true' : 'false'}</p>
 				</div>
 			</div>
 		)
@@ -53,7 +44,7 @@ UserHeading.propTypes = {
 export const UserHeadingStyled = styled(UserHeading)`
 	display: flex;
 
-	& img {
+	& .user-img {
 		width: 100px;
 		height: 100px;
 		border-radius: 15px;
@@ -81,7 +72,7 @@ export const UserHeadingStyled = styled(UserHeading)`
 
 	}
 
-	& div {
+	& .user {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -123,15 +114,12 @@ export const UserHeadingStyled = styled(UserHeading)`
 
 	}
 
-	& p {
-		font-size: 0.8rem;
+	& .username {
+		font-weight: 700;
 		color: ${({ theme }) => theme.name === 'light' ? theme.alpha : theme.beta};
+		padding: .2rem .4rem;
 		margin: 0 0 0.5rem 0;
 		transition: font-size .2s linear;
-
-		${minWidth.xs`
-			font-size: 1rem;
-		`}
 
 		${minWidth.sm`
 			font-size: 1.3rem;
@@ -140,34 +128,6 @@ export const UserHeadingStyled = styled(UserHeading)`
 		&:last-child {
 			margin: 0;
 			color: ${({ theme }) => theme.eta};
-		}
-	}
-
-	& .username {
-
-		width: 190px;
-		max-width: 190px;
-
-		@media screen and (min-width: 450px) {
-			width: 240px;
-			max-width: 240px;
-		}
-
-		${minWidth.sm`
-			width: 300px;
-			max-width: 300px;
-		`}
-
-		color: ${({ theme }) => theme.eta};
-		background-color: rgba(255, 255, 255, 0.25);
-		padding: .2rem .4rem;
-		border: none;
-		transition: background-color .2s;
-
-		&:disabled {
-			color: ${({ theme }) => theme.eta};
-			background-color: transparent;
-			border: none;
 		}
 	}
 
