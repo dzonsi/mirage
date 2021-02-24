@@ -29,13 +29,13 @@ function SideNavToggle(props) {
 			toggleFirst();
 			return;
 		}
-		// every other render, set focus back to open side menu button
-		// when side menu is closed and toggle aria-expanded attribute
+		// every other render, hide button when side menu is open
+		// and set focus back to button when side menu is closed
 		if(!show) {
+			btn.current.style.visibility = 'visible';
 			btn.current.focus();
-			btn.current.removeAttribute('aria-expanded');
 		} else {
-			btn.current.setAttribute('aria-expanded', true);
+			btn.current.style.visibility = 'hidden';
 		}
 	}, [show]);
 
@@ -45,8 +45,9 @@ function SideNavToggle(props) {
 			onClick={toggle}
 			title="Open side navigation"
 			ref={btn}
+			aria-label="Open side navigation"
 			aria-haspopup="true"
-			aria-controls="side-menu"
+			aria-controls="nav"
 		>
 			<Icon icon={['fas', 'bars']} />
 		</Button>
