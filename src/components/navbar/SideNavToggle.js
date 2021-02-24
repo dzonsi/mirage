@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 import { minWidth } from '../../theme/mixins/minWidth';
@@ -8,18 +8,45 @@ import { DefaultButton as Button } from '../shared/DefaultButton';
 // redux
 import { connect } from 'react-redux';
 import { toggleSideNav } from '../../action-creators/navbarCreators';
+import { toggleSideNavFirst } from '../../action-creators/navbarCreators';
 
 import PropTypes from 'prop-types';
 
 function SideNavToggle(props) {
 
-	const { toggleSideNav: toggle } = props;
+	const {
+		toggleSideNav: toggle,
+		sideNavShow: show,
+		sideNavFirst: first,
+		toggleSideNavFirst: toggleFirst
+	} = props;
+	const btn = useRef(null);
+
+	useEffect(() => {
+		// first render of app, don't set focus to button element
+		// and set first to false
+		if(first) {
+			toggleFirst();
+			return;
+		}
+		// every other render, set focus back to open side menu button
+		// when side menu is closed and toggle aria-expanded attribute
+		if(!show) {
+			btn.current.focus();
+			btn.current.removeAttribute('aria-expanded');
+		} else {
+			btn.current.setAttribute('aria-expanded', true);
+		}
+	}, [show]);
 
 	return (
 		<Button
 			className={props.className}
 			onClick={toggle}
 			title="Open side navigation"
+			ref={btn}
+			aria-haspopup="true"
+			aria-controls="side-menu"
 		>
 			<Icon icon={['fas', 'bars']} />
 		</Button>
@@ -27,11 +54,20 @@ function SideNavToggle(props) {
 }
 
 SideNavToggle.propTypes = {
+	sideNavShow: PropTypes.bool.isRequired,
 	toggleSideNav: PropTypes.func.isRequired,
+	sideNavFirst: PropTypes.bool.isRequired,
+	toggleSideNavFirst: PropTypes.func.isRequired,
 }
 
+const mapStateToProps = state => ({
+  sideNavShow: state.navbarReducer.sideNavShow,
+  sideNavFirst: state.navbarReducer.sideNavFirst
+})
+
 const mapDispatchToProps = {
-	toggleSideNav
+	toggleSideNav,
+	toggleSideNavFirst
 }
 
 const SideNavToggleStyled = styled(SideNavToggle)`
@@ -65,4 +101,4 @@ const SideNavToggleStyled = styled(SideNavToggle)`
 	`}
 `
 
-export const SideNavToggleConnected = connect(null, mapDispatchToProps) (SideNavToggleStyled);
+export const SideNavToggleConnected = connect(mapStateToProps, mapDispatchToProps) (SideNavToggleStyled);
