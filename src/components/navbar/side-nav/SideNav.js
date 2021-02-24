@@ -2,29 +2,41 @@ import React, { useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { minWidth } from '../../../theme/mixins/minWidth';
-import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
-import { DefaultButton as Button } from '../../shared/DefaultButton';
-
-// redux
 import { connect } from 'react-redux';
 import { toggleSideNav } from '../../../action-creators/navbarCreators';
+import { moveFocusToTop, moveFocusToBottom } from '../../../functions/functions';
 
 import PropTypes from 'prop-types';
+
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
+import { DefaultButton as Button } from '../../shared/DefaultButton';
 
 function SideNav(props) {
 
 	const { sideNavShow: show, toggleSideNav: toggle } = props;
 	const home = useRef(null);
+	const close = useRef(null);
 
 	useEffect(() => {
+
 		if(show) {
 			home.current.focus();
+			const toBottom = moveFocusToBottom(close);
+			const toTop = moveFocusToTop(home);
+			home.current.addEventListener('keydown', toBottom);
+			close.current.addEventListener('keydown', toTop);
+
+			return () => {
+				home.current.removeEventListener('keydown', toBottom);
+				close.current.removeEventListener('keydown', toTop);
+			}
 		}
+
 	}, [show]);
 
 	return (
 		<div className={props.className}>
-			<nav className="nav">
+			<nav id="nav" className="nav" aria-label="Main">
 				<ul className="links-container">
 					<li>
 						<NavLink className="link" activeClassName="active" onClick={toggle} exact to="/" ref={home}>Home</NavLink>
@@ -52,7 +64,17 @@ function SideNav(props) {
 					</li>
 				</ul>
 			</nav>
-			<Button className="close-btn" onClick={toggle} title="Close side navigation">
+			<Button
+				id="close-btn"
+				className="close-btn"
+				onClick={toggle}
+				title="Close side navigation"
+				aria-label="Close side navigation"
+				aria-haspopup="true"
+				aria-controls="nav"
+				aria-expanded="true"
+				ref={close}
+			>
 				<Icon icon={['fas', 'times']} />
 			</Button>
 			<div className="round-decoration"></div>
@@ -176,7 +198,7 @@ const SideNavStyled = styled(SideNav)`
 		}
 
 		&:active {
-			padding: 0 0.5rem;
+			padding: 0 0.8rem;
 		}
 
 		${
