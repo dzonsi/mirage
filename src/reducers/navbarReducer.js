@@ -1,9 +1,11 @@
 import { TOGGLE_USER_INFO } from '../actions/actionTypes';
 import { TOGGLE_SIDE_NAV } from '../actions/actionTypes';
+import { TOGGLE_SIDE_NAV_FIRST } from '../actions/actionTypes';
 
 const initialState = {
 	userInfoShow: false,
-  sideNavShow: false
+  sideNavShow: false,
+  sideNavFirst: true
 };
 
 function navbarReducer(state = initialState, action) {
@@ -17,6 +19,11 @@ function navbarReducer(state = initialState, action) {
       return {
         ...state,
         sideNavShow: !state.sideNavShow
+      }
+    case TOGGLE_SIDE_NAV_FIRST:
+      return {
+        ...state,
+        sideNavFirst: !state.sideNavFirst
       }
     default:
      return state;
