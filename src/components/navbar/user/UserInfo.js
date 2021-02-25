@@ -6,18 +6,30 @@ import { UserDataStyled as UserData } from './UserData';
 // action from redux
 import { connect } from 'react-redux';
 import { toggleUserInfo } from '../../../action-creators/navbarCreators';
+import { toggleUserInfoFirst } from '../../../action-creators/navbarCreators';
 
 import PropTypes from 'prop-types';
 
 function UserInfo(props) {
+
+	const {
+		userInfoShow: show,
+		toggleUserInfo: toggle,
+		userInfoFirst: first,
+		toggleUserInfoFirst: toggleFirst
+	} = props;
+
 	return (
-		<div className={props.className}>
+		<div id="user-info" className={props.className}>
 			<UserToggle
-				toggle={props.toggleUserInfo}
+				show={show}
+				toggle={toggle}
+				first={first}
+				toggleFirst={toggleFirst}
 			/>
 			<UserData
-				show={props.userInfoShow}
-				toggle={props.toggleUserInfo}
+				show={show}
+				toggle={toggle}
 			/>
 		</div>
 	)
@@ -26,6 +38,8 @@ function UserInfo(props) {
 UserInfo.propTypes = {
 	userInfoShow: PropTypes.bool.isRequired,
 	toggleUserInfo: PropTypes.func.isRequired,
+	userInfoFirst: PropTypes.bool.isRequired,
+	toggleUserInfoFirst: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => {
@@ -35,7 +49,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-	toggleUserInfo
+	toggleUserInfo,
+	toggleUserInfoFirst
 }
 
 const UserInfoStyled = styled(UserInfo)`
