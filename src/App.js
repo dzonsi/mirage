@@ -43,10 +43,14 @@ function App() {
     <ThemeProvider theme={themeMode}>
       <GlobalStyles />
       <AppContainer>
-        <Navbar />
+        <header>
+          <Navbar />
+        </header>
         <h2>{ theme === 'light' ? 'Light theme' : 'Dark Theme'}</h2>
         <button onClick={toggleTheme}>Toggle theme</button>
-        {routes}
+        <main>
+          {routes}
+        </main>
       </AppContainer>
     </ThemeProvider>
   );
