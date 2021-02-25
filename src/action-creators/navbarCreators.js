@@ -1,10 +1,17 @@
 import { TOGGLE_USER_INFO } from '../actions/actionTypes';
 import { TOGGLE_SIDE_NAV } from '../actions/actionTypes';
 import { TOGGLE_SIDE_NAV_FIRST } from '../actions/actionTypes';
+import { TOGGLE_USER_INFO_FIRST } from '../actions/actionTypes';
 
 export function toggleUserInfo() {
 	return {
 		type: TOGGLE_USER_INFO
+	}
+}
+
+export function toggleUserInfoFirst() {
+	return {
+		type: TOGGLE_USER_INFO_FIRST
 	}
 }
 
