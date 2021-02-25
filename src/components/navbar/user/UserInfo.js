@@ -20,7 +20,7 @@ function UserInfo(props) {
 	} = props;
 
 	return (
-		<div id="user-info" className={props.className}>
+		<div className={props.className}>
 			<UserToggle
 				show={show}
 				toggle={toggle}
