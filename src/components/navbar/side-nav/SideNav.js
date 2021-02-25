@@ -36,7 +36,7 @@ function SideNav(props) {
 
 	return (
 		<div className={props.className}>
-			<nav id="nav" className="nav" aria-label="Main">
+			<div id="side-nav" className="nav">
 				<ul className="links-container">
 					<li>
 						<NavLink className="link" activeClassName="active" onClick={toggle} exact to="/" ref={home}>Home</NavLink>
@@ -63,7 +63,7 @@ function SideNav(props) {
 						<NavLink className="link" activeClassName="active" onClick={toggle} to="/about">About</NavLink>
 					</li>
 				</ul>
-			</nav>
+			</div>
 			<Button
 				id="close-btn"
 				className="close-btn"
@@ -71,7 +71,7 @@ function SideNav(props) {
 				title="Close side navigation"
 				aria-label="Close side navigation"
 				aria-haspopup="true"
-				aria-controls="nav"
+				aria-controls="side-nav"
 				aria-expanded="true"
 				ref={close}
 			>
