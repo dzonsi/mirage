@@ -47,7 +47,7 @@ function SideNavToggle(props) {
 			ref={btn}
 			aria-label="Open side navigation"
 			aria-haspopup="true"
-			aria-controls="nav"
+			aria-controls="side-nav"
 		>
 			<Icon icon={['fas', 'bars']} />
 		</Button>
