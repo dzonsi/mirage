@@ -14,7 +14,7 @@ import { toggleUserInfo } from '../../action-creators/navbarCreators';
 
 function Navbar(props) {
 	return (
-		<NavContainer>
+		<NavContainer aria-label="Main">
 			<NavContent>
 				<SideNavToggle />
 				<Search />
