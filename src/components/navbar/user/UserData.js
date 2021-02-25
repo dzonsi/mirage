@@ -1,21 +1,41 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-
+import PropTypes from 'prop-types';
 import { minWidth } from '../../../theme/mixins/minWidth';
+import { moveFocusToTop, moveFocusToBottom } from '../../../functions/functions';
 // components
 import { DefaultButton as Button } from '../../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
-import PropTypes from 'prop-types';
-
 function UserData(props) {
 
+	const { show, toggle } = props;
+	const manage = useRef(null);
+	const close = useRef(null);
+
+	useEffect(() => {
+
+		if(show) {
+			manage.current.focus();
+			const toBottom = moveFocusToBottom(close);
+			const toTop = moveFocusToTop(manage);
+			manage.current.addEventListener('keydown', toBottom);
+			close.current.addEventListener('keydown', toTop);
+
+			return () => {
+				manage.current.removeEventListener('keydown', toBottom);
+				close.current.removeEventListener('keydown', toTop);
+			}
+		}
+
+	}, [show]);
+
 	return (
-		<div className={props.className}>
+		<div id="user-info" className={props.className}>
 			<p><span>N</span></p>
 			<p>nikola86_v@yahoo.com</p>
 			{/* change to link, or nav link in necessary */}
-			<Button>Manage your account</Button>
+			<Button ref={manage}>Manage your account</Button>
 			<div>
 				{/* change to link, or nav link in necessary */}
 				<Button>Privacy Policy</Button>
@@ -25,7 +45,15 @@ function UserData(props) {
 				{/* change to link, or nav link in necessary */}
 				<Button>Terms of Service</Button>
 			</div>
-			<Button onClick={props.toggle} title="Close user info">
+			<Button
+				ref={close}
+				onClick={toggle}
+				title="Close user info"
+				aria-label="Close user info"
+				aria-haspopup="true"
+				aria-controls="user-info"
+				aria-expanded="true"
+			>
 				<Icon icon={['fas', 'times']} />
 			</Button>
 		</div>
