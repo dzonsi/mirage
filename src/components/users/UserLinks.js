@@ -33,11 +33,27 @@ export const UserLinksStyled = styled(UserLinks)`
 		margin-top: 50px;
 	`}
 
+	${minWidth.sm`
+		margin-top: 70px;
+	`}
+
 	& .link-container {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex: 1 1 100%;
+
+		${minWidth.sm`
+			flex: 0 0 50%;
+
+			&:first-of-type {
+				justify-content: flex-end;
+			}
+
+			&:nth-of-type(2) {
+				justify-content: flex-start;
+			}
+		`}
 	}
 
 	& .link {
@@ -59,6 +75,7 @@ export const UserLinksStyled = styled(UserLinks)`
 		`}
 
 		${minWidth.sm`
+			flex: 0 0 auto;
 			margin: 0 1rem;
 		`}
 
