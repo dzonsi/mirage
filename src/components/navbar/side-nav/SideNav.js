@@ -70,7 +70,6 @@ function SideNav(props) {
 				onClick={toggle}
 				title="Close side navigation"
 				aria-label="Close side navigation"
-				aria-haspopup="true"
 				aria-controls="side-nav"
 				aria-expanded="true"
 				ref={close}

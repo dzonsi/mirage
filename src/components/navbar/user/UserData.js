@@ -50,7 +50,6 @@ function UserData(props) {
 				onClick={toggle}
 				title="Close user info"
 				aria-label="Close user info"
-				aria-haspopup="true"
 				aria-controls="user-info"
 				aria-expanded="true"
 			>
