@@ -101,6 +101,10 @@ export const UserHeadingStyled = styled(UserHeading)`
 			font-size: 1.8rem;
 		`}
 
+		${minWidth.md`
+			font-size: 2rem;
+		`}
+
 	}
 
 	& .username {
@@ -115,7 +119,11 @@ export const UserHeadingStyled = styled(UserHeading)`
 		`}
 
 		${minWidth.sm`
-			font-size: 1.3rem;
+			font-size: 1.5rem;
+		`}
+
+		${minWidth.md`
+			font-size: 1.7rem;
 		`}
 
 	}
