@@ -46,9 +46,11 @@ function SingleUser(props) {
 					</div>
 					<UserHeading user={user} />
 					<hr className="divider"/>
-					<UserBody user={user} />
-					<hr className="divider"/>
-					<UserAddress address={user.address} />
+					<div className="info-container">
+						<UserBody user={user} />
+						<hr className="divider"/>
+						<UserAddress address={user.address} />
+					</div>
 					<hr className="divider"/>
 					<UserLinks />
 				</div>
@@ -129,12 +131,28 @@ const SingleUserStyled = styled(SingleUser)`
 			opacity: 0.5;
 
 			&:nth-of-type(2) {
-				width: 300px;
-			}
-
-			&:nth-of-type(3) {
 				width: 450px;
 			}
+
+		`}
+
+		${minWidth.sm`
+			display: none;
+		`}
+
+	}
+
+	& .info-container {
+
+		${minWidth.xs`
+			& .divider {
+				width: 300px;
+			}
+		`}		
+
+		${minWidth.sm`
+			display: flex;
+			margin-top: 50px;
 		`}
 
 	}
