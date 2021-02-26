@@ -11,10 +11,12 @@ function UserAddress(props) {
 	if(address) {
 		return (
 			<div className={props.className}>
-				<p><span className="u-s-n">Street: </span>{address.street}</p>
-				<p><span className="u-s-n">Suite: </span>{address.suite}</p>
-				<p><span className="u-s-n">City: </span>{address.city}</p>
-				<p><span className="u-s-n">Zipcode: </span>{address.zipcode}</p>
+				<div>
+					<p><span className="u-s-n">Street: </span>{address.street}</p>
+					<p><span className="u-s-n">Suite: </span>{address.suite}</p>
+					<p><span className="u-s-n">City: </span>{address.city}</p>
+					<p><span className="u-s-n">Zipcode: </span>{address.zipcode}</p>
+				</div>
 			</div>
 		)
 	}
@@ -39,8 +41,18 @@ export const UserAddressStyled = styled(UserAddress)`
 		margin: 10px 10px 10px 125px;
 	`}
 
+	${minWidth.sm`
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		flex: 0 0 50%;
+		margin: 0;
+		transition-property: none;
+	`}	
+
 	${minWidth.md`
-		margin: -30px 10px 0 200px;
+		
 	`}
 
 	& p {
