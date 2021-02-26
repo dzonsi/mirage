@@ -70,20 +70,12 @@ export const UserLinksStyled = styled(UserLinks)`
 		opacity: 0.6;
 		transition: all .1s linear;
 
-    ${minWidth.xs`
-
-		`}
-
 		${minWidth.sm`
 			flex: 0 0 auto;
 			margin: 0 1rem;
 		`}
 
 		${minWidth.md`
-			font-size: 1.1rem;
-		`}
-
-		${minWidth.lg`
 			font-size: 1.2rem;
 		`}
 
