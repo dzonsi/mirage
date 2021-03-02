@@ -18,6 +18,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 // components
 import { AppContainer } from './components/AppContainer';
 import { ErrorContainer } from './components/ErrorContainer';
+import { HeaderStyled as Header } from './components/header/Header';
 import Navbar from './components/navbar/Navbar';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
@@ -43,9 +44,9 @@ function App() {
     <ThemeProvider theme={themeMode}>
       <GlobalStyles />
       <AppContainer>
-        <header>
+        <Header>
           <Navbar />
-        </header>
+        </Header>
         <h2>{ theme === 'light' ? 'Light theme' : 'Dark Theme'}</h2>
         <button onClick={toggleTheme}>Toggle theme</button>
         <main>
