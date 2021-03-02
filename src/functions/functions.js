@@ -30,3 +30,8 @@ export const moveFocusToBottom = bottom => e => {
     bottom.current.focus();
   }
 }
+
+// close menu when keyboard escape is pressed
+export const closeOnEsc = method => e => {
+	if(e.key === 'Escape') method();
+}
