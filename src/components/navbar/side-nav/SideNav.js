@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { minWidth } from '../../../theme/mixins/minWidth';
 import { connect } from 'react-redux';
 import { toggleSideNav } from '../../../action-creators/navbarCreators';
-import { moveFocusToTop, moveFocusToBottom } from '../../../functions/functions';
+import { moveFocusToTop, moveFocusToBottom, closeOnEsc } from '../../../functions/functions';
 
 import PropTypes from 'prop-types';
 
@@ -26,9 +26,13 @@ function SideNav(props) {
 			home.current.addEventListener('keydown', toBottom);
 			close.current.addEventListener('keydown', toTop);
 
+			const esc = closeOnEsc(toggle);
+			document.addEventListener('keydown', esc);
+
 			return () => {
 				home.current.removeEventListener('keydown', toBottom);
 				close.current.removeEventListener('keydown', toTop);
+				document.removeEventListener('keydown', esc);
 			}
 		}
 
