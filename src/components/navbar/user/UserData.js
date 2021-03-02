@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { minWidth } from '../../../theme/mixins/minWidth';
-import { moveFocusToTop, moveFocusToBottom } from '../../../functions/functions';
+import { moveFocusToTop, moveFocusToBottom, closeOnEsc } from '../../../functions/functions';
 // components
 import { DefaultButton as Button } from '../../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
@@ -22,9 +22,13 @@ function UserData(props) {
 			manage.current.addEventListener('keydown', toBottom);
 			close.current.addEventListener('keydown', toTop);
 
+			const esc = closeOnEsc(toggle);
+			document.addEventListener('keydown', esc);
+
 			return () => {
 				manage.current.removeEventListener('keydown', toBottom);
 				close.current.removeEventListener('keydown', toTop);
+				document.removeEventListener('keydown', esc);
 			}
 		}
 
