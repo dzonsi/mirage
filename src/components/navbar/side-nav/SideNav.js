@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { minWidth } from '../../../theme/mixins/minWidth';
 import { connect } from 'react-redux';
 import { toggleSideNav } from '../../../action-creators/navbarCreators';
-import { moveFocusToTop, moveFocusToBottom } from '../../../functions/functions';
 import { useCloseEsc } from '../../../hooks/useCloseEsc';
+import { useManageFocus } from '../../../hooks/useManageFocus';
 
 import PropTypes from 'prop-types';
 
@@ -18,23 +18,7 @@ function SideNav(props) {
 	const home = useRef(null);
 	const close = useRef(null);
 
-	useEffect(() => {
-
-		if(show) {
-			home.current.focus();
-			const toBottom = moveFocusToBottom(close);
-			const toTop = moveFocusToTop(home);
-			home.current.addEventListener('keydown', toBottom);
-			close.current.addEventListener('keydown', toTop);
-
-			return () => {
-				home.current.removeEventListener('keydown', toBottom);
-				close.current.removeEventListener('keydown', toTop);
-			}
-		}
-
-	}, [show]);
-
+	useManageFocus(show, home, close);
 	useCloseEsc(show, toggle);
 
 	return (

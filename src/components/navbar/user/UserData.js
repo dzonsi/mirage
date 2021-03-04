@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { minWidth } from '../../../theme/mixins/minWidth';
-import { moveFocusToTop, moveFocusToBottom } from '../../../functions/functions';
 import { useCloseEsc } from '../../../hooks/useCloseEsc';
+import { useManageFocus } from '../../../hooks/useManageFocus';
 // components
 import { DefaultButton as Button } from '../../shared/DefaultButton';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
@@ -14,23 +14,7 @@ function UserData(props) {
 	const manage = useRef(null);
 	const close = useRef(null);
 
-	useEffect(() => {
-
-		if(show) {
-			manage.current.focus();
-			const toBottom = moveFocusToBottom(close);
-			const toTop = moveFocusToTop(manage);
-			manage.current.addEventListener('keydown', toBottom);
-			close.current.addEventListener('keydown', toTop);
-
-			return () => {
-				manage.current.removeEventListener('keydown', toBottom);
-				close.current.removeEventListener('keydown', toTop);
-			}
-		}
-
-	}, [show]);
-
+	useManageFocus(show, manage, close);
 	useCloseEsc(show, toggle);
 
 	return (
