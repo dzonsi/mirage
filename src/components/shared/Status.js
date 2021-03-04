@@ -14,17 +14,15 @@ function Status(props) {
 	const {
 		type,
 		options: Options,
-		showOptions,
-		toggleOptions
+		showOptions: show,
+		toggleOptions: toggle
 	} = props;
 
 	const { goBack } = useHistory();
 
 	const btn = useRef(null);
 
-	const getBtn = () => {
-		return btn;
-	}
+	const getBtn = () => btn;
 
 	return (
 		<div className={props.className}>
@@ -35,11 +33,11 @@ function Status(props) {
 				</Button>
 			</div>
 			<div className="options">
-				<Button className="options-btn" padding="0 9px" onClick={toggleOptions} ref={btn}>
+				<Button className="options-btn" padding="0 9px" onClick={toggle} ref={btn}>
 					<Icon icon={['fas', 'ellipsis-v']} />
 				</Button>
-				{showOptions && cloneElement(Options, { getBtn, toggleOptions })}
-				{showOptions && <Overlay />}
+				{show && cloneElement(Options, { getBtn, show, toggle })}
+				{show && <Overlay />}
 			</div>
 		</div>
 	)
