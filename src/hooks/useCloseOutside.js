@@ -3,9 +3,9 @@ import { useEffect } from "react";
 export function useCloseOutside(ref, btn, close) {
     useEffect(() => {
 
-      function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-          if(btn.current.contains(event.target)) return;
+      function handleClickOutside(e) {
+        if (ref.current && !ref.current.contains(e.target)) {
+          if(btn.current.contains(e.target)) return;
           close();
         }
       }
@@ -15,5 +15,5 @@ export function useCloseOutside(ref, btn, close) {
         document.removeEventListener("mousedown", handleClickOutside);
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [ref]);
+    }, []);
 }
