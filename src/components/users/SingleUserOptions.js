@@ -26,7 +26,7 @@ function SingleUserOptions(props) {
 	useManageFocus(show, first, last);
 
 	return (
-		<div className={props.className} ref={element}>
+		<div id="user-options" className={props.className} ref={element} role="menu" aria-labelledby="more">
 			<div className="options-container">
 				<div className="link-container">
 					<button className="link" ref={first}>

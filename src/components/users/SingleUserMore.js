@@ -23,12 +23,26 @@ function SingleUserMore(props) {
       return;
     }
 
-    if(!show) btn.current.focus();
+    if(show) {
+    	btn.current.setAttribute('aria-expanded', true);
+    } else {
+    	btn.current.focus();
+    	btn.current.removeAttribute('aria-expanded');
+    }
   }, [show]);
 
 	return (
 		<div className={props.className}>
-			<Button className="more" ref={btn} padding="0 9px" onClick={() => setShow(!show)} title="Show options">
+			<Button
+				id="more"
+				className="more"
+				ref={btn} padding="0 9px"
+				onClick={() => setShow(!show)}
+				title="User options"
+				aria-label="User options"
+				aria-haspopup="true"
+				aria-controls="user-options"
+			>
 				<Icon icon={['fas', 'ellipsis-v']} />
 			</Button>
 			{show && <Options show={show} setShow={setShow} getBtn={getBtn} /> }
