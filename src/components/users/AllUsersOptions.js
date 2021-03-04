@@ -1,7 +1,9 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import { connect } from "react-redux";
 import styled from 'styled-components';
 import { useCloseOutside } from '../../hooks/useCloseOutside';
-import { connect } from "react-redux";
+import { useCloseEsc } from '../../hooks/useCloseEsc';
+import { useManageFocus } from '../../hooks/useManageFocus';
 
 import { SORT_ID } from '../../actions/actionTypes';
 import { SORT_ASC } from '../../actions/actionTypes';
@@ -20,23 +22,31 @@ import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 function AllUsersOptions(props) {
 
 	const btn = props.getBtn();
-	const close = props.toggleOptions;
+	const {
+		show,
+		toggle,
+		sortBy,
+		order
+	} = props;
 
 	const element = useRef(null);
-	useCloseOutside(element, btn, close);
+	const select = useRef(null);
+	const last = useRef(null);
 
-	const { sortBy, order } = props;
+	useCloseOutside(element, btn, toggle);
+	useCloseEsc(show, toggle);
+	useManageFocus(show, select, last);
 
-	function sort(ev) {
-		sortBy(ev.target.value);
-		// close();
+	function sort(e) {
+		sortBy(e.target.value);
+		// toggle();
 	}
 
 	return (
 		<div className={props.className} ref={element}>
 			<div className="sort-container">
 				<label htmlFor="sort">Sort by:</label>
-				<select id="sort" value={order} onChange={sort}>
+				<select id="sort" value={order} onChange={sort} ref={select}>
 					<option value={SORT_ID}>Id</option>
 					<option value={SORT_ASC}>Asc</option>
 					<option value={SORT_DESC}>Desc</option>
@@ -48,7 +58,7 @@ function AllUsersOptions(props) {
 					<Icon icon={['fas', 'user-plus']} fixedWidth />
 					<span className="text">Add new</span>
 				</Button>
-				<Button className="link" padding=".2rem .0rem .2rem">
+				<Button className="link" padding=".2rem .0rem .2rem" ref={last}>
 					<Icon icon={['fas', 'user-slash']} fixedWidth />
 					<span className="text">Delete&nbsp;user(s)</span>
 				</Button>
@@ -58,9 +68,10 @@ function AllUsersOptions(props) {
 
 }
 
-AllUsersOptions.propsTypes = {
+AllUsersOptions.propTypes = {
 	getBtn: PropTypes.func.isRequired,
-	toggleOptions: PropTypes.func.isRequired,
+	show: PropTypes.bool.isRequired,
+	toggle: PropTypes.func.isRequired,
 	order: PropTypes.string.isRequired,
 	sortBy: PropTypes.func.isRequired
 }
