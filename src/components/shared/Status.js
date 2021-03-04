@@ -34,7 +34,7 @@ function Status(props) {
     }
 
     if(!show) btn.current.focus();
-  });
+  }, [show]);
 
 	return (
 		<div className={props.className}>
