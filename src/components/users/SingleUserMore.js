@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from 'styled-components';
 import { minWidth } from '../../theme/mixins/minWidth';
 
@@ -12,13 +12,23 @@ function SingleUserMore(props) {
 	const [show, setShow] = useState(false);
 	const btn = useRef(null);
 
-	const getBtn = () => {
-		return btn;
-	}
+	const getBtn = () => btn;
+
+	const firstUpdate = useRef(true);
+
+	useEffect(() => {
+
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+
+    if(!show) btn.current.focus();
+  }, [show]);
 
 	return (
 		<div className={props.className}>
-			<Button className="more" ref={btn} padding="0 9px" onClick={() => setShow(!show)} title="More options">
+			<Button className="more" ref={btn} padding="0 9px" onClick={() => setShow(!show)} title="Show options">
 				<Icon icon={['fas', 'ellipsis-v']} />
 			</Button>
 			{show && <Options show={show} setShow={setShow} getBtn={getBtn} /> }
