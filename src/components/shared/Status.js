@@ -1,4 +1,4 @@
-import React, { useRef, cloneElement } from "react";
+import React, { useRef, useEffect, cloneElement } from "react";
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { minWidth } from '../../theme/mixins/minWidth';
@@ -23,6 +23,18 @@ function Status(props) {
 	const btn = useRef(null);
 
 	const getBtn = () => btn;
+
+	const firstUpdate = useRef(true);
+
+	useEffect(() => {
+
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+
+    if(!show) btn.current.focus();
+  });
 
 	return (
 		<div className={props.className}>
