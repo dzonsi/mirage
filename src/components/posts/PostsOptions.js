@@ -9,7 +9,7 @@ import { optionsFadeIn } from '../../style/animations/optionsFadeIn';
 function PostsOptions(props) {
 
 	const btn = props.getBtn();
-	const close = props.toggleOptions;
+	const close = props.toggle;
 	const element = useRef(null);
 	useCloseOutside(element, btn, close);
 	const { filter, setFilter } = props;
@@ -23,7 +23,7 @@ function PostsOptions(props) {
 
 PostsOptions.propTypes = {
 	getBtn: PropTypes.func.isRequired,
-	toggleOptions: PropTypes.func.isRequired
+	toggle: PropTypes.func.isRequired
 }
 
 export const PostsOptionsStyled = styled(PostsOptions)`
