@@ -1,16 +1,19 @@
 import { useEffect } from "react";
 import { closeOnEsc } from '../functions/functions';
 
-export function useCloseEsc(close) {
+export function useCloseEsc(show, close) {
     useEffect(() => {
 
-      const esc = closeOnEsc(close);
+      if(show) {
 
-      document.addEventListener("keydown", esc);
+        const esc = closeOnEsc(close);
 
-      return () => {
-        document.removeEventListener('keydown', esc);
-      };
+        document.addEventListener("keydown", esc);
+
+        return () => {
+          document.removeEventListener('keydown', esc);
+        };
+      }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [show]);
 }
