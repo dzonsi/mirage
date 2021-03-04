@@ -1,6 +1,10 @@
 import React, { useRef } from "react";
 import styled from 'styled-components';
 import { useCloseOutside } from '../../hooks/useCloseOutside';
+import { useCloseEsc } from '../../hooks/useCloseEsc';
+import { useManageFocus } from '../../hooks/useManageFocus';
+
+import PropTypes from 'prop-types';
 
 import { minWidth } from '../../theme/mixins/minWidth';
 
@@ -10,16 +14,22 @@ import { optionsFadeIn } from '../../style/animations/optionsFadeIn';
 
 function SingleUserOptions(props) {
 
+	const { show, setShow } = props;
 	const btn = props.getBtn();
 
 	const element = useRef(null);
-	useCloseOutside(element, btn, props.setShow);
+	const first = useRef(null);
+	const last = useRef(null);
+
+	useCloseOutside(element, btn, setShow);
+	useCloseEsc(show, setShow);
+	useManageFocus(show, first, last);
 
 	return (
 		<div className={props.className} ref={element}>
 			<div className="options-container">
 				<div className="link-container">
-					<button className="link">
+					<button className="link" ref={first}>
 						<Icon icon={['fas', 'user-edit']} fixedWidth />
 						<span className="text">Edit user</span>
 					</button>
@@ -44,7 +54,7 @@ function SingleUserOptions(props) {
 							<Icon icon={['fas', 'check-double']} fixedWidth />
 							<span className="text">Todo</span>
 						</button>
-						<button className="link">
+						<button className="link" ref={last}>
 							<Icon icon={['fas', 'images']} fixedWidth />
 							<span className="text">Image</span>
 						</button>
@@ -54,6 +64,12 @@ function SingleUserOptions(props) {
 		</div>
 	)
 
+}
+
+SingleUserOptions.propTypes = {
+	show: PropTypes.bool.isRequired,
+	setShow: PropTypes.func.isRequired,
+	getBtn: PropTypes.func.isRequired,
 }
 
 export const SingleUserOptionsStyled = styled(SingleUserOptions)`
