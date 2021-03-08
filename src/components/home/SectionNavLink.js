@@ -15,12 +15,17 @@ function SectionNavLink(props) {
 
 	return (
 		<section className={props.className}>
-			<NavLink to={to}>
-				<h2>
-					<Icon icon={[iconPrefix, iconName]} />
-					<span>{capitalize(to)}</span>
-				</h2>
-			</NavLink>
+			<div className="capsule">
+				<NavLink to={to} className="overlay-link" aria-hidden="true" tabindex="-1">&nbsp;</NavLink>
+				<div className="content">
+					<div className="image"></div>
+					<div className="info">
+						<h2 className="heading">{capitalize(to)}</h2>
+						<p className="description">A piece of writing, image, or other item of content published online, typically on a blog or social media website or application.</p>
+						<NavLink to={to} className="link">See all posts</NavLink>
+					</div>
+				</div>
+			</div>
 		</section>
 	)
 
@@ -40,75 +45,80 @@ const hex2rgba = (hex, alpha = 1) => {
 
 export const SectionNavLinkStyled = styled(SectionNavLink)`
 
-	margin: 10px;
+	flex: 0 0 100%;
+	margin-bottom: 1rem;
 
-	& a {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 106px;
-			height: 106px;
-			font-weight: 700;
-			text-align: center;
-			text-decoration: none;
-			color: #fff;
-			color: ${({ theme }) => props => theme.name === 'light' ? theme.beta : hex2rgba(theme[props.color], 0.8)};
-			background-color: ${({ theme }) => theme.name === 'light' ? 'rgba(0, 0, 0, 0.05)' : null };
-			border-radius: 15px;
-			border: ${({ theme }) => props => theme.name === 'light' ? null : `3px solid ${theme.gamma}`};
-			transition: all .1s linear;
+	& .capsule {
+		background-color: ${({ theme }) => theme.name === 'light' ? '#fff' : theme.delta };
+		border-radius: 15px;
+		position: relative;
 
-			&:hover {
-				color: ${({ theme }) => props => theme.name === 'light' ? hex2rgba(theme[props.color], 1) : hex2rgba(theme[props.color], 0.8)};
-				background-color: ${({ theme }) => theme.name === 'light' ? 'rgba(0, 0, 0, 0.1)' : null };
-				border-color: ${({ theme }) => props => theme.name === 'light' ? null : hex2rgba(theme[props.color], 0.8)};
-				box-shadow: ${({ theme }) => theme.name === 'light' ? '2px 2px 10px 0 rgba(0, 0, 0, 0.4);' : null };
+		&:hover {
 
-				& h2 {
-					${minWidth.md`
-						${({ theme }) => theme.name === 'light' ? 'transform: scale(1.05);' : null }
-					`}
-				}
+			& .link {
+				background-size: 4px 50px;
+				border-radius: 4px;
 			}
 
-			${minWidth.sm`
-				width: 126px;
-				height: 126px;
-			`}
+		}
+	}
 
-			${minWidth.md`
-				width: 156px;
-				height: 156px;
-				border-radius: 50%;
-				border-width: 5px;
-			`}
+	& .overlay-link {
+		border-radius: 15px;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+	}
 
-			& h2 {
-				margin: 0;
-				font-size: 1rem;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				transition: transform .1s linear;
+	& .content {
+		padding: 50px 20px;
+	}
 
-				${minWidth.md`
-					font-size: 1.2rem;
-				`}
+	& .image {
 
-			}
+	}
 
-			& span {
-				display: block;
-				font-weight: 700;
-			}
+	& .info {
 
-			& svg {
-				display: block;
-				font-size: 1.5rem;
-				margin-bottom: 5px;
-			}
+	}
 
+	& .heading {
+		position: relative;
+		font-weight: 700;
+
+		&::after {
+			content: "";
+			display: block;
+			width: 60px;
+			height: 8px;
+			background-color: ${({ theme, color }) => theme[color] };
+			margin: .8rem 0;
+		}
+	}
+
+	& .description {
+		font-size: .8rem;
+		font-weight: 700;
+		color: ${({ theme }) => theme.name === 'light' ? theme.beta : theme.beta };
+	}
+
+	& .link {
+		display: inline-block;
+		font-weight: 700;
+		color: ${({ theme }) => theme.alpha };
+		padding: .2rem .5rem;
+		border-radius: 0px;
+		background:
+     linear-gradient(
+       to bottom, ${({ theme, color }) => theme[color] } 0%,
+       ${({ theme, color }) => theme[color] } 100%
+     );
+  	background-position: 0 100%;
+  	background-repeat: repeat-x;
+  	background-size: 4px 4px;
+  	text-decoration: none;
+  	transition: background-size .2s, border-radius .2s;
 	}
 
 `
