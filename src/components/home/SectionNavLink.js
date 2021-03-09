@@ -16,13 +16,13 @@ function SectionNavLink(props) {
 	return (
 		<section className={props.className}>
 			<div className="capsule">
-				<NavLink to={to} className="overlay-link" aria-hidden="true" tabindex="-1">&nbsp;</NavLink>
+				<NavLink to={to} className="overlay-link" aria-hidden="true" tabIndex="-1">&nbsp;</NavLink>
 				<div className="content">
 					<div className="image"></div>
 					<div className="info">
 						<h2 className="heading">{capitalize(to)}</h2>
-						<p className="description">A piece of writing, image, or other item of content published online, typically on a blog or social media website or application.</p>
-						<NavLink to={to} className="link">See all posts</NavLink>
+						<p className="description">{props.children}</p>
+						<NavLink to={to} className="link">See all {to}</NavLink>
 					</div>
 				</div>
 			</div>
@@ -52,6 +52,7 @@ export const SectionNavLinkStyled = styled(SectionNavLink)`
 		background-color: ${({ theme }) => theme.name === 'light' ? '#fff' : theme.delta };
 		border-radius: 15px;
 		position: relative;
+		overflow: hidden;
 
 		&:hover {
 
